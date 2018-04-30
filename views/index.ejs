@@ -1,0 +1,41 @@
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>Anmelden</title>
+  <link rel='stylesheet' href='/styles/styles.css' />
+  <link rel="shortcut icon" type="image/png" href="/bilder/bga.png">
+</head>
+
+<body>
+  <div class="container">
+    <div id="loginbox">
+      <h1>Anmelden</h1>
+      <div class="loginbox-body">
+        <% if (message.length > 0) { %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% } %>
+            <form id="loginform" role="form" method="post" action="/anmelden">
+              <div class="form-group">
+                <label for="name" class="control-label">Benutzername</label>
+                <input id="login-username" type="text" class="form-control" name="name" value="" placeholder="Benutzername">
+              </div>
+              <div class="form-group">
+                <label for="name" class="passwort">Passwort</label>
+                <input id="login-password" type="password" class="form-control" name="passwort" placeholder="Passwort">
+              </div>
+              <div class="form-group">
+                <div>
+                  <button id="btn-login" type="submit" class="btn">Anmelden</button>
+                </div>
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

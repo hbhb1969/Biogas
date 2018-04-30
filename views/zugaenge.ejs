@@ -1,0 +1,111 @@
+<%- include header %>
+  <div class="container">
+    <div class="hauptblock">
+      <h1>Buchen</h1>
+      <form role="form" onSubmit="return checkblank(this);">
+        <% if (message.length > 0) { %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% } %>
+            <div id="buchungsfehler" style="display:none" class="alert">
+              <p>Fehler:</p>
+              <span></span>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <input type="number" class="form-control nodisplay" hidden name="Z_ID" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Z_Datum" class="control-label">Datum</label>
+              <div>
+                <input type="date" class="form-control" name="Z_Datum" placeholder="Datum" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Z_BruttoMenge" class="control-label">Menge</label>
+              <div>
+                <input type="number" value="" class="form-control" name="Z_BruttoMenge" placeholder="Menge" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Lager_L_ID" class="control-label">Lager</label>
+              <div class="select-wrapper">
+                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" required>
+                     <%- lagerOptions %>
+                                       </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Person_P_ID" class="control-label">Lieferant</label>
+              <div class="select-wrapper">
+                <select id="lieferanten" class="form-control" name="Person_P_ID" placeholder="Lieferant" required>
+                     <%- lieferantenOptions %>
+                                       </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-buchen" type="submit" class="btn" formaction="/buchen/zugaenge" formmethod="post">Buchen</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge-put" formmethod="post">Ändern</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-loeschen" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge-delete" formmethod="post">Löschen</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge" formmethod="get">Abbrechen</button>
+              </div>
+            </div>
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hauptblock buchungen">
+      <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
+      <section class="table-wrap">
+        <div class="table">
+          <table>
+            <thead>
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-datum">
+                  Datum
+                  <div>Datum</div>
+                </th>
+                <th class="t-menge t-rechts" colspan="2">
+                  Menge
+                  <div>Menge</div>
+                </th>
+                <th class="t-lager">
+                  Lager
+                  <div>Lager</div>
+                </th>
+                <th class="t-lieferant">
+                  Lieferant
+                  <div>Lieferant</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- buchungenZugaenge %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script language="javascript" type="text/javascript" src="/scripts/zugaenge.js"></script>
+  <%- include footer %>

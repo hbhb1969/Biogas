@@ -1,0 +1,259 @@
+/* Fonts */
+@font-face {
+  font-family: "OpenSans";
+  src: url(open-sans/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url(open-sans/OpenSans-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url(open-sans/OpenSans-Light.ttf);
+  font-weight: lighter;
+}
+/* Notmalisierungen */
+body {
+  margin: 0;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+button,
+input {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+select::-ms-expand {
+  display: none;
+}
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+/* Styles */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #282828;
+  font-family: "OpenSans", Arial, sans-serif;
+}
+body {
+  padding: 0 0 30px;
+}
+.container {
+  margin: 30px auto 0;
+  max-width: 340px;
+  width: 100%;
+}
+/* Allgemein */
+.hauptblock {
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
+  padding: 0 20px 20px;
+  width: 100%;
+}
+.form-group {
+  margin-top: 15px;
+}
+.nodisplay {
+  display: none;
+}
+a.btn,
+button,
+input,
+select {
+  border: 1px solid #a1a1a1;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  height: 40px;
+  max-width: 300px;
+  width: 100%;
+}
+input,
+select {
+  padding-left: 10px;
+}
+select {
+  cursor: pointer;
+}
+input:hover {
+  border: 1px solid #282828;
+}
+select:hover {
+  border: 1px solid #282828;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper:before {
+  content: "∨";
+  font-size: 20px;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  color: #c1c1c1;
+}
+.select-wrapper:before {
+  pointer-events: none;
+}
+a.btn {
+  display: inline-block;
+  padding-top: 8px;
+  text-align: center;
+  text-decoration: none;
+}
+a.btn,
+button {
+  background: #ccc;
+  background-image: -webkit-linear-gradient(top, #ccc, #aaa);
+  background-image: -moz-linear-gradient(top, #ccc, #aaa);
+  background-image: -ms-linear-gradient(top, #ccc, #aaa);
+  background-image: -o-linear-gradient(top, #ccc, #aaa);
+  background-image: linear-gradient(to bottom, #ccc, #aaa);
+}
+a.btn:hover {
+  background: #e1e1e1;
+}
+button:hover {
+  background: #e1e1e1;
+}
+#btn-buchen,
+#btn-login {
+  margin-top: 20px;
+}
+.alert {
+  color: red;
+  padding-bottom: 20px;
+}
+/* Navigation */
+.navbar {
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
+  height: 50px;
+  margin-top: 10px;
+  width: 100%;
+}
+.nav {
+  float: left;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav a {
+  background-color: #eee;
+  border-radius: 10px 0 0 10px;
+  display: inline-block;
+  padding: 12.5px;
+  text-decoration: none;
+}
+.nav a:hover {
+  background-color: #e1e1e1;
+}
+.navbar-right {
+  float: right !important;
+}
+.navbar-right a {
+  background-color: #fff;
+  border-radius: 0 10px 10px 0;
+  display: inline-block;
+  padding: 12.5px;
+  text-decoration: none;
+}
+.buchungen .table-wrap {
+  padding-top: 37px;
+  position: relative;
+}
+.buchungen .table {
+  height: 200px;
+  overflow-y: auto;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 12px;
+  width: 100%;
+}
+th {
+  height: 0;
+  line-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: transparent;
+  border: none;
+  white-space: nowrap;
+}
+th div {
+  position: absolute;
+  background: transparent;
+  color: #282828;
+  padding: 9px 25px;
+  top: 0;
+  margin-left: -25px;
+  line-height: normal;
+}
+tr {
+  border-bottom: 1px solid #bbb;
+  cursor: pointer;
+  height: 37px;
+}
+tr:hover {
+  background-color: #ccc;
+}
+tr.th {
+  cursor: inherit;
+  height: 0;
+}
+td {
+  padding: 0 5px;
+}
+.t-id {
+  display: none;
+}
+.t-rechts {
+  text-align: right;
+}
+
+/* Login */
+#loginbox {
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 0 20px 20px;
+  width: 340px;
+}
