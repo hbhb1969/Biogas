@@ -9,17 +9,25 @@ exports.anmelden = function(req, res) {
     const pass = post.passwort;
     const email = post.email;
     const bga = post.bga;
-    const sql = "SELECT BEN_ID, BEN_Name, BEN_Passwort FROM `benutzer` WHERE `BEN_Name`='" + name + "' and BEN_Passwort = '" + pass + "'";
+    const sql = "SELECT BEN_ID, BEN_Name, BEN_Passwort FROM `Benutzer` WHERE `BEN_Name`='" + name + "' and BEN_Passwort = '" + pass + "'";
     db.query(sql, function(err, results) {
       if (err) {
         message = "Fehler: " + err;
       }
-      if (results.length) {
-        req.session.userId = results[0].BEN_ID;
-        req.session.user = results[0];
-        res.redirect('/hauptmenue');
+      if (results) {
+        if (results.length) {
+          req.session.userId = results[0].BEN_ID;
+          req.session.user = results[0];
+          res.redirect('/hauptmenue');
+        } else {
+          message = 'Die Logindaten sind nicht korrekt.';
+          res.render('index.ejs', {
+            message: message
+          });
+        }
       } else {
-        message = 'Die Logindaten sind nicht korrekt.';
+        message = 'Es konnte keine Verbindung zur Datenbank hergestellt werden!';
+        console.log('Fehler: Keine Verbindung zur Datenbank hergestellt');
         res.render('index.ejs', {
           message: message
         });
@@ -42,7 +50,7 @@ exports.hauptmenue = function(req, res, next) {
     return;
   }
 
-  const sql = "SELECT * FROM `benutzer` WHERE `BEN_ID`='" + userId + "'";
+  const sql = "SELECT * FROM `Benutzer` WHERE `BEN_ID`='" + userId + "'";
   db.query(sql, function(err, results) {
     if (err) {
       message = "Fehler: " + err;
