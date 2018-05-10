@@ -24,7 +24,7 @@
                 <input type="date" class="form-control" name="Z_Datum" placeholder="Datum" required>
               </div>
             </div>
-            <div class="form-group"> 
+            <div class="form-group">
               <label for="Person_P_ID" class="control-label">Lieferant</label>
               <div class="select-wrapper">
                 <select id="lieferanten" class="form-control" name="Person_P_ID" placeholder="Lieferant" required>
@@ -35,13 +35,13 @@
             <div class="form-group">
               <label for="Lager_L_ID" class="control-label">Lager</label>
               <div class="select-wrapper">
-                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" required>
+                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren()" required>
                      <%- lagerOptions %>
                                        </select>
               </div>
             </div>
             <div class="form-group">
-              <label for="Z_BruttoMenge" class="control-label">Menge</label>
+              <label for="Z_BruttoMenge" class="control-label">Menge <span id="zugang-me"></span></label>
               <div>
                 <input type="number" value="" class="form-control" name="Z_BruttoMenge" placeholder="Menge" required>
               </div>

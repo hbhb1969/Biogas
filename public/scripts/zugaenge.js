@@ -1,4 +1,6 @@
   window.onload = function() {
+    meAktualisieren()
+
     let table = document.getElementsByTagName("table")[0];
     let tbody = table.getElementsByTagName("tbody")[0];
     // Tabelle wird in die letialbe data ausgelesen
@@ -51,3 +53,9 @@
     };
 
   };
+
+  function meAktualisieren() {
+    let lager = document.getElementById('lager')
+    let lagerMe = lager.options[lager.selectedIndex].getAttribute('mebez');
+    document.getElementById('zugang-me').innerHTML = '(' + lagerMe + ')';
+  }
