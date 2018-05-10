@@ -21,7 +21,7 @@ exports.anmelden = function(req, res) {
           req.session.user = results[0];
           res.redirect('/hauptmenue');
         } else {
-          message = 'Die Logindaten sind nicht korrekt: ' + err;
+          message = 'Die Logindaten sind nicht korrekt.';
           res.render('index.ejs', {
             message: message
           });
