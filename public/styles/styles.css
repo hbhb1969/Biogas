@@ -1,16 +1,16 @@
 /* Fonts */
 @font-face {
   font-family: "OpenSans";
-  src: url(open-sans/OpenSans-Regular.ttf);
+  src: url(../open-sans/OpenSans-Regular.ttf);
 }
 @font-face {
   font-family: "OpenSans";
-  src: url(open-sans/OpenSans-Bold.ttf);
+  src: url(../open-sans/OpenSans-Bold.ttf);
   font-weight: bold;
 }
 @font-face {
   font-family: "OpenSans";
-  src: url(open-sans/OpenSans-Light.ttf);
+  src: url(../open-sans/OpenSans-Light.ttf);
   font-weight: lighter;
 }
 /* Notmalisierungen */
@@ -165,7 +165,7 @@ button:hover {
 .navbar {
   border: 1px solid #a1a1a1;
   border-radius: 10px;
-  height: 47px;
+  height: 50px;
   margin-top: 10px;
   width: 100%;
 }

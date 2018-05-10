@@ -15,12 +15,6 @@ logger.add(logger.transports.File, {
   'filename': 'error.log',
   'level': 'error'
 });
-process.on('error', function(err) {
-  logger.error('on-error: ' + err);
-});
-process.on('uncaughtException', function(err) {
-  logger.error('on uncaughtException: ' + err);
-});
 
 const app = express();
 
@@ -58,6 +52,25 @@ app.post('/buchen/zugaenge-delete', zugaenge.delete);
 app.get('/select/lager', select.lager);
 app.get('/select/lieferant', select.lieferant);
 app.get('/tabellen/zugaenge', tabellen.zugaenge);
+
+// Fehlerbehandlung für nicht vorhandene routes
+app.use((req, res, next) => {
+  const error = new Error('Seite nicht gefunden');
+  logger.error('Seite nicht gefunden: ' + req.url)
+  error.status = 404;
+  next(error);
+})
+
+// Allgemeine Fehlerbehandlung
+app.use((error, req, res, next) => {
+  logger.error('Globaler Fehler: ' + error)
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message
+    }
+  })
+})
 
 // Server starten
 app.listen(8080)

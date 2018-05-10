@@ -42,7 +42,7 @@ exports.lieferant = function(req, res, next) {
       logger.error(err);
     }
     if (rows) {
-      res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+      res.json(rows);
     } else {
       logger.warn('Keine Lieferanten gefunden: err:' + err);
       res.redirect('/hauptmenue');
