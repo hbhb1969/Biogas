@@ -94,18 +94,18 @@ exports.post = function(req, res, next) {
   const lieferant = post.Person_P_ID;
 
   const sql = "INSERT INTO `Zugang`(`Z_Datum`,`Z_BruttoMenge`,`Lager_L_ID`,`Person_P_ID`) VALUES ('" + datum + "','" + menge + "','" + lager + "','" + lieferant + "')";
-  console.log(sql);
+  logger.info(sql);
   // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
   // neu aus der Datenbank ausgelesen werden
   const zugangbuchen = async function() {
     try {
       const query = db.query(sql, function(err, result) {
         if (err) {
-          message = "Fehler: " + err;
+          logger.error(err);
         }
       });
     } catch (ex) {
-      message = 'Fehler: ' + ex;
+      logger.error(ex);
     }
   };
   (async () => {
@@ -134,7 +134,7 @@ exports.put = function(req, res, next) {
   const lieferant = post.Person_P_ID;
 
   const sql = "UPDATE `Zugang` SET Z_Datum = '" + datum + "', Z_BruttoMenge = '" + menge + "', Lager_L_ID ='" + lager + "', Person_P_ID = '" + lieferant + "' WHERE Z_ID = " + id + ";";
-  console.log(sql);
+  logger.info(sql);
 
   // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
   // neu aus der Datenbank ausgelesen werden
@@ -142,11 +142,11 @@ exports.put = function(req, res, next) {
     try {
       const query = db.query(sql, function(err, result) {
         if (err) {
-          message = "Fehler: " + err;
+          logger.error(err);
         }
       });
     } catch (ex) {
-      message = 'Fehler: ' + ex;
+      logger.error(ex);
     }
   };
   (async () => {
@@ -170,7 +170,7 @@ exports.delete = function(req, res, next) {
   const id = post.Z_ID;
 
   const sql = "DELETE FROM `Zugang` WHERE Z_ID = '" + id + "'";
-  console.log(sql);
+  logger.info(sql);
 
   // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
   // neu aus der Datenbank ausgelesen werden
@@ -178,11 +178,11 @@ exports.delete = function(req, res, next) {
     try {
       const query = db.query(sql, function(err, result) {
         if (err) {
-          message = "Fehler: " + err;
+          logger.error(err);
         }
       });
     } catch (ex) {
-      message = 'Fehler: ' + ex;
+      logger.error(ex);
     }
   };
   (async () => {

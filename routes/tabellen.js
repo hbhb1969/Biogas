@@ -15,6 +15,7 @@ exports.zugaenge = function(req, res, next) {
       logger.error(err);
     }
     if (rows) {
+      logger.info('Zugänge: err: ' + err + ', rows: ' + rows.length);
       res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
     } else {
       logger.warn('Keine Zugänge gefunden ' + err);
