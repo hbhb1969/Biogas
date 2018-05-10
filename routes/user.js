@@ -11,9 +11,9 @@ exports.anmelden = function(req, res) {
     const bga = post.bga;
     const sql = "SELECT BEN_ID, BEN_Name, BEN_Passwort FROM `Benutzer` WHERE `BEN_Name`='" + name + "' and BEN_Passwort = '" + pass + "'";
     db.query(sql, function(err, results) {
-      console.log('Benutzer: err: ' + err + ', results: ' + results.length);
+      logger.info('Benutzer: err: ' + err + ', results: ' + results.length);
       if (err) {
-        message = "Fehler: " + err;
+        logger.error(err);
       }
       if (results) {
         if (results.length) {
@@ -28,7 +28,7 @@ exports.anmelden = function(req, res) {
         }
       } else {
         message = 'Datenbankfehler: ' + err;
-        console.log('Datenbankfehler: ' + err);
+        logger.error('Datenbankfehler: ' + err);
         res.render('index.ejs', {
           message: message
         });
@@ -43,6 +43,7 @@ exports.anmelden = function(req, res) {
 };
 //----------------------------------------------- Hauptmenü ----------------------------------------------
 exports.hauptmenue = function(req, res, next) {
+  let message = '';
   const user = req.session.user,
     userId = req.session.userId;
 
@@ -54,10 +55,11 @@ exports.hauptmenue = function(req, res, next) {
   const sql = "SELECT * FROM `Benutzer` WHERE `BEN_ID`='" + userId + "'";
   db.query(sql, function(err, results) {
     if (err) {
-      message = "Fehler: " + err;
+      logger.error(err);
     }
     res.render('hauptmenue.ejs', {
-      user: user
+      user: user,
+      message: message
     });
   });
 };

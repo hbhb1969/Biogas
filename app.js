@@ -8,8 +8,21 @@ const express = require('express'),
   path = require('path'),
   session = require('cookie-session'),
   mysql = require('mysql'),
-  bodyParser = require("body-parser"),
-  pool = require('./db/pool');
+  bodyParser = require('body-parser')
+pool = require('./db/pool');
+logger = require('winston');
+logger.add(logger.transports.File, {
+  'filename': 'error.log',
+  'level': 'error'
+});
+process.on('error', function(err) {
+  logger.error('on-error: '
+    err);
+});
+process.on('uncaughtException', function(err) {
+  logger.error('on uncaughtException: '
+    err);
+});
 
 const app = express();
 
@@ -50,4 +63,4 @@ app.get('/tabellen/zugaenge', tabellen.zugaenge);
 
 // Server starten
 app.listen(8080)
-console.log('Server läuft auf Port 8080');
+logger.info('Server läuft auf Port 8080');

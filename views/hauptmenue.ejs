@@ -2,6 +2,11 @@
       <div class="container">
       <div class="hauptblock">
         <h1>Hauptmenü</h1>
+        <% if (message.length > 0) { %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% } %>
         <h2>Buchen</h2>
         <p>
           <a class="btn" href="#" role="button">Fütterungen</a>

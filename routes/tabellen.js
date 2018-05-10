@@ -1,6 +1,5 @@
 // Gebuchte Zugänge
 exports.zugaenge = function(req, res, next) {
-  message = '';
   const user = req.headers.user,
     userId = req.headers.userid;
 
@@ -13,7 +12,7 @@ exports.zugaenge = function(req, res, next) {
 
   db.query(sql, function(err, rows) {
     if (err) {
-      message = "Fehler: " + err;
+      logger.error(err);
     }
     res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
   });
