@@ -68,8 +68,17 @@ button:-moz-focusring,
 body {
   padding: 0 0 30px;
 }
+h1 {
+  margin: 10px 0;
+}
+label {
+  font-size: 14px;
+}
+form {
+  margin: 0;
+}
 .container {
-  margin: 30px auto 0;
+  margin: 20px auto 0;
   max-width: 340px;
   width: 100%;
 }
@@ -81,7 +90,7 @@ body {
   width: 100%;
 }
 .form-group {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .nodisplay {
   display: none;
@@ -162,6 +171,9 @@ button:hover {
   padding-bottom: 20px;
 }
 /* Navigation */
+#nav-container {
+  margin-top: 0;
+}
 .navbar {
   border: 1px solid #a1a1a1;
   border-radius: 10px;
