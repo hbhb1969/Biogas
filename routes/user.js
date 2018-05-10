@@ -35,9 +35,7 @@ exports.anmelden = function(req, res) {
       }
     });
   } else {
-    res.render('index.ejs', {
-      message: message
-    });
+    res.render('index.ejs', {});
   }
 
 };

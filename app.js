@@ -16,12 +16,10 @@ logger.add(logger.transports.File, {
   'level': 'error'
 });
 process.on('error', function(err) {
-  logger.error('on-error: '
-    err);
+  logger.error('on-error: ' + err);
 });
 process.on('uncaughtException', function(err) {
-  logger.error('on uncaughtException: '
-    err);
+  logger.error('on uncaughtException: ' + err);
 });
 
 const app = express();

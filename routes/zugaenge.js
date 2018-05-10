@@ -71,7 +71,9 @@ exports.get = function(req, res, next) {
             })
         })
     })
-    .catch(console.log);
+    .catch(function(error) {
+      logger.error(error);
+    })
 };
 
 // ---------- Zugänge buchen ----------
