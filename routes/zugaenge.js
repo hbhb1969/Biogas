@@ -30,7 +30,7 @@ exports.get = function(req, res, next) {
     })
     .then(function(json) {
       for (let row of json) {
-        lagerOptions += "<option value=" + row.L_ID + ">" + row.L_Name + "</option>";
+        lagerOptions += "<option value=" + row.L_ID + " meid=" + row.ME_ID + " mebez=" + row.ME_Bezeichnung + ">" + row.L_Name + "</option>";
       }
     })
     .then(function() {

@@ -8,7 +8,7 @@ exports.lager = function(req, res, next) {
     return;
   }
 
-  const sql = "SELECT L_ID, L_Name FROM `Lager` ORDER BY L_Name";
+  const sql = "SELECT L_ID, L_Name, ME_ID, ME_Bezeichnung FROM `Lager`, `Mengeneinheit`, `Stoff` WHERE Stoff_S_ID = S_ID AND Mengeneinheit_ME_ID = ME_ID  ORDER BY L_Name ";
 
   db.query(sql, function(err, rows) {
     logger.info('Lager: err: ' + err + ', rows: ' + rows.length);
