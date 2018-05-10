@@ -1,9 +1,13 @@
   window.onload = function() {
+    // Mengeneinheit dem Lager anpassen
     meAktualisieren()
+
+    // Datum vorausfüllen
+    document.getElementById('datum').valueAsDate = new Date();
 
     let table = document.getElementsByTagName("table")[0];
     let tbody = table.getElementsByTagName("tbody")[0];
-    // Tabelle wird in die letialbe data ausgelesen
+    // Tabelle wird in die Variable data ausgelesen
     tbody.onclick = function(e) {
       e = e || window.event;
       let data = [];
