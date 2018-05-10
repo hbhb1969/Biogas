@@ -12,10 +12,16 @@ exports.lager = function(req, res, next) {
   const sql = "SELECT L_ID, L_Name FROM `Lager` ORDER BY L_Name";
 
   db.query(sql, function(err, rows) {
+    console.log('Lager: err: ' + err + ', rows: ' + rows.length);
     if (err) {
       message = "Fehler: " + err;
     }
-    res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+    if (rows) {
+      res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+    } else {
+      console.log('Keine Lager gefunden: err:' + err);
+      res.redirect('/hauptmenue');
+    }
   });
 };
 
@@ -33,9 +39,15 @@ exports.lieferant = function(req, res, next) {
   const sql = "SELECT P_ID, B_Name FROM `Person` WHERE B_Name IS NOT NULL ORDER BY B_Name";
 
   db.query(sql, function(err, rows) {
+    console.log('Lieferanten: err: ' + err + ', rows: ' + rows.length);
     if (err) {
       message = "Fehler: " + err;
     }
-    res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+    if (rows) {
+      res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+    } else {
+      console.log('Keine Lieferanten gefunden: err:' + err);
+      res.redirect('/hauptmenue');
+    }
   });
 };

@@ -11,6 +11,7 @@ exports.anmelden = function(req, res) {
     const bga = post.bga;
     const sql = "SELECT BEN_ID, BEN_Name, BEN_Passwort FROM `Benutzer` WHERE `BEN_Name`='" + name + "' and BEN_Passwort = '" + pass + "'";
     db.query(sql, function(err, results) {
+      console.log('Benutzer: err: ' + err + ', results: ' + results.length);
       if (err) {
         message = "Fehler: " + err;
       }
@@ -20,14 +21,14 @@ exports.anmelden = function(req, res) {
           req.session.user = results[0];
           res.redirect('/hauptmenue');
         } else {
-          message = 'Die Logindaten sind nicht korrekt.';
+          message = 'Die Logindaten sind nicht korrekt: ' + err;
           res.render('index.ejs', {
             message: message
           });
         }
       } else {
-        message = 'Es konnte keine Verbindung zur Datenbank hergestellt werden!';
-        console.log('Fehler: Keine Verbindung zur Datenbank hergestellt');
+        message = 'Datenbankfehler: ' + err;
+        console.log('Datenbankfehler: ' + err);
         res.render('index.ejs', {
           message: message
         });
