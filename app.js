@@ -1,10 +1,18 @@
 const express = require('express'),
+  fs = require('fs'),
   routes = require('./routes'),
   user = require('./routes/user'),
   zugaenge = require('./routes/zugaenge'),
   select = require('./routes/select'),
   tabellen = require('./routes/tabellen'),
   http = require('http'),
+  https = require('https'),
+  privateKey = fs.readFileSync('./https/privateKey.pem', 'utf8'),
+  certificate = fs.readFileSync('./https/certificate.pem', 'utf8'),
+  credentials = {
+    key: privateKey,
+    cert: certificate
+  },
   path = require('path'),
   session = require('cookie-session'),
   mysql = require('mysql'),
@@ -17,6 +25,8 @@ logger.add(logger.transports.File, {
 });
 
 const app = express();
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
 
 global.db = pool;
 
@@ -73,5 +83,7 @@ app.use((error, req, res, next) => {
 })
 
 // Server starten
-app.listen(8080)
-logger.info('Server läuft auf Port 8080');
+// app.listen(8080)
+httpServer.listen(8080);
+httpsServer.listen(8081);
+logger.info('Server laufen auf Port 8080 und 8081');
