@@ -1,0 +1,9 @@
+{"level":"error","message":"Globaler Fehler: ReferenceError: user is not defined","timestamp":"2018-05-13T15:03:28.044Z"}
+{"level":"error","message":"Globaler Fehler: ReferenceError: user is not defined","timestamp":"2018-05-13T15:12:20.247Z"}
+{"level":"error","message":"Globaler Fehler: ReferenceError: user is not defined","timestamp":"2018-05-13T15:13:12.234Z"}
+{"level":"error","message":"Globaler Fehler: ReferenceError: user is not defined","timestamp":"2018-05-13T15:13:42.023Z"}
+{"level":"error","message":"Globaler Fehler: ReferenceError: user is not defined","timestamp":"2018-05-13T15:16:22.654Z"}
+{"level":"error","message":"Globaler Fehler: ReferenceError: user is not defined","timestamp":"2018-05-13T15:16:34.603Z"}
+{"level":"error","message":"Globaler Fehler: ReferenceError: sessionBenutzerChecken is not defined","timestamp":"2018-05-13T15:38:20.069Z"}
+{"level":"error","message":"Globaler Fehler: TypeError: bc.benutzerChecken is not a function","timestamp":"2018-05-13T15:44:31.769Z"}
+{"message":"json is not iterable","stack":"TypeError: json is not iterable\n    at C:\\Node\\Biogas\\routes\\zugaenge.js:21:23\n    at process._tickCallback (internal/process/next_tick.js:68:7)","level":"error","timestamp":"2018-05-13T15:44:31.782Z"}

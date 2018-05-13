@@ -1,7 +1,7 @@
 <%- include header %>
   <div class="container">
     <div class="hauptblock">
-      <h1>Zugänge</h1>
+      <h1>Fütterungen</h1>
       <form role="form">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -19,17 +19,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="Z_Datum" class="control-label">Datum</label>
+              <label for="F_Datum" class="control-label">Datum</label>
               <div>
-                <input type="date" id="datum" class="form-control" name="Z_Datum" placeholder="Datum" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="Person_P_ID" class="control-label">Lieferant</label>
-              <div class="select-wrapper">
-                <select id="lieferanten" class="form-control" name="Person_P_ID" placeholder="Lieferant" required>
-                     <%- lieferantenOptions %>
-                                       </select>
+                <input type="date" id="datum" class="form-control" name="F_Datum" placeholder="Datum" required>
               </div>
             </div>
             <div class="form-group">
@@ -43,27 +35,27 @@
             <div class="form-group">
               <label for="Z_BruttoMenge" class="control-label">Menge <span id="zugang-me"></span></label>
               <div>
-                <input type="number" value="" class="form-control" name="Z_BruttoMenge" placeholder="Menge" required>
+                <input type="number" value="" class="form-control" name="F_BruttoMenge" placeholder="Menge" required>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-buchen" type="submit" class="btn" formaction="/buchen/zugaenge" formmethod="post">Buchen</button>
+                <button id="btn-buchen" type="submit" class="btn" formaction="/buchen/fuetterungen" formmethod="post">Buchen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge-put" formmethod="post">Ändern</button>
+                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/buchen/fuetterungen-put" formmethod="post">Ändern</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-loeschen" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge-delete" formmethod="post">Löschen</button>
+                <button id="btn-loeschen" type="submit" class="btn nodisplay" formaction="/buchen/fuetterungen-delete" formmethod="post">Löschen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge" formmethod="get">Abbrechen</button>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/fuetterungen" formmethod="get">Abbrechen</button>
               </div>
             </div>
       </form>
@@ -93,14 +85,10 @@
                   Lager
                   <div>Lager</div>
                 </th>
-                <th class="t-lieferant">
-                  Lieferant
-                  <div>Lieferant</div>
-                </th>
               </tr>
             </thead>
             <tbody>
-              <%- buchungenZugaenge %>
+              <%- buchungenFuetterungen %>
             </tbody>
           </table>
         </div>

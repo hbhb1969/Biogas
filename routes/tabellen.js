@@ -9,11 +9,6 @@ exports.zugaenge = function(req, res, next) {
 };
 
 function sqlQuery(res, sql, logText) {
-  var counter = 1;
-  for (var i = 0; i < 1000000000; i++) {
-    counter += i
-  }
-  logger.info('counter: ' + counter)
   db.query(sql, function(err, rows) {
     logger.info(logText + ': err: ' + err + ', rows: ' + rows.length);
     if (err) {

@@ -1,3 +1,4 @@
+const bc = require('../eigene_module/benutzer_checken');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
@@ -5,19 +6,7 @@ exports.get = function(req, res, next) {
   const user = req.session.user,
     userId = req.session.userId;
 
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
-
-  // für fetch müssen user und userid zur Erkennung des Session-Cookies übergeben werden
-  const options = {
-    'headers': {
-      'user': user,
-      'userid': userId
-    }
-  };
-
+  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let lagerOptions = "";
   let lieferantenOptions = "";
@@ -79,7 +68,6 @@ exports.get = function(req, res, next) {
 // ---------- Zugänge buchen ----------
 exports.post = function(req, res, next) {
   let message = '';
-  const fetch = require('node-fetch');
   const user = req.session.user,
     userId = req.session.userId;
 
@@ -118,7 +106,6 @@ exports.post = function(req, res, next) {
 // ---------- Zugänge ändern ----------
 exports.put = function(req, res, next) {
   let message = '';
-  const fetch = require('node-fetch');
   const user = req.session.user,
     userId = req.session.userId;
 
