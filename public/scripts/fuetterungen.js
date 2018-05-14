@@ -1,6 +1,6 @@
   window.onload = function() {
     // Mengeneinheit dem Lager anpassen
-    meAktualisieren()
+    // meAktualisieren()
 
     // Datum vorausfüllen
     document.getElementById('datum').valueAsDate = new Date();

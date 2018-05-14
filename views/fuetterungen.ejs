@@ -12,10 +12,17 @@
               <p>Fehler:</p>
               <span></span>
             </div>
-
             <div class="form-group">
               <div>
-                <input type="number" class="form-control nodisplay" hidden name="Z_ID" >
+                <fieldset>
+                  <input type="radio" class="" name="Stoffart" id="lager" value="lager" checked="checked"><label for="lager">Lagerrohstoff</label>
+                  <input type="radio" class="" name="Stoffart" id="direkt" value="direkt" ><label for="lager">Direktrohstoff</label>
+                </fieldset>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <input type="number" class="form-control nodisplay" hidden name="F_ID" >
               </div>
             </div>
             <div class="form-group">
@@ -24,16 +31,24 @@
                 <input type="date" id="datum" class="form-control" name="F_Datum" placeholder="Datum" required>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group"id="lager-wrapper">
               <label for="Lager_L_ID" class="control-label">Lager</label>
               <div class="select-wrapper">
-                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren()" required>
+                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren()">
                      <%- lagerOptions %>
                                        </select>
               </div>
             </div>
+            <div class="form-group" id="rohstoff-wrapper">
+              <label for="Stoff_S_ID" class="control-label">Rohstoff</label>
+              <div class="select-wrapper">
+                <select id="lager" class="form-control" name="Stoff_S_ID" placeholder="Rohstoff" onchange="meAktualisieren()">
+                     <%- direktOptions %>
+                                       </select>
+              </div>
+            </div>
             <div class="form-group">
-              <label for="Z_BruttoMenge" class="control-label">Menge <span id="zugang-me"></span></label>
+              <label for="F_BruttoMenge" class="control-label">Menge <span id="zugang-me"></span></label>
               <div>
                 <input type="number" value="" class="form-control" name="F_BruttoMenge" placeholder="Menge" required>
               </div>
@@ -66,7 +81,7 @@
       <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
       <section class="table-wrap">
         <div class="table">
-          <table>
+          <table id="fuetterungen-lager">
             <thead>
               <tr class="th">
                 <th class="t-id">
@@ -88,12 +103,41 @@
               </tr>
             </thead>
             <tbody>
-              <%- buchungenFuetterungen %>
+              <%- buchungenFuetterungenLager %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="table-wrap">
+        <div class="table">
+          <table id="fuetterungen-direkt" class="">
+            <thead>
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-datum">
+                  Datum
+                  <div>Datum</div>
+                </th>
+                <th class="t-menge t-rechts" colspan="2">
+                  Menge
+                  <div>Menge</div>
+                </th>
+                <th class="t-lager">
+                  Stoff
+                  <div>Stoff</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- buchungenFuetterungenDirekt %>
             </tbody>
           </table>
         </div>
       </section>
     </div>
   </div>
-  <script language="javascript" type="text/javascript" src="/scripts/zugaenge.js"></script>
+  <script language="javascript" type="text/javascript" src="/scripts/fuetterungen.js"></script>
   <%- include footer %>

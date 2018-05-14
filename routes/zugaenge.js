@@ -19,7 +19,7 @@ exports.get = function(req, res, next) {
     })
     .then(function(json) {
       for (let row of json) {
-        lagerOptions += "<option value=" + row.L_ID + " meid=" + row.ME_ID + " mebez=" + row.ME_Bezeichnung + ">" + row.L_Name + "</option>";
+        lagerOptions += " <option value=" + row.L_ID + " meid=" + row.ME_ID + " mebez=" + row.ME_Bezeichnung + ">" + row.L_Name + "</option>";
       }
     })
     .then(function() {
@@ -32,7 +32,7 @@ exports.get = function(req, res, next) {
         .then(function(json) {
           for (let row of json) {
             lieferantenOptions +=
-              "<option value=" + row.P_ID + ">" + row.B_Name + "</option>";
+              "<option value=" + row.P_ID + ">" + row.B_Name + "</option> ";
           }
         })
         .then(function() {

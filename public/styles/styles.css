@@ -44,6 +44,14 @@ select {
 select::-ms-expand {
   display: none;
 }
+input[type=radio] {
+  height: auto;
+  margin-right: 10px;
+  width: 20px;
+}
+input[type=radio] + label {
+  padding-right: 10px;
+}
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,

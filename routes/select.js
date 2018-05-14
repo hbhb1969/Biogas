@@ -19,14 +19,24 @@ exports.lieferant = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
+// Optionen für Direktrohstoffe
+exports.direktrohstoff = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT S_ID, S_Bezeichnung, ME_ID, ME_Bezeichnung FROM `Mengeneinheit`, `Stoff` WHERE Stofftyp = 'Direktrohstoff' AND Mengeneinheit_ME_ID = ME_ID  ORDER BY S_Bezeichnung ";
+  const logText = "Direktrohstoffe";
+
+  sqlQuery(res, sql, logText)
+};
+
 // Führt die Abfrage aus und sendet das Ergebnis zur Seite, die gefetched wird
 function sqlQuery(res, sql, logText) {
   db.query(sql, function(err, rows) {
-    logger.info(logText + ': err: ' + err + ', rows: ' + rows.length);
     if (err) {
       logger.error(err);
     }
     if (rows) {
+      logger.info(logText + ': err: ' + err + ', rows: ' + rows.length);
       res.json(rows);
     } else {
       logger.warn('Keine ' + logText + ' gefunden: err:' + err);

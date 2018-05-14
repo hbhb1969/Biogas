@@ -2,6 +2,7 @@ const express = require('express'),
   fs = require('fs'),
   routes = require('./routes'),
   user = require('./routes/user'),
+  fuetterungen = require('./routes/fuetterungen'),
   zugaenge = require('./routes/zugaenge'),
   select = require('./routes/select'),
   tabellen = require('./routes/tabellen'),
@@ -55,12 +56,16 @@ app.get('/anmelden', routes.index);
 app.post('/anmelden', user.anmelden);
 app.get('/hauptmenue', user.hauptmenue);
 app.get('/abmelden', user.abmelden);
+app.get('/buchen/fuetterungen', fuetterungen.get);
 app.get('/buchen/zugaenge', zugaenge.get);
 app.post('/buchen/zugaenge', zugaenge.post);
 app.post('/buchen/zugaenge-put', zugaenge.put);
 app.post('/buchen/zugaenge-delete', zugaenge.delete);
+app.get('/select/direktrohstoff', select.direktrohstoff);
 app.get('/select/lager', select.lager);
 app.get('/select/lieferant', select.lieferant);
+app.get('/tabellen/fuetterungendirekt', tabellen.fuetterungendirekt);
+app.get('/tabellen/fuetterungenlager', tabellen.fuetterungenlager);
 app.get('/tabellen/zugaenge', tabellen.zugaenge);
 
 // Fehlerbehandlung für nicht vorhandene routes
