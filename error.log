@@ -17,3 +17,7 @@
 {"level":"error","message":"Globaler Fehler: ReferenceError: C:\\Node\\Biogas\\views\\zugaenge.ejs:31\n    29|               <div class=\"select-wrapper\">\r\n    30|                 <select id=\"lieferanten\" class=\"form-control\" name=\"Person_P_ID\" placeholder=\"Lieferant\" required>\r\n >> 31|                      <%- lieferantenOptions %>\r\n    32|                                        </select>\r\n    33|               </div>\r\n    34|             </div>\r\n\nlieferantenOptions is not defined","timestamp":"2018-05-13T19:22:14.405Z"}
 {"level":"error","message":"Seite nicht gefunden: /favicon.ico","timestamp":"2018-05-14T05:42:48.525Z"}
 {"level":"error","message":"Globaler Fehler: Error: Seite nicht gefunden","timestamp":"2018-05-14T05:42:48.526Z"}
+{"level":"error","message":"Seite nicht gefunden: /favicon.ico","timestamp":"2018-05-15T06:53:07.072Z"}
+{"level":"error","message":"Globaler Fehler: Error: Seite nicht gefunden","timestamp":"2018-05-15T06:53:07.073Z"}
+{"level":"error","message":"Seite nicht gefunden: /buchen/scripts/fuetterungen.js","timestamp":"2018-05-16T07:24:49.024Z"}
+{"level":"error","message":"Globaler Fehler: Error: Seite nicht gefunden","timestamp":"2018-05-16T07:24:49.025Z"}

@@ -15,8 +15,8 @@
             <div class="form-group">
               <div>
                 <fieldset>
-                  <input type="radio" class="" name="Stoffart" id="lager" value="lager" checked="checked"><label for="lager">Lagerrohstoff</label>
-                  <input type="radio" class="" name="Stoffart" id="direkt" value="direkt" ><label for="lager">Direktrohstoff</label>
+                  <input type="radio" class="" name="Stoffart" id="lager-radio" value="lager" checked="checked" onchange="ansichtWechseln()"><label for="lager">Lagerrohstoff</label>
+                  <input type="radio" class="" name="Stoffart" id="direkt-radio" value="direkt" onchange="ansichtWechseln()"><label for="lager">Direktrohstoff</label>
                 </fieldset>
               </div>
             </div>
@@ -34,21 +34,21 @@
             <div class="form-group"id="lager-wrapper">
               <label for="Lager_L_ID" class="control-label">Lager</label>
               <div class="select-wrapper">
-                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren()">
+                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren('lager')">
                      <%- lagerOptions %>
                                        </select>
               </div>
             </div>
-            <div class="form-group" id="rohstoff-wrapper">
+            <div class="form-group nodisplay" id="rohstoff-wrapper">
               <label for="Stoff_S_ID" class="control-label">Rohstoff</label>
               <div class="select-wrapper">
-                <select id="lager" class="form-control" name="Stoff_S_ID" placeholder="Rohstoff" onchange="meAktualisieren()">
+                <select id="rohstoff" class="form-control" name="Stoff_S_ID" placeholder="Rohstoff" onchange="meAktualisieren('rohstoff')">
                      <%- direktOptions %>
                                        </select>
               </div>
             </div>
             <div class="form-group">
-              <label for="F_BruttoMenge" class="control-label">Menge <span id="zugang-me"></span></label>
+              <label for="F_BruttoMenge" class="control-label">Menge <span id="fuetterung-me"></span></label>
               <div>
                 <input type="number" value="" class="form-control" name="F_BruttoMenge" placeholder="Menge" required>
               </div>
@@ -110,7 +110,7 @@
       </section>
       <section class="table-wrap">
         <div class="table">
-          <table id="fuetterungen-direkt" class="">
+          <table id="fuetterungen-direkt" class="nodisplay">
             <thead>
               <tr class="th">
                 <th class="t-id">
