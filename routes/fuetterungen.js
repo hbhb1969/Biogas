@@ -82,43 +82,51 @@ exports.get = function(req, res, next) {
 
 
 // ---------- Zugänge buchen ----------
-// exports.post = function(req, res, next) {
-//   let message = '';
-//   const user = req.session.user,
-//     userId = req.session.userId;
-//
-//   if (userId == null) {
-//     res.redirect("/anmelden");
-//     return;
-//   }
-//   const post = req.body;
-//   const datum = post.Z_Datum;
-//   const menge = post.Z_BruttoMenge;
-//   const lager = post.Lager_L_ID;
-//   const lieferant = post.Person_P_ID;
-//
-//   const sql = "INSERT INTO `Zugang`(`Z_Datum`,`Z_BruttoMenge`,`Lager_L_ID`,`Person_P_ID`) VALUES ('" + datum + "','" + menge + "','" + lager + "','" + lieferant + "')";
-//   logger.info(sql);
-//   // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-//   // neu aus der Datenbank ausgelesen werden
-//   const zugangbuchen = async function() {
-//     try {
-//       const query = db.query(sql, function(err, result) {
-//         if (err) {
-//           logger.error(err);
-//         }
-//       });
-//     } catch (ex) {
-//       logger.error(ex);
-//     }
-//   };
-//   (async () => {
-//     await zugangbuchen();
-//   })();
-//
-//   res.redirect('/buchen/zugaenge');
-// };
-//
+exports.post = function(req, res, next) {
+  let message = '';
+  const user = req.session.user,
+    userId = req.session.userId;
+
+  if (userId == null) {
+    res.redirect("/anmelden");
+    return;
+  }
+  const post = req.body,
+    bga = 1,
+    datum = post.F_Datum,
+    menge = post.F_BruttoMenge,
+    lager = post.Lager_L_ID,
+    stoff = post.Stoff_S_ID,
+    lagerRadio = post.Stoffart;
+  logger.info('lagerRadio: ' + lagerRadio);
+  let sql = '';
+  if (lagerRadio == 'lager') {
+    sql = "INSERT INTO `Fuetterung`(`Biogasanlage_BGA_ID`,`F_Datum`,`F_BruttoMenge`,`Lager_L_ID`) VALUES ('" + bga + "','" + datum + "','" + menge + "','" + lager + "')";
+    logger.info(sql);
+  } else {
+    sql = "INSERT INTO `Fuetterung`(`Biogasanlage_BGA_ID`,`F_Datum`,`F_BruttoMenge`,`Stoff_S_ID`) VALUES ('" + bga + "','" + datum + "','" + menge + "','" + stoff + "')";
+    logger.info(sql);
+  };
+  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
+  // neu aus der Datenbank ausgelesen werden
+  const fuetterungbuchen = async function() {
+    try {
+      const query = db.query(sql, function(err, result) {
+        if (err) {
+          logger.error(err);
+        }
+      });
+    } catch (ex) {
+      logger.error(ex);
+    }
+  };
+  (async () => {
+    await fuetterungbuchen();
+  })();
+
+  res.redirect('/buchen/fuetterungen');
+};
+
 // // ---------- Zugänge ändern ----------
 // exports.put = function(req, res, next) {
 //   let message = '';

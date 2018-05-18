@@ -1,11 +1,11 @@
 window.onload = function() {
   // Mengeneinheit dem Lager anpassen
   meAktualisieren('lager');
-  //
-  //   // Datum vorausfüllen
-  //   logger.info('in onload');
-  //   document.getElementById('datum').valueAsDate = new Date();
-  //
+
+  // Datum vorausfüllen
+  logger.info('in onload ');
+  document.getElementById('datum').valueAsDate = new Date();
+
   //   let table = document.getElementsByTagName("table")[0];
   //   let tbody = table.getElementsByTagName("tbody")[0];
   //   // Tabelle wird in die Variable data ausgelesen
@@ -55,24 +55,20 @@ window.onload = function() {
 }
 
 function meAktualisieren(selectName) {
-  console.log('selectName: ' + selectName);
   let selectbox = document.getElementById(selectName);
   let mebez = selectbox.options[selectbox.selectedIndex].getAttribute('mebez');
   document.getElementById('fuetterung-me').innerHTML = '(' + mebez + ')';
 }
 
 function ansichtWechseln() {
-  console.log('in ansichtWechseln ');
   let lagerRadio = document.getElementById("lager-radio");
   if (lagerRadio.checked == true) {
-    console.log('lagerRadio: checked ');
     document.getElementById('rohstoff-wrapper').classList.add('nodisplay');
     document.getElementById('fuetterungen-direkt').classList.add('nodisplay');
     document.getElementById('lager-wrapper').classList.remove('nodisplay');
     document.getElementById('fuetterungen-lager').classList.remove('nodisplay');
     meAktualisieren('lager');
   } else {
-    console.log('lagerRadio: not checked  ');
     document.getElementById('rohstoff-wrapper').classList.remove('nodisplay');
     document.getElementById('fuetterungen-direkt').classList.remove('nodisplay');
     document.getElementById('lager-wrapper').classList.add('nodisplay');
