@@ -143,12 +143,13 @@ exports.put = function(req, res, next) {
   const lager = post.Lager_L_ID;
   const stoff = post.Stoff_S_ID;
   const lagerRadio = post.Stoffart;
+  let sql = '';
 
   if (lagerRadio == 'lager') {
-    const sql = "UPDATE `Fuetterung` SET F_Datum = '" + datum + "', F_BruttoMenge = '" + menge + "', Lager_L_ID ='" + lager + "' WHERE F_ID = " + id + ";";
+    sql = "UPDATE `Fuetterung` SET F_Datum = '" + datum + "', F_BruttoMenge = '" + menge + "', Lager_L_ID ='" + lager + "' WHERE F_ID = " + id + ";";
     logger.info(sql);
   } else {
-    const sql = "UPDATE `Fuetterung` SET F_Datum = '" + datum + "', F_BruttoMenge = '" + menge + "', Stoff_S_ID ='" + stoff + "' WHERE F_ID = " + id + ";";
+    sql = "UPDATE `Fuetterung` SET F_Datum = '" + datum + "', F_BruttoMenge = '" + menge + "', Stoff_S_ID ='" + stoff + "' WHERE F_ID = " + id + ";";
     logger.info(sql);
   }
   // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
