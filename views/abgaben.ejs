@@ -1,0 +1,103 @@
+<%- include header %>
+  <div class="container">
+    <div class="hauptblock">
+      <h1>Abgaben</h1>
+      <form role="form">
+        <% if (message.length > 0) { %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% } %>
+            <div id="buchungsfehler" style="display:none" class="alert">
+              <p>Fehler:</p>
+              <span></span>
+            </div>
+            <div class="form-group">
+              <div>
+                <input type="number" class="form-control nodisplay" hidden name="AG_ID" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="AG_DatumBeginn" class="control-label">Anfangsdatum</label>
+              <div>
+                <input type="date" id="datum-beginn" class="form-control" name="AG_DatumBeginn" placeholder="Anfangsdatum" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Ag_DatumEnde" class="control-label">Enddatum</label>
+              <div>
+                <input type="date" id="datum-ende" class="form-control" name="AG_DatumEnde" placeholder="Enddatum" required>
+              </div>
+            </div>
+            <div class="form-group"id="lager-wrapper">
+              <label for="Lager_L_ID" class="control-label">Abnehmer</label>
+              <div class="select-wrapper">
+                <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer">
+                     <%- abnehmerOptions %>
+                                       </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="AG_Menge" class="control-label">Menge (cbm)</label>
+              <div>
+                <input type="number" value="" class="form-control" name="AG_Menge" placeholder="Menge" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-buchen" type="submit" class="btn" formaction="/buchen/abgaben" formmethod="post">Buchen</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/buchen/abgaben-put" formmethod="post">Ändern</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/abgaben" formmethod="get">Abbrechen</button>
+              </div>
+            </div>
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hauptblock buchungen">
+      <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
+      <section class="table-wrap">
+        <div class="table">
+          <table id="abgaben">
+            <thead>
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-datum">
+                  Beginn
+                  <div>Beginn</div>
+                </th>
+                <th class="t-datum">
+                  Ende
+                  <div>Ende</div>
+                </th>
+                <th class="t-menge">
+                  Menge (cbm)
+                  <div>Menge (cbm)</div>
+                </th>
+                <th class="t-abnehmer">
+                  Abnehmer
+                  <div>Abnehmer</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody onclick="auswahlTabelle(event)">
+              <%- buchungenAbgaben %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script language="javascript" type="text/javascript" src="/scripts/abgaben.js"></script>
+  <%- include footer %>

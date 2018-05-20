@@ -1,4 +1,24 @@
 const bc = require('../eigene_module/benutzer_checken');
+// Optionen für Abnehmer
+exports.abnehmer = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT P_ID, B_Name FROM `Person` WHERE Geschaeftsp_Typ_GPT_ID = 1 OR Geschaeftsp_Typ_GPT_ID = 3 ORDER BY B_Name";
+  const logText = "Abnehmer";
+
+  sqlQuery(res, sql, logText)
+};
+
+// Optionen für Direktrohstoffe
+exports.direktrohstoff = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT S_ID, S_Bezeichnung, ME_ID, ME_Bezeichnung FROM `Mengeneinheit`, `Stoff` WHERE Stofftyp = 'Direktrohstoff' AND Mengeneinheit_ME_ID = ME_ID  ORDER BY S_Bezeichnung ";
+  const logText = "Direktrohstoffe";
+
+  sqlQuery(res, sql, logText)
+};
+
 // Optionen für Lager
 exports.lager = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
@@ -15,16 +35,6 @@ exports.lieferant = function(req, res, next) {
 
   const sql = "SELECT P_ID, B_Name FROM `Person` WHERE B_Name IS NOT NULL ORDER BY B_Name";
   const logText = "Lieferanten";
-
-  sqlQuery(res, sql, logText)
-};
-
-// Optionen für Direktrohstoffe
-exports.direktrohstoff = function(req, res, next) {
-  bc.headersBenutzerChecken(req, res);
-
-  const sql = "SELECT S_ID, S_Bezeichnung, ME_ID, ME_Bezeichnung FROM `Mengeneinheit`, `Stoff` WHERE Stofftyp = 'Direktrohstoff' AND Mengeneinheit_ME_ID = ME_ID  ORDER BY S_Bezeichnung ";
-  const logText = "Direktrohstoffe";
 
   sqlQuery(res, sql, logText)
 };

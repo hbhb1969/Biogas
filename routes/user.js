@@ -11,11 +11,11 @@ exports.anmelden = function(req, res) {
     const bga = post.bga;
     const sql = "SELECT BEN_ID, BEN_Name, BEN_Passwort FROM `Benutzer` WHERE `BEN_Name`='" + name + "' and BEN_Passwort = '" + pass + "'";
     db.query(sql, function(err, results) {
-      logger.info('Benutzer: err: ' + err + ', results: ' + results.length);
       if (err) {
         logger.error(err);
       }
       if (results) {
+        logger.info('Benutzer: err: ' + err + ', results: ' + results.length);
         if (results.length) {
           req.session.userId = results[0].BEN_ID;
           req.session.user = results[0];
