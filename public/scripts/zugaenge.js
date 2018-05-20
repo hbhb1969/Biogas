@@ -24,7 +24,7 @@
       let id = data[0];
       let datum = '20' + data[1].split('.')[2] + '-' + data[1].split('.')[1] + '-' + data[1].split('.')[0];
       let menge = data[2];
-      // Die folgenden letiablen werden bisher noch nicht genutzt
+      // Die folgenden Variablen werden bisher noch nicht genutzt
       let einheit = data[3];
       let lager = data[4];
       let lieferant = data[5];

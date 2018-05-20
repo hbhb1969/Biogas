@@ -58,6 +58,8 @@ app.get('/hauptmenue', user.hauptmenue);
 app.get('/abmelden', user.abmelden);
 app.get('/buchen/fuetterungen', fuetterungen.get);
 app.post('/buchen/fuetterungen', fuetterungen.post);
+app.post('/buchen/fuetterungen-put', fuetterungen.put);
+app.post('/buchen/fuetterungen-delete', fuetterungen.delete);
 app.get('/buchen/zugaenge', zugaenge.get);
 app.post('/buchen/zugaenge', zugaenge.post);
 app.post('/buchen/zugaenge-put', zugaenge.put);
