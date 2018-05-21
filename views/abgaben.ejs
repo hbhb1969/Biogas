@@ -55,6 +55,11 @@
             </div>
             <div class="form-group">
               <div>
+                <button id="btn-loeschen" type="submit" class="btn nodisplay" formaction="/buchen/abgaben-delete" formmethod="post">Löschen</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
                 <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/abgaben" formmethod="get">Abbrechen</button>
               </div>
             </div>
@@ -82,12 +87,12 @@
                   <div>Ende</div>
                 </th>
                 <th class="t-menge">
-                  Menge (cbm)
-                  <div>Menge (cbm)</div>
+                  Menge <br>(cbm)
+                  <div id="abgaben-menge">Menge <br>(cbm)</div>
                 </th>
                 <th class="t-abnehmer">
                   Abnehmer
-                  <div>Abnehmer</div>
+                  <div id="abgaben-abnehmer">Abnehmer</div>
                 </th>
               </tr>
             </thead>

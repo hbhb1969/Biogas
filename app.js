@@ -60,6 +60,7 @@ app.get('/abmelden', user.abmelden);
 app.get('/buchen/abgaben', abgaben.get);
 app.post('/buchen/abgaben', abgaben.post);
 app.post('/buchen/abgaben-put', abgaben.put);
+app.post('/buchen/abgaben-delete', abgaben.delete);
 app.get('/buchen/fuetterungen', fuetterungen.get);
 app.post('/buchen/fuetterungen', fuetterungen.post);
 app.post('/buchen/fuetterungen-put', fuetterungen.put);

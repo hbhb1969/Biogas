@@ -247,6 +247,12 @@ th div {
   margin-left: -25px;
   line-height: normal;
 }
+th div#abgaben-menge {
+  padding-top: 0;
+}
+th div#abgaben-abnehmer {
+  padding-left: 30px;
+}
 tr {
   border-bottom: 1px solid #bbb;
   cursor: pointer;

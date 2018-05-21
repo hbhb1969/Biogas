@@ -126,3 +126,39 @@ exports.put = function(req, res, next) {
 
   res.redirect('/buchen/abgaben');
 };
+
+// ---------- Abgabe löschen ----------
+exports.delete = function(req, res, next) {
+  let message = '';
+  const user = req.session.user,
+    userId = req.session.userId;
+
+  if (userId == null) {
+    res.redirect("/anmelden");
+    return;
+  }
+  const post = req.body;
+  const id = post.AG_ID;
+
+  const sql = "DELETE FROM `Naehrstoff_Abgabe` WHERE Abgabe_AG_ID = '" + id + "';DELETE FROM `Abgabe` WHERE AG_ID = '" + id + "'";
+  logger.info(sql);
+
+  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
+  // neu aus der Datenbank ausgelesen werden
+  const abgabeLoeschen = async function() {
+    try {
+      const query = db.query(sql, function(err, result) {
+        if (err) {
+          logger.error(err);
+        }
+      });
+    } catch (ex) {
+      logger.error(ex);
+    }
+  };
+  (async () => {
+    await abgabeLoeschen();
+  })();
+
+  res.redirect('/buchen/abgaben');
+};
