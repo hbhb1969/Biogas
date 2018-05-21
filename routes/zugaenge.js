@@ -156,7 +156,7 @@ exports.delete = function(req, res, next) {
   const post = req.body;
   const id = post.Z_ID;
 
-  const sql = "DELETE FROM `Zugang` WHERE Z_ID = '" + id + "'";
+  const sql = "DELETE FROM `Naehrstoff_N_Eingang` WHERE N_Eingang_NE_ID IN (SELECT NE_ID FROM `N_Eingang` WHERE Zugang_Z_ID = '" + id + "'); DELETE FROM `N_Eingang` WHERE Zugang_Z_ID = '" + id + "';DELETE FROM `Zugang` WHERE Z_ID = '" + id + "'";
   logger.info(sql);
 
   // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
