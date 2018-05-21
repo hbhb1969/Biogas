@@ -33,7 +33,7 @@ exports.lager = function(req, res, next) {
 exports.lieferant = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
 
-  const sql = "SELECT P_ID, B_Name FROM `Person` WHERE B_Name IS NOT NULL ORDER BY B_Name";
+  const sql = "SELECT P_ID, B_Name FROM `Person` WHERE Geschaeftsp_Typ_GPT_ID = 2 OR Geschaeftsp_Typ_GPT_ID = 3 ORDER BY B_Name";
   const logText = "Lieferanten";
 
   sqlQuery(res, sql, logText)

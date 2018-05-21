@@ -2,7 +2,7 @@
   <div class="container">
     <div class="hauptblock">
       <h1>Abgaben</h1>
-      <form role="form">
+      <form role="form" onsubmit="return validiereForm('abgaben')">
         <% if (message.length > 0) { %>
           <div class="alert">
             <%= message %>
@@ -27,12 +27,13 @@
               <label for="Ag_DatumEnde" class="control-label">Enddatum</label>
               <div>
                 <input type="date" id="datum-ende" class="form-control" name="AG_DatumEnde" placeholder="Enddatum" required>
+                <p id="error-datum" class="nodisplay alert"></p>
               </div>
             </div>
             <div class="form-group"id="lager-wrapper">
               <label for="Lager_L_ID" class="control-label">Abnehmer</label>
               <div class="select-wrapper">
-                <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer">
+                <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer" required>
                      <%- abnehmerOptions %>
                                        </select>
               </div>
@@ -40,7 +41,8 @@
             <div class="form-group">
               <label for="AG_Menge" class="control-label">Menge (cbm)</label>
               <div>
-                <input type="number" value="" class="form-control" name="AG_Menge" placeholder="Menge" required>
+                <input type="number" value="" class="form-control" id="menge" name="AG_Menge" placeholder="Menge" required>
+                <p id="error-menge" class="nodisplay alert"></p>
               </div>
             </div>
             <div class="form-group">
@@ -105,4 +107,5 @@
     </div>
   </div>
   <script language="javascript" type="text/javascript" src="/scripts/abgaben.js"></script>
+  <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
   <%- include footer %>
