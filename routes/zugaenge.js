@@ -1,4 +1,5 @@
 const bc = require('../eigene_module/benutzer_checken');
+const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
@@ -83,21 +84,8 @@ exports.post = function(req, res, next) {
 
   const sql = "INSERT INTO `Zugang`(`Z_Datum`,`Z_BruttoMenge`,`Lager_L_ID`,`Person_P_ID`) VALUES ('" + datum + "','" + menge + "','" + lager + "','" + lieferant + "')";
   logger.info(sql);
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const zugangbuchen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await zugangbuchen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/zugaenge');
@@ -123,21 +111,8 @@ exports.put = function(req, res, next) {
   const sql = "UPDATE `Zugang` SET Z_Datum = '" + datum + "', Z_BruttoMenge = '" + menge + "', Lager_L_ID ='" + lager + "', Person_P_ID = '" + lieferant + "' WHERE Z_ID = " + id + ";";
   logger.info(sql);
 
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const zugangbuchen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await zugangbuchen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/zugaenge');
@@ -159,21 +134,8 @@ exports.delete = function(req, res, next) {
   const sql = "DELETE FROM `Naehrstoff_N_Eingang` WHERE N_Eingang_NE_ID IN (SELECT NE_ID FROM `N_Eingang` WHERE Zugang_Z_ID = '" + id + "'); DELETE FROM `N_Eingang` WHERE Zugang_Z_ID = '" + id + "';DELETE FROM `Zugang` WHERE Z_ID = '" + id + "'";
   logger.info(sql);
 
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const zugangloeschen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await zugangloeschen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/zugaenge');

@@ -1,4 +1,5 @@
 const bc = require('../eigene_module/benutzer_checken');
+const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
@@ -106,21 +107,8 @@ exports.post = function(req, res, next) {
     sql = "INSERT INTO `Fuetterung`(`Biogasanlage_BGA_ID`,`F_Datum`,`F_BruttoMenge`,`Stoff_S_ID`) VALUES ('" + bga + "','" + datum + "','" + menge + "','" + stoff + "')";
     logger.info(sql);
   };
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const fuetterungbuchen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await fuetterungbuchen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/fuetterungen');
@@ -152,21 +140,8 @@ exports.put = function(req, res, next) {
     sql = "UPDATE `Fuetterung` SET F_Datum = '" + datum + "', F_BruttoMenge = '" + menge + "', Stoff_S_ID ='" + stoff + "' WHERE F_ID = " + id + ";";
     logger.info(sql);
   }
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const fuetterungBuchen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await fuetterungBuchen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/fuetterungen');
@@ -188,21 +163,8 @@ exports.delete = function(req, res, next) {
   const sql = "DELETE FROM `Naehrstoff_N_Eingang` WHERE N_Eingang_NE_ID IN (SELECT NE_ID FROM `N_Eingang` WHERE Fuetterung_F_ID = '" + id + "'); DELETE FROM `N_Eingang` WHERE Fuetterung_F_ID = '" + id + "';DELETE FROM `Fuetterung` WHERE F_ID = '" + id + "'";
   logger.info(sql);
 
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const fuetterungLoeschen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await fuetterungLoeschen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/fuetterungen');

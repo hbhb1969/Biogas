@@ -1,4 +1,6 @@
 const bc = require('../eigene_module/benutzer_checken');
+const qa = require('../eigene_module/queryAsync');
+
 // ---------- Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
@@ -67,21 +69,8 @@ exports.post = function(req, res, next) {
 
   const sql = "INSERT INTO `Abgabe`(`AG_DatumBeginn`,`AG_DatumEnde`,`AG_Menge`,`Biogasanlage_BGA_ID`,`Stoff_S_ID`,`Person_P_ID`) VALUES ('" + anfangsdatum + "','" + enddatum + "','" + menge + "', '1', '1','" + abnehmer + "')";
   logger.info(sql);
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const abgabeBuchen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await abgabeBuchen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/abgaben');
@@ -106,22 +95,8 @@ exports.put = function(req, res, next) {
 
   const sql = "UPDATE `Abgabe` SET AG_DatumBeginn = '" + anfangsdatum + "', AG_DatumEnde = '" + enddatum + "', AG_Menge = '" + menge + "', Person_P_ID = '" + abnehmer + "' WHERE AG_ID = " + id + ";";
   logger.info(sql);
-
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const abgabeBuchen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await abgabeBuchen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/abgaben');
@@ -143,21 +118,8 @@ exports.delete = function(req, res, next) {
   const sql = "DELETE FROM `Naehrstoff_Abgabe` WHERE Abgabe_AG_ID = '" + id + "';DELETE FROM `Abgabe` WHERE AG_ID = '" + id + "'";
   logger.info(sql);
 
-  // Durch die asynchrone Funktion zugangbuchen kann mit await auf das Ende der Buchung gewartet werden, bevor die Buchungen
-  // neu aus der Datenbank ausgelesen werden
-  const abgabeLoeschen = async function() {
-    try {
-      const query = db.query(sql, function(err, result) {
-        if (err) {
-          logger.error(err);
-        }
-      });
-    } catch (ex) {
-      logger.error(ex);
-    }
-  };
   (async () => {
-    await abgabeLoeschen();
+    await qa.queryAsync(sql);
   })();
 
   res.redirect('/buchen/abgaben');
