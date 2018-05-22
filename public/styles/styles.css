@@ -233,7 +233,6 @@ th {
   line-height: 0;
   padding-top: 0;
   padding-bottom: 0;
-  color: transparent;
   border: none;
   white-space: nowrap;
 }
@@ -261,6 +260,7 @@ tr:hover {
   background-color: #ccc;
 }
 tr.th {
+  color: transparent;
   cursor: inherit;
   height: 0;
 }

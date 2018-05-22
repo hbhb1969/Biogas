@@ -3,6 +3,7 @@ const express = require('express'),
   routes = require('./routes'),
   user = require('./routes/user'),
   abgaben = require('./routes/abgaben'),
+  bilanz = require('./routes/bilanz'),
   fuetterungen = require('./routes/fuetterungen'),
   zugaenge = require('./routes/zugaenge'),
   select = require('./routes/select'),
@@ -38,7 +39,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -57,6 +58,8 @@ app.get('/anmelden', routes.index);
 app.post('/anmelden', user.anmelden);
 app.get('/hauptmenue', user.hauptmenue);
 app.get('/abmelden', user.abmelden);
+app.get('/auswertungen/bilanz', bilanz.get);
+app.post('/auswertungen/bilanz', bilanz.post);
 app.get('/buchen/abgaben', abgaben.get);
 app.post('/buchen/abgaben', abgaben.post);
 app.post('/buchen/abgaben-put', abgaben.put);
