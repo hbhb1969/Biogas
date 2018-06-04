@@ -77,6 +77,7 @@ app.get('/select/direktrohstoff', select.direktrohstoff);
 app.get('/select/lager', select.lager);
 app.get('/select/lieferant', select.lieferant);
 app.get('/tabellen/abgaben', tabellen.abgaben);
+app.get('/tabellen/bilanz', tabellen.bilanz);
 app.get('/tabellen/fuetterungendirekt', tabellen.fuetterungendirekt);
 app.get('/tabellen/fuetterungenlager', tabellen.fuetterungenlager);
 app.get('/tabellen/zugaenge', tabellen.zugaenge);

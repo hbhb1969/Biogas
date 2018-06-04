@@ -214,6 +214,9 @@ button:hover {
   padding: 12.5px;
   text-decoration: none;
 }
+#zeitraum {
+  margin-top: 10px;
+}
 .buchungen .table-wrap {
   padding-top: 37px;
   position: relative;

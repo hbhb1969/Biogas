@@ -1,5 +1,6 @@
 const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
+const fetch = require('node-fetch');
 
 // ---------- Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
@@ -7,7 +8,6 @@ exports.get = function(req, res, next) {
   let nBilanz = '';
   const anfangsdatum = '';
   const enddatum = '';
-  const fetch = require('node-fetch');
   const user = req.session.user,
     userId = req.session.userId;
 
@@ -25,43 +25,37 @@ exports.post = function(req, res, next) {
   let nBilanz = '';
   const user = req.session.user,
     userId = req.session.userId;
+  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
 
   if (userId == null) {
     res.redirect("/anmelden");
     return;
   }
   const post = req.body;
-  let anfangsdatum = post.Anfangsdatum;
-  let enddatum = post.Enddatum;
-  anfangsdatum = anfangsdatum.split('-')[2] + '.' + anfangsdatum.split('-')[1] + '.' + anfangsdatum.split('-')[0];
-  enddatum = enddatum.split('-')[2] + '.' + enddatum.split('-')[1] + '.' + enddatum.split('-')[0];
+  let anfangsdatumSql = post.Anfangsdatum;
+  let enddatumSql = post.Enddatum;
+  let anfangsdatum = anfangsdatumSql.split('-')[2] + '.' + anfangsdatumSql.split('-')[1] + '.' + anfangsdatumSql.split('-')[0];
+  let enddatum = enddatumSql.split('-')[2] + '.' + enddatumSql.split('-')[1] + '.' + enddatumSql.split('-')[0];
+  let url = "http://localhost:8080/tabellen/bilanz?anfangsdatum=" + anfangsdatumSql + "&enddatum=" + enddatumSql;
+  fetch(url, options)
+    .then(function(response) {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(function(json) {
+      for (let row of json) {
+        nBilanz +=
+          "<tr><td>" + row.Naehrstoff + "</td><td class='t-rechts'>" + row.Zugang + "</td><td class='t-rechts'>" + row.Abgang + "</td><td class='t-rechts'>" + row.Saldo + "</td></tr>";
+      }
 
-
-  // Parameterübergabe
-  // https://stackoverflow.com/questions/5710358/how-to-retrieve-post-query-parameters
-
-
-
-
-
-
-
-  // const anfangsdatum = post.AG_DatumBeginn;
-  // const enddatum = post.AG_DatumEnde;
-  // const menge = post.AG_Menge;
-  // const abnehmer = post.Person_P_ID;
-  //   const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
-  //
-  // const sql = "INSERT INTO `Abgabe`(`AG_DatumBeginn`,`AG_DatumEnde`,`AG_Menge`,`Biogasanlage_BGA_ID`,`Stoff_S_ID`,`Person_P_ID`) VALUES ('" + anfangsdatum + "','" + enddatum + "','" + menge + "', '1', '1','" + abnehmer + "')";
-  // logger.info(sql);
-  // (async () => {
-  //   await qa.queryAsync(sql);
-  // })();
-
-  res.render('bilanz.ejs', {
-    nBilanz: nBilanz,
-    anfangsdatum: anfangsdatum,
-    enddatum: enddatum,
-    message: message
-  });
+    })
+    .then(function() {
+      res.render('bilanz.ejs', {
+        nBilanz: nBilanz,
+        anfangsdatum: anfangsdatum,
+        enddatum: enddatum,
+        message: message
+      });
+    })
 };
