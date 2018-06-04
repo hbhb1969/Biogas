@@ -33,6 +33,17 @@ exports.post = function(req, res, next) {
   const post = req.body;
   const anfangsdatum = post.Anfangsdatum;
   const enddatum = post.Enddatum;
+
+
+  // Parameterübergabe     
+  // https://stackoverflow.com/questions/5710358/how-to-retrieve-post-query-parameters
+
+
+
+
+
+
+
   // const anfangsdatum = post.AG_DatumBeginn;
   // const enddatum = post.AG_DatumEnde;
   // const menge = post.AG_Menge;

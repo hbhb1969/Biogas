@@ -2,7 +2,7 @@
   <div class="container">
     <div class="hauptblock">
       <h1>Nährstoffbilanz</h1>
-      <form role="form" onsubmit="return validiereForm('abgaben')">
+      <form role="form" onsubmit="return validiereForm('bilanz')">
         <% if (message.length > 0) { %>
           <div class="alert">
             <%= message %>
@@ -15,30 +15,32 @@
             <div class="form-group">
               <label for="Anfangsdatum" class="control-label">von</label>
               <div>
-                <input type="date" id="anfangsdatum" class="form-control" name="Anfangsdatum" placeholder="Anfangsdatum" required>
+                <input type="date" id="datum-beginn" class="form-control" name="Anfangsdatum" placeholder="Anfangsdatum" required>
               </div>
             </div>
             <div class="form-group">
               <label for="Enddatum" class="control-label">bis</label>
               <div>
-                <input type="date" id="enddatum" class="form-control" name="Enddatum" placeholder="Enddatum" required>
+                <input type="date" id="datum-ende" class="form-control" name="Enddatum" placeholder="Enddatum" required>
                 <p id="error-datum" class="nodisplay alert"></p>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-anzeigen" type="submit" class="btn" formaction="/auswertungen/bilanz" formmethod="post">Anzeigen</button>
+                <button id="btn-anzeigen" type="submit" class="btn" formaction="/auswertungen/bilanz" formmethod="post" >Anzeigen</button>
               </div>
             </div>
       </form>
     </div>
   </div>
-  <div class="container">
+
+  <% if (anfangsdatum.length > 0) { %>
+  <div class="container" id="bilanz">
     <div class="hauptblock ">
       Zeitraum von <%= anfangsdatum %> bis <%= enddatum %>
       <section class="table-wrap">
         <div class="table">
-          <table id="bilanz">
+          <table>
             <thead>
               <tr>
                 <th>
@@ -63,6 +65,7 @@
       </section>
     </div>
   </div>
-  <script language="javascript" type="text/javascript" src="/scripts/abgaben.js"></script>
+  <% } %>
+  <script language="javascript" type="text/javascript" src="/scripts/bilanz.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
   <%- include footer %>
