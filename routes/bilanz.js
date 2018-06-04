@@ -31,11 +31,13 @@ exports.post = function(req, res, next) {
     return;
   }
   const post = req.body;
-  const anfangsdatum = post.Anfangsdatum;
-  const enddatum = post.Enddatum;
+  let anfangsdatum = post.Anfangsdatum;
+  let enddatum = post.Enddatum;
+  anfangsdatum = anfangsdatum.split('-')[2] + '.' + anfangsdatum.split('-')[1] + '.' + anfangsdatum.split('-')[0];
+  enddatum = enddatum.split('-')[2] + '.' + enddatum.split('-')[1] + '.' + enddatum.split('-')[0];
 
 
-  // Parameterübergabe     
+  // Parameterübergabe
   // https://stackoverflow.com/questions/5710358/how-to-retrieve-post-query-parameters
 
 
