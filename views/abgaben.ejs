@@ -1,5 +1,5 @@
 <%- include header %>
-  <div class="container">
+  <section id="abgaben-formular" class="container">
     <div class="hauptblock">
       <h1>Abgaben</h1>
       <form role="form" onsubmit="return validiereForm('abgaben')">
@@ -67,11 +67,11 @@
             </div>
       </form>
     </div>
-  </div>
-  <div class="container">
+  </section>
+  <section id="abgaben-tabelle" class="container">
     <div class="hauptblock buchungen">
       <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
-      <section class="table-wrap">
+      <div class="table-wrap">
         <div class="table">
           <table id="abgaben">
             <thead class="sticky">
@@ -103,9 +103,9 @@
             </tbody>
           </table>
         </div>
-      </section>
+      </div>
     </div>
-  </div>
+  </section>
   <script language="javascript" type="text/javascript" src="/scripts/abgaben.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
   <%- include footer %>
