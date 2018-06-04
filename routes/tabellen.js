@@ -9,6 +9,16 @@ exports.abgaben = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
+exports.abnahmevertraege = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+  let jahr = req.query.jahr;
+
+  const sql = "SELECT Person.B_Name, Soll, Ist, Soll - Ist AS Differenz FROM `Person`, (SELECT Person.B_Name, SUM(AV_Menge) AS Soll FROM `Abnahmevertrag`, `Person` WHERE AV_Jahr = " + jahr + " AND P_ID = Person_P_ID GROUP BY B_Name ORDER BY B_Name) av, (SELECT Person.B_Name, SUM(AG_Menge) AS Ist FROM `Abgabe`, `Person` WHERE YEAR(AG_DatumEnde) = " + jahr + " AND P_ID = Person_P_ID GROUP BY Person.B_Name ORDER BY Person.B_Name) ag WHERE  Person.B_Name = av.B_Name AND Person.B_Name = ag.B_Name GROUP BY Person.B_Name ORDER BY Person.B_Name";
+  const logText = "Abnahmevertraege";
+
+  sqlQuery(res, sql, logText)
+};
+
 exports.bilanz = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
   let anfangsdatum = req.query.anfangsdatum;

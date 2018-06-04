@@ -3,6 +3,7 @@ const express = require('express'),
   routes = require('./routes'),
   user = require('./routes/user'),
   abgaben = require('./routes/abgaben'),
+  abnahmevertraege = require('./routes/abnahmevertraege'),
   bilanz = require('./routes/bilanz'),
   fuetterungen = require('./routes/fuetterungen'),
   zugaenge = require('./routes/zugaenge'),
@@ -58,6 +59,8 @@ app.get('/anmelden', routes.index);
 app.post('/anmelden', user.anmelden);
 app.get('/hauptmenue', user.hauptmenue);
 app.get('/abmelden', user.abmelden);
+app.get('/auswertungen/abnahmevertraege', abnahmevertraege.get);
+app.post('/auswertungen/abnahmevertraege', abnahmevertraege.post);
 app.get('/auswertungen/bilanz', bilanz.get);
 app.post('/auswertungen/bilanz', bilanz.post);
 app.get('/buchen/abgaben', abgaben.get);
@@ -72,11 +75,13 @@ app.get('/buchen/zugaenge', zugaenge.get);
 app.post('/buchen/zugaenge', zugaenge.post);
 app.post('/buchen/zugaenge-put', zugaenge.put);
 app.post('/buchen/zugaenge-delete', zugaenge.delete);
+app.get('/select/abnahmevertraege', select.abnahmevertraege);
 app.get('/select/abnehmer', select.abnehmer);
 app.get('/select/direktrohstoff', select.direktrohstoff);
 app.get('/select/lager', select.lager);
 app.get('/select/lieferant', select.lieferant);
 app.get('/tabellen/abgaben', tabellen.abgaben);
+app.get('/tabellen/abnahmevertraege', tabellen.abnahmevertraege);
 app.get('/tabellen/bilanz', tabellen.bilanz);
 app.get('/tabellen/fuetterungendirekt', tabellen.fuetterungendirekt);
 app.get('/tabellen/fuetterungenlager', tabellen.fuetterungenlager);

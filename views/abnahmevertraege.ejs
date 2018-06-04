@@ -1,0 +1,64 @@
+<%- include header %>
+  <section id="abnahmevertraege-formular" class="container">
+    <div class="hauptblock">
+      <h1>Abnahmeverträge</h1>
+      <form role="form">
+        <% if (message.length > 0) { %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% } %>
+            <div id="buchungsfehler" style="display:none" class="alert">
+              <p>Fehler:</p>
+              <span></span>
+            </div>
+            <div class="form-group">
+              <label for="Jahr" class="control-label">Jahr</label>
+              <div class="select-wrapper">
+                <select id="jahr" class="form-control" name="Jahr" placeholder="Jahr">
+                     <%- jahrOptions %>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-anzeigen" type="submit" class="btn" formaction="/auswertungen/abnahmevertraege" formmethod="post" >Anzeigen</button>
+              </div>
+            </div>
+      </form>
+    </div>
+  </section>
+
+  <% if (abnahmevertraege.length > 0) { %>
+  <section class="container" id="abnahmevertraege-tabelle">
+    <div class="hauptblock ">
+      <div id="zeitraum">Abnahmeverträge im Jahr <%= jahr %></div>
+      <div class="table-wrap">
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Abnehmer
+                </th>
+                <th class="t-menge">
+                  Soll
+                </th>
+                <th class="t-menge">
+                  Ist
+                </th>
+                <th class="t-menge">
+                  Offen
+                </th>
+              </tr>
+            </thead>
+            <tbody >
+              <%- abnahmevertraege %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <% } %>
+  <%- include footer %>

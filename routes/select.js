@@ -1,4 +1,14 @@
 const bc = require('../eigene_module/benutzer_checken');
+// Optionen für Abnahmevertraege
+exports.abnahmevertraege = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT DISTINCT AV_Jahr FROM  `Abnahmevertrag` ORDER BY AV_Jahr DESC";
+  const logText = "Abnahmeverträge";
+
+  sqlQuery(res, sql, logText)
+};
+
 // Optionen für Abnehmer
 exports.abnehmer = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
