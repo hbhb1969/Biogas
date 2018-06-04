@@ -228,7 +228,8 @@ table {
   font-size: 12px;
   width: 100%;
 }
-th {
+thead.sticky th {
+  color: transparent;
   height: 0;
   line-height: 0;
   padding-top: 0;
@@ -260,7 +261,6 @@ tr:hover {
   background-color: #ccc;
 }
 tr.th {
-  color: transparent;
   cursor: inherit;
   height: 0;
 }
