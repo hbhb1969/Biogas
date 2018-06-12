@@ -89,7 +89,7 @@ app.get('/tabellen/zugaenge', tabellen.zugaenge);
 
 // Fehlerbehandlung für nicht vorhandene routes
 app.use((req, res, next) => {
-  const error = new Error('Seite nicht gefunden');
+  const error = new Error('Seite nicht gefunden' + req.url);
   logger.error('Seite nicht gefunden: ' + req.url)
   error.status = 404;
   next(error);
