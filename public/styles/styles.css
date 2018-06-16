@@ -293,3 +293,19 @@ td {
 #bd-bilanz .bar-chart rect:nth-child(odd){
   fill: #333;
 }
+
+/* Diagramme */
+#pie {
+  position: relative;
+}
+svg.kreisdiagramm {
+  position: absolute;
+  left: 0;
+}
+svg.kreisdiagramm text {
+  font-size: 10px;
+  text-anchor: middle;
+}
+svg.kreisdiagramm path {
+  stroke: #ccc;
+}

@@ -34,7 +34,7 @@
     <div class="hauptblock ">
       <div id="zeitraum">Abnahmeverträge im Jahr <%= jahr %></div>
       <div class="table-wrap">
-        <div class="table">
+        <div class="table" id="tabelle-av">
           <table>
             <thead>
               <tr>
@@ -60,5 +60,13 @@
       </div>
     </div>
   </section>
+  <section class="container" id="kd-abnahmevertraege">
+    <div id="pie"></div>
+  </section>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
+  <script language="javascript" type="text/javascript" src="/scripts/kreisdiagramm.js"></script>
+
+
   <% } %>
   <%- include footer %>
