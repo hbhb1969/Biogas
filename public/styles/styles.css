@@ -288,10 +288,10 @@ td {
 }
 
 #bd-bilanz .bar-chart rect{
-  fill: #aaa;
+  fill: #4B610B;
 }
 #bd-bilanz .bar-chart rect:nth-child(odd){
-  fill: #333;
+  fill: #38610B;
 }
 
 /* Diagramme */
