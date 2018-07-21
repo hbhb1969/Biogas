@@ -1,0 +1,94 @@
+<%- include header %>
+  <section id="lager-formular" class="container">
+    <div class="hauptblock">
+      <h1>Lager</h1>
+      <form role="form">
+        <% if (message.length > 0) { %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% } %>
+            <div id="buchungsfehler" style="display:none" class="alert">
+              <p>Fehler:</p>
+              <span></span>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <input type="number" class="form-control nodisplay" hidden name="L_ID" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="L_Name" class="control-label">Lagername</label>
+              <div>
+                <input type="text" id="lagername" class="form-control" name="L_Name" placeholder="Lagername" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="S_Bezeichnung" class="control-label">Rohstoff</label>
+              <div class="select-wrapper">
+                <select id="stoffbezeichnung" class="form-control" name="S_Bezeichnung" placeholder="Rohstoff"  onchange="meAktualisieren()" required>
+                     <%- stoffOptions %>
+                                       </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="L_Bestand" class="control-label">Lagerbestand <span id="stoff-me"></span></label>
+              <div>
+                <input type="number" value="" class="form-control" name="L_Bestand" placeholder="Lagerbestand" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-buchen" type="submit" class="btn" formaction="/daten/lager" formmethod="post">Hinzufügen</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/daten/lager-put" formmethod="post">Ändern</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/daten/lager" formmethod="get">Abbrechen</button>
+              </div>
+            </div>
+      </form>
+    </div>
+  </section>
+  <section id="lager-tabelle" class="container">
+    <div class="hauptblock buchungen">
+      <h1>Alle Lager</h1> Zum Ändern oder Löschen anklicken.
+      <div class="table-wrap">
+        <div class="table">
+          <table>
+            <thead class="sticky">
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-lager">
+                  Lager
+                  <div>Lager</div>
+                </th>
+                <th class="t-stoff">
+                  Rohstoff
+                  <div>Rohstoff</div>
+                </th>
+                <th class="t-menge t-rechts" colspan="2">
+                  Lagerbestand
+                  <div>Lagerbestand</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- buchungenLager %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script language="javascript" type="text/javascript" src="/scripts/lager.js"></script>
+  <%- include footer %>
