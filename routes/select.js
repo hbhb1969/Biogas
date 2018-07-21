@@ -49,6 +49,16 @@ exports.lieferant = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
+// Optionen für Lagerrohstoffe
+exports.lagerrohstoff = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT S_ID, S_Bezeichnung, Mengeneinheit_ME_ID, ME_Bezeichnung FROM Stoff, Mengeneinheit WHERE Stofftyp = 'Lagerrohstoff' AND Mengeneinheit_ME_ID = ME_ID ORDER BY S_Bezeichnung";
+  const logText = "Stoffe";
+
+  sqlQuery(res, sql, logText)
+};
+
 // Führt die Abfrage aus und sendet das Ergebnis zur Seite, die gefetched wird
 function sqlQuery(res, sql, logText) {
   db.query(sql, function(err, rows) {

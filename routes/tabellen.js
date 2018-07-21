@@ -47,6 +47,15 @@ exports.fuetterungendirekt = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
+exports.lager = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = 'SELECT L_ID AS ID, L_Name AS Lager, S_Bezeichnung AS Rohstoff, L_Bestand AS Bestand, ME_Bezeichnung AS Einheit FROM Lager, Stoff, Mengeneinheit WHERE Stoff_S_ID = S_ID AND Mengeneinheit_ME_ID = ME_ID ORDER BY L_Name';
+  const logText = "Lager";
+
+  sqlQuery(res, sql, logText)
+};
+
 exports.zugaenge = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
 
