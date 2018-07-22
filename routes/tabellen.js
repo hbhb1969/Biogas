@@ -56,6 +56,24 @@ exports.lager = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
+exports.stoffedirekt = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = 'SELECT S_ID, P_ID, S_Bezeichnung AS Direktrohstoff, ME_Bezeichnung AS Einheit, B_Name AS Lieferant FROM Stoff, Mengeneinheit, Stoff_Person, Person WHERE Mengeneinheit_ME_ID = ME_ID AND Stofftyp = "Direktrohstoff" AND S_ID = Stoff_S_ID AND Person_P_ID = P_ID ORDER BY S_Bezeichnung';
+  const logText = "Direktrohstoffe";
+
+  sqlQuery(res, sql, logText)
+};
+
+exports.stoffelager = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = 'SELECT S_ID AS ID, S_Bezeichnung AS Lagerrohstoff, ME_Bezeichnung AS Einheit FROM Stoff, Mengeneinheit WHERE Mengeneinheit_ME_ID = ME_ID AND Stofftyp = "Lagerrohstoff" ORDER BY S_Bezeichnung';
+  const logText = "Lagerrohstoffe";
+
+  sqlQuery(res, sql, logText)
+};
+
 exports.zugaenge = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
 

@@ -39,6 +39,16 @@ exports.lager = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
+// Optionen für Lagerrohstoffe
+exports.lagerrohstoff = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT S_ID, S_Bezeichnung, Mengeneinheit_ME_ID, ME_Bezeichnung FROM Stoff, Mengeneinheit WHERE Stofftyp = 'Lagerrohstoff' AND Mengeneinheit_ME_ID = ME_ID ORDER BY S_Bezeichnung";
+  const logText = "Stoffe";
+
+  sqlQuery(res, sql, logText)
+};
+
 // Optionen für Lieferanten
 exports.lieferant = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
@@ -49,12 +59,12 @@ exports.lieferant = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
-// Optionen für Lagerrohstoffe
-exports.lagerrohstoff = function(req, res, next) {
+// Optionen für Mengeneinheiten
+exports.mengeneinheit = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
 
-  const sql = "SELECT S_ID, S_Bezeichnung, Mengeneinheit_ME_ID, ME_Bezeichnung FROM Stoff, Mengeneinheit WHERE Stofftyp = 'Lagerrohstoff' AND Mengeneinheit_ME_ID = ME_ID ORDER BY S_Bezeichnung";
-  const logText = "Stoffe";
+  const sql = "SELECT * FROM Mengeneinheit ORDER BY ME_Bezeichnung";
+  const logText = "Mengeneinheiten";
 
   sqlQuery(res, sql, logText)
 };

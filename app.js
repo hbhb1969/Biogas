@@ -7,6 +7,7 @@ const express = require('express'),
   bilanz = require('./routes/bilanz'),
   fuetterungen = require('./routes/fuetterungen'),
   lager = require('./routes/lager'),
+  rohstoffe = require('./routes/rohstoffe'),
   zugaenge = require('./routes/zugaenge'),
   select = require('./routes/select'),
   tabellen = require('./routes/tabellen'),
@@ -72,26 +73,31 @@ app.get('/buchen/fuetterungen', fuetterungen.get);
 app.post('/buchen/fuetterungen', fuetterungen.post);
 app.post('/buchen/fuetterungen-put', fuetterungen.put);
 app.post('/buchen/fuetterungen-delete', fuetterungen.delete);
-app.get('/daten/lager', lager.get);
-app.post('/daten/lager', lager.post);
-app.post('/daten/lager-put', lager.put);
-// app.post('/daten/lager-delete', lager.delete);
 app.get('/buchen/zugaenge', zugaenge.get);
 app.post('/buchen/zugaenge', zugaenge.post);
 app.post('/buchen/zugaenge-put', zugaenge.put);
 app.post('/buchen/zugaenge-delete', zugaenge.delete);
+app.get('/daten/lager', lager.get);
+app.post('/daten/lager', lager.post);
+app.post('/daten/lager-put', lager.put);
+app.get('/daten/rohstoffe', rohstoffe.get);
+app.post('/daten/rohstoffe', rohstoffe.post);
+app.post('/daten/rohstoffe-put', rohstoffe.put);
 app.get('/select/abnahmevertraege', select.abnahmevertraege);
 app.get('/select/abnehmer', select.abnehmer);
 app.get('/select/direktrohstoff', select.direktrohstoff);
 app.get('/select/lager', select.lager);
 app.get('/select/lieferant', select.lieferant);
 app.get('/select/lagerrohstoff', select.lagerrohstoff);
+app.get('/select/mengeneinheit', select.mengeneinheit);
 app.get('/tabellen/abgaben', tabellen.abgaben);
 app.get('/tabellen/abnahmevertraege', tabellen.abnahmevertraege);
 app.get('/tabellen/bilanz', tabellen.bilanz);
 app.get('/tabellen/fuetterungendirekt', tabellen.fuetterungendirekt);
 app.get('/tabellen/fuetterungenlager', tabellen.fuetterungenlager);
 app.get('/tabellen/lager', tabellen.lager);
+app.get('/tabellen/stoffedirekt', tabellen.stoffedirekt);
+app.get('/tabellen/stoffelager', tabellen.stoffelager);
 app.get('/tabellen/zugaenge', tabellen.zugaenge);
 
 // Fehlerbehandlung für nicht vorhandene routes
