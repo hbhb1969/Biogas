@@ -44,6 +44,16 @@ select {
 select::-ms-expand {
   display: none;
 }
+input[type=checkbox] {
+  border: none;
+  height: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: auto;
+}
+input[type=checkbox] + label {
+  padding-left: 10px;
+}
 input[type=radio] {
   height: auto;
   margin-right: 10px;
@@ -74,6 +84,7 @@ button:-moz-focusring,
   font-family: "OpenSans", Arial, sans-serif;
 }
 body {
+  background-color: #ccffbb;
   padding: 0 0 30px;
 }
 h1 {
@@ -86,6 +97,7 @@ form {
   margin: 0;
 }
 .container {
+  background-color: #fff;
   margin: 20px auto 0;
   max-width: 340px;
   width: 100%;
@@ -105,6 +117,7 @@ form {
 }
 a.btn,
 button,
+fieldset,
 input,
 select {
   border: 1px solid #a1a1a1;
@@ -148,6 +161,9 @@ input[type="number"] {
 }
 .select-wrapper:before {
   pointer-events: none;
+}
+.checkboxen {
+  margin-top: 28px;
 }
 a.btn {
   display: inline-block;
@@ -286,6 +302,11 @@ td {
   padding: 0 20px 20px;
   width: 340px;
 }
+/* Diagramme */
+svg.bar-chart g g:first-of-type,
+svg.bar-chart g g:last-of-type {
+  display: none;
+}
 
 #bd-bilanz .bar-chart rect{
   fill: #4B610B;
@@ -294,7 +315,6 @@ td {
   fill: #38610B;
 }
 
-/* Diagramme */
 #pie {
   position: relative;
 }

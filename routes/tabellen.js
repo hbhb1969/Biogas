@@ -18,6 +18,14 @@ exports.abnahmevertraege = function(req, res, next) {
 
   sqlQuery(res, sql, logText)
 };
+exports.betriebe = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT P_ID AS ID, B_Name AS Betrieb, B_Nummer AS Betriebsnummer, GPT_ID, AD_ID, AD_Strasse, AD_Postfach, AD_PLZ, AD_Ort FROM Person, Geschaeftsp_Typ,Person_Adresse, Adresse WHERE Personentyp = 'Betrieb' AND Geschaeftsp_Typ_GPT_ID = GPT_ID AND Person_P_ID = P_ID AND Adresse_AD_ID = AD_ID ORDER BY B_Name";
+  const logText = "Betriebe";
+
+  sqlQuery(res, sql, logText)
+};
 
 exports.bilanz = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);

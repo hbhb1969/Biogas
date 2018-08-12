@@ -4,6 +4,7 @@ const express = require('express'),
   user = require('./routes/user'),
   abgaben = require('./routes/abgaben'),
   abnahmevertraege = require('./routes/abnahmevertraege'),
+  betriebe = require('./routes/betriebe'),
   bilanz = require('./routes/bilanz'),
   fuetterungen = require('./routes/fuetterungen'),
   lager = require('./routes/lager'),
@@ -77,6 +78,9 @@ app.get('/buchen/zugaenge', zugaenge.get);
 app.post('/buchen/zugaenge', zugaenge.post);
 app.post('/buchen/zugaenge-put', zugaenge.put);
 app.post('/buchen/zugaenge-delete', zugaenge.delete);
+app.get('/daten/betriebe', betriebe.get);
+app.post('/daten/betriebe', betriebe.post);
+app.post('/daten/betriebe-put', betriebe.put);
 app.get('/daten/lager', lager.get);
 app.post('/daten/lager', lager.post);
 app.post('/daten/lager-put', lager.put);
@@ -92,6 +96,7 @@ app.get('/select/lagerrohstoff', select.lagerrohstoff);
 app.get('/select/mengeneinheit', select.mengeneinheit);
 app.get('/tabellen/abgaben', tabellen.abgaben);
 app.get('/tabellen/abnahmevertraege', tabellen.abnahmevertraege);
+app.get('/tabellen/betriebe', tabellen.betriebe);
 app.get('/tabellen/bilanz', tabellen.bilanz);
 app.get('/tabellen/fuetterungendirekt', tabellen.fuetterungendirekt);
 app.get('/tabellen/fuetterungenlager', tabellen.fuetterungenlager);
