@@ -18,6 +18,14 @@ exports.abnahmevertraege = function(req, res, next) {
 
   sqlQuery(res, sql, logText)
 };
+exports.abnahmevertraegedaten = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT AV_ID, B_Name, AV_Jahr, AV_Menge FROM Abnahmevertrag, Person WHERE Person_P_ID = P_ID ORDER BY AV_Jahr DESC, B_Name";
+  const logText = "Abnahmevertraege";
+
+  sqlQuery(res, sql, logText)
+};
 exports.betriebe = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
 

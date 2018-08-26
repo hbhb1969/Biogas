@@ -1,0 +1,94 @@
+<%- include header %>
+  <section id="abnahmevertraege-formular" class="container">
+    <div class="hauptblock">
+      <h1>Abnahmeverträge</h1>
+      <form role="form">
+        <% if (message.length > 0) { %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% } %>
+            <div id="buchungsfehler" style="display:none" class="alert">
+              <p>Fehler:</p>
+              <span></span>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <input type="number" class="form-control nodisplay" hidden name="AV_ID" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="B_Name" class="control-label">Abnehmer</label>
+              <div class="select-wrapper">
+                <select id="abnehmer" class="form-control" name="B_Name" placeholder="Abnehmer" required>
+                     <%- abnehmerOptions %>
+                                       </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="AV_Jahr" class="control-label">Jahr</label>
+              <div>
+                <input type="number" id="jahr" class="form-control" name="AV_Jahr" placeholder="Jahr" min="2018" max="2050" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="AV_Menge" class="control-label">Menge (cbm)</label>
+              <div>
+                <input type="number" value="" class="form-control" name="AV_Menge" placeholder="Menge" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-buchen" type="submit" class="btn" formaction="/daten/abnahmevertraege" formmethod="post">Hinzufügen</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/daten/abnahmevertraege-put" formmethod="post">Ändern</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/daten/abnahmevertraege" formmethod="get">Abbrechen</button>
+              </div>
+            </div>
+      </form>
+    </div>
+  </section>
+  <section id="abnahmevertraege-tabelle" class="container">
+    <div class="hauptblock buchungen">
+      <h1>Alle Abnahmeverträge</h1> Zum Ändern anklicken.
+      <div class="table-wrap">
+        <div class="table">
+          <table>
+            <thead class="sticky">
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-abnehmer">
+                  Abnehmer
+                  <div>Abnehmer</div>
+                </th>
+                <th class="t-jahr">
+                  Jahr
+                  <div>Jahr</div>
+                </th>
+                <th class="t-menge" >
+                  Menge (cbm)
+                  <div>Menge (cbm)</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- buchungenAbnahmevertraege %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script language="javascript" type="text/javascript" src="/scripts/abnahmevertraege.js"></script>
+  <%- include footer %>
