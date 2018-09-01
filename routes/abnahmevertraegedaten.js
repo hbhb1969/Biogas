@@ -67,7 +67,7 @@ exports.post = function(req, res, next) {
   const jahr = post.AV_Jahr;
   const menge = post.AV_Menge;
 
-  const sql = "INSERT INTO Abnahmevertrag (Person_P_ID, AV_Jahr, AV_Menge) VALUES ('" + abnehmer + "','" + jahr + "','" + menge + "')";
+  const sql = "INSERT INTO Abnahmevertrag (Person_P_ID, AV_Jahr, AV_Menge) VALUES ('" + abnehmer + "','" + jahr + "','" + menge + "'); INSERT INTO `Abgabe` (`AG_DatumBeginn`, `AG_DatumEnde`, `AG_Menge`, `Biogasanlage_BGA_ID`, `Stoff_S_ID`, `Person_P_ID`) VALUES ( '" + jahr + "-01-01', '" + jahr + "-01-01', '0', '1', '1', '" + abnehmer + "');"; // Eine Abgabe mit Menge 0 muss gebucht werden, damit der Abnahmevertrag auch in der Auswertung erscheint, wenn noch keine Abgabe erfolgt ist.
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
