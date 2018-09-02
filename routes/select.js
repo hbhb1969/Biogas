@@ -19,6 +19,16 @@ exports.abnehmer = function(req, res, next) {
   sqlQuery(res, sql, logText)
 };
 
+// Optionen für Analysen
+exports.analysen = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT AT_ID, AT_Bezeichnung FROM `Analysetyp` ORDER BY AT_Bezeichnung";
+  const logText = "Analysen";
+
+  sqlQuery(res, sql, logText)
+};
+
 // Optionen für Direktrohstoffe
 exports.direktrohstoff = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
@@ -65,6 +75,16 @@ exports.mengeneinheit = function(req, res, next) {
 
   const sql = "SELECT * FROM Mengeneinheit ORDER BY ME_Bezeichnung";
   const logText = "Mengeneinheiten";
+
+  sqlQuery(res, sql, logText)
+};
+
+// Optionen für Stoffe
+exports.stoff = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = "SELECT S_ID, S_Bezeichnung FROM Stoff ORDER BY S_Bezeichnung";
+  const logText = "Stoffe";
 
   sqlQuery(res, sql, logText)
 };

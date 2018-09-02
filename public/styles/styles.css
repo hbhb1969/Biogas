@@ -53,6 +53,9 @@ form {
 .nodisplay {
   display: none;
 }
+.desktop {
+  display: none;
+}
 a.btn,
 button,
 fieldset,
@@ -266,4 +269,9 @@ svg.kreisdiagramm text {
 }
 svg.kreisdiagramm path {
   stroke: #ccc;
+}
+@media screen and (min-width:960px) {
+   .desktop-tc {
+      display: table-cell;
+   }
 }

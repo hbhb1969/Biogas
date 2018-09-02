@@ -26,6 +26,14 @@ exports.abnahmevertraegedaten = function(req, res, next) {
 
   sqlQuery(res, sql, logText)
 };
+exports.analysen = function(req, res, next) {
+  bc.headersBenutzerChecken(req, res);
+
+  const sql = 'SELECT A_ID AS ID, S_Bezeichnung AS Stoff, A_ExterneID AS ExterneID, DATE_FORMAT(A_Datum, "%d.%m.%y") AS Datum, DATE_FORMAT(A_DatumGueltigAb, "%d.%m.%y") AS Gueltigkeitsdatum, AT_Bezeichnung AS Analysetyp, SA_A_Wert AS Wert FROM `Stoff`, `Stoffanalyse`, `Analysetyp`, `Stoffanalyse_Analysetyp` WHERE A_ID = Stoffanalyse_A_ID AND Analysetyp_AT_ID = AT_ID AND S_ID = Stoff_S_ID ORDER BY A_Datum DESC';
+  const logText = "Analysen";
+
+  sqlQuery(res, sql, logText)
+};
 exports.betriebe = function(req, res, next) {
   bc.headersBenutzerChecken(req, res);
 
