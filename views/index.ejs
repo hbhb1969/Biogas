@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
   <title>Anmelden</title>
-  <link rel='stylesheet' href='/styles/styles.css' />
+  <link rel='stylesheet' href='/styles/styles2.css' />
   <link rel="shortcut icon" type="image/png" href="/bilder/bga.png">
 </head>
 
 <body>
-  <div class="container">
+  <div class="">
+    <div id="hintergrund">
+      </div>
     <div id="loginbox">
-      <h1>Anmelden</h1>
       <div class="loginbox-body">
+        <div class="logo">
+          <img src="\bilder\logo.svg" alt="">
+        </div>
+        <h1>BIOGAS</h1>
+        <h2>Nährstoffmanager</h2>
         <% if (message.length > 0) { %>
           <div class="alert">
             <%= message %>
@@ -21,11 +27,11 @@
             <form id="loginform" role="form" method="post" action="/anmelden">
               <div class="form-group">
                 <label for="name" class="control-label">Benutzername</label>
-                <input id="login-username" type="text" class="form-control" name="name" value="" placeholder="Benutzername">
+                <input id="login-username" type="text" class="form-control" name="name" value="" >
               </div>
               <div class="form-group">
                 <label for="name" class="passwort">Passwort</label>
-                <input id="login-password" type="password" class="form-control" name="passwort" placeholder="Passwort">
+                <input id="login-password" type="password" class="form-control" name="passwort" >
               </div>
               <div class="form-group">
                 <div>
@@ -35,6 +41,7 @@
             </form>
       </div>
     </div>
+
   </div>
 </body>
 
