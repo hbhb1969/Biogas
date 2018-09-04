@@ -63,6 +63,7 @@ app.get('/', routes.index);
 app.get('/anmelden', routes.index);
 app.post('/anmelden', user.anmelden);
 app.get('/hauptmenue', user.hauptmenue);
+app.get('/hauptmenue2', user.hauptmenue2);
 app.get('/abmelden', user.abmelden);
 app.get('/auswertungen/abnahmevertraege', abnahmevertraege.get);
 app.post('/auswertungen/abnahmevertraege', abnahmevertraege.post);

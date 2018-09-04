@@ -22,6 +22,7 @@
   font-family: "OpenSans", Arial, sans-serif;
 }
 body {
+  background-color: #dedede;
   margin: 0;
 }
 h1 {
@@ -78,6 +79,7 @@ button,
 fieldset,
 input,
 select {
+  box-sizing: border-box;
   height: 42px;
   max-width: 300px;
   width: 100%;
@@ -173,6 +175,89 @@ button:hover {
 }
 #loginform {
   margin-top: 35px;
+}
+/* Menü */
+.menue {
+  background-color: #dedede;
+  padding: 20px;
+}
+.menueheader,
+.menueinhalt {
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+}
+.menueheader {
+  margin-bottom: 10px;
+  padding: 5px 20px 12px;
+}
+.menueheader .logo {
+  float: left;
+  margin-right: 10px;
+  width: 103px;
+}
+.menueheader .biogas {
+  color: #009245;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-top: 5px;
+}
+.menueheader .nsm {
+  color: #009245;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.menueinhalt {
+  padding: 20px 20px 0;
+}
+.menueinhalt .ueberschrift {
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.menueinhalt .gruen {
+  background-color: #009245;
+}
+.menueinhalt .gruen:hover {
+  background-color: #027538;
+}
+.menueinhalt .grau {
+  background-color: #575756;
+}
+.menueinhalt .grau:hover {
+  background-color: #454545;
+}
+.menueinhalt .btn {
+  height: 100px;
+  margin-bottom: 20px;
+  width: 130px;
+}
+.menueinhalt .fuetterungen {
+  margin-bottom: 20px;
+  width: 280px;
+}
+.menueinhalt .abgaben,
+.menueinhalt .auswertungen {
+  margin-right: 14px;
+}
+
+.menueinhalt .menue-icon {
+  margin: 15px auto 0;
+  width: 40px;
+}
+.menuefooter {
+  margin-top: 20px;
+  text-align: center;
+}
+.menuefooter a {
+  text-decoration: none;
+}
+.menuefooter .impressum {
+  margin-right: 70px;
 }
 /* Navigation */
 #nav-container {

@@ -62,6 +62,29 @@ exports.hauptmenue = function(req, res, next) {
   });
 };
 
+//----------------------------------------------- Hauptmenü2 ----------------------------------------------
+exports.hauptmenue2 = function(req, res, next) {
+  let message = '';
+  const user = req.session.user,
+    userId = req.session.userId;
+
+  if (userId == null) {
+    res.redirect("/anmelden");
+    return;
+  }
+
+  const sql = "SELECT * FROM `Benutzer` WHERE `BEN_ID`='" + userId + "'";
+  db.query(sql, function(err, results) {
+    if (err) {
+      logger.error(err);
+    }
+    res.render('hauptmenue2.ejs', {
+      user: user,
+      message: message
+    });
+  });
+};
+
 //------------------------------------ Abmelden ----------------------------------------------
 exports.abmelden = function(req, res) {
   req.session = null;
