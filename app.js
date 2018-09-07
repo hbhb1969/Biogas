@@ -6,6 +6,7 @@ const express = require('express'),
   abnahmevertraege = require('./routes/abnahmevertraege'),
   abnahmevertraegedaten = require('./routes/abnahmevertraegedaten'),
   analysen = require('./routes/analysen'),
+  auswertungen = require('./routes/auswertungen'),
   betriebe = require('./routes/betriebe'),
   bilanz = require('./routes/bilanz'),
   fuetterungen = require('./routes/fuetterungen'),
@@ -65,6 +66,7 @@ app.post('/anmelden', user.anmelden);
 app.get('/hauptmenue', user.hauptmenue);
 app.get('/hauptmenue2', user.hauptmenue2);
 app.get('/abmelden', user.abmelden);
+app.get('/auswertungen', auswertungen.index);
 app.get('/auswertungen/abnahmevertraege', abnahmevertraege.get);
 app.post('/auswertungen/abnahmevertraege', abnahmevertraege.post);
 app.get('/auswertungen/bilanz', bilanz.get);
