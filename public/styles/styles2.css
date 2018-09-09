@@ -1,4 +1,5 @@
 /* Fonts */
+
 @font-face {
   font-family: "OpenSans";
   src: url(../open-sans/OpenSans-Regular.ttf);
@@ -13,13 +14,20 @@
   src: url(../open-sans/OpenSans-Light.ttf);
   font-weight: lighter;
 }
-/* Styles */
+/* Allgemein ***********************************************************************************************************/
+/* Anmeldung ***********************************************************************************************************/
+/* Hauptmenü ***********************************************************************************************************/
+/* Menüseiten **********************************************************************************************************/
+/* Buchungsseiten ******************************************************************************************************/
+/* Auswertungsseiten ***************************************************************************************************/
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: #575756;
   font-family: "OpenSans", Arial, sans-serif;
+  font-size: 14px;
 }
 body {
   background-color: #dedede;
@@ -28,32 +36,37 @@ body {
 h1 {
   color: #009245;
   font-size: 35px;
-font-weight: 700;
-line-height: 42px;
-margin: 10px 0 0;
-text-align: center;
+  font-weight: 700;
+  line-height: 42px;
+  margin: 10px 0 0;
+  text-align: center;
 }
 h2 {
   color: #009245;
-  font-size: 28px;
-font-weight: 300;
-line-height: 34px;
-margin: 0;
-text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0;
+}
+.formular h2 {
+  margin-top: -5px;
+  margin-bottom: 25px;
 }
 label {
   font-size: 14px;
 }
 form {
-  margin: 0;
+  margin: 0 auto;
+  width: 280px;
 }
 .container {
   background-color: #fff;
-  margin: 20px auto 0;
-  max-width: 340px;
+  margin: 0 auto;
+  max-width: 320px;
   width: 100%;
 }
 /* Allgemein */
+
 .hauptblock {
   border: 1px solid #a1a1a1;
   border-radius: 10px;
@@ -69,27 +82,19 @@ form {
 .desktop {
   display: none;
 }
-fieldset,
-input,
-select {
+input, select {
   border: 1px solid #9c9a9a;
 }
-a.btn,
-button,
-fieldset,
-input,
-select {
+a.btn, button, fieldset, input, select {
   box-sizing: border-box;
   height: 42px;
   max-width: 300px;
   width: 100%;
 }
-a.btn,
-button {
+a.btn, button {
   border: none;
 }
-input,
-select {
+input, select {
   margin-top: 5px;
   padding-left: 10px;
 }
@@ -102,13 +107,38 @@ input:hover {
 select:hover {
   border: 1px solid #282828;
 }
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 input[type="number"] {
   -moz-appearance: textfield;
+}
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.stoffart {
+  margin-bottom: -10px;
+}
+.stoffart label {
+  height: 30px;
+  width: 135px;
+}
+.stoffart label span {
+  border: 1px solid #9c9a9a;
+  font-size: 15px;
+  line-height: 18px;
+  padding: 10px 21px;
+  text-align: center;
+}
+.stoffart label input {
+  display: none;
+}
+.stoffart input[type="radio"]:checked+span {
+  border: 2px solid #009245;
+  box-sizing: border-box;
 }
 .select-wrapper {
   position: relative;
@@ -118,7 +148,7 @@ input[type="number"] {
   font-size: 20px;
   position: absolute;
   right: 15px;
-  top: 5px;
+  top: 15px;
   color: #c1c1c1;
 }
 .select-wrapper:before {
@@ -133,34 +163,36 @@ a.btn {
   text-align: center;
   text-decoration: none;
 }
-a.btn,
-button {
+a.btn, button {
   min-height: 40px;
-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-background-color: #306C8D;
-line-height: 19px;
-font-size: 16px;
-text-align: center;
-color: #FFFFFF;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 19px;
+  font-size: 16px;
+  text-align: center;
+  color: #FFFFFF;
 }
-a.btn:hover {
-  background: #245360;
-}
-button:hover {
-  background: #245360;
-}
-#btn-buchen,
-#btn-login {
+#btn-buchen, #btn-login {
   margin-top: 15px;
 }
 .alert {
   color: red;
 }
+.ueberschrift-tabelle {
+  border-top: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  width: 280px;
+}
+.ueberschrift-tabelle h2 {
+  margin-bottom: 10px;
+}
 /* Anmeldeseite */
+
 #hintergrund {
-  background: -webkit-gradient(linear, center top, center bottom, from(#9C9A9A),color-stop(26%, #575756));
-  background: -webkit-linear-gradient(top,#9C9A9A ,#575756 142px);
-  background: linear-gradient(to bottom,#9C9A9A ,#575756 142px);
+  background: -webkit-gradient(linear, center top, center bottom, from(#9C9A9A), color-stop(26%, #575756));
+  background: -webkit-linear-gradient(top, #9C9A9A, #575756 142px);
+  background: linear-gradient(to bottom, #9C9A9A, #575756 142px);
   height: 162px;
 }
 .logo {
@@ -168,28 +200,29 @@ button:hover {
   margin-right: auto;
   width: 116px;
 }
-
 #loginbox {
   margin: -55px auto 0;
   width: 240px;
+}
+#loginbox h2 {
+  text-align: center;
 }
 #loginform {
   margin-top: 35px;
 }
 /* Menü */
+
 .menue {
   background-color: #dedede;
-  padding: 20px;
 }
-.menueheader,
-.menueinhalt {
+.menueheader, .menueinhalt {
   background-color: #fff;
   margin-left: auto;
   margin-right: auto;
   width: 320px;
 }
 .menueheader {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 5px 20px 12px;
 }
 .menueheader .logo {
@@ -219,16 +252,16 @@ button:hover {
   margin-bottom: 20px;
   text-align: center;
 }
-.menueinhalt .gruen {
+.gruen {
   background-color: #009245;
 }
-.menueinhalt .gruen:hover {
+.gruen:hover {
   background-color: #027538;
 }
-.menueinhalt .grau {
+.grau {
   background-color: #575756;
 }
-.menueinhalt .grau:hover {
+.grau:hover {
   background-color: #454545;
 }
 .menueinhalt .btn {
@@ -240,11 +273,9 @@ button:hover {
   margin-bottom: 20px;
   width: 280px;
 }
-.menueinhalt .abgaben,
-.menueinhalt .auswertungen {
+.menueinhalt .abgaben, .menueinhalt .auswertungen {
   margin-right: 14px;
 }
-
 .menueinhalt .menue-icon {
   margin: 15px auto 0;
   width: 40px;
@@ -260,7 +291,9 @@ button:hover {
   margin-right: 70px;
 }
 /* Header */
+
 #header-container {
+  margin-top: 0;
   padding: 10px 20px;
   width: 320px;
 }
@@ -296,7 +329,7 @@ button:hover {
 #navbar a {
   border: 1px solid #009245;
   color: #009245;
-  display:inline-block;
+  display: inline-block;
   float: right;
   font-size: 16px;
   height: 26px;
@@ -306,21 +339,36 @@ button:hover {
   text-decoration: none;
 }
 /* Menüseiten */
+
 .untermenueinhalt {
-  margin-top: 15px;
-  padding: 0;
+  padding: 0 0 18px;
   text-align: center;
 }
-.untermenueinhalt .ueberschrift-balken {
+.ueberschrift-balken {
   color: #fff;
   font-size: 18px;
   height: 36px;
   line-height: 22px;
   margin-bottom: 20px;
   padding-top: 5px;
+  text-align: center;
 }
-.untermenueinhalt .ueberschrift-balken img {
+.ueberschrift-balken.grau:hover {
+  background-color: #575756;
+}
+.ueberschrift-balken.gruen:hover {
+  background-color: #009245;
+}
+.ueberschrift-balken img {
   margin-left: 10px;
+  width: 20px;
+}
+.stammdatenmenue .btn {
+  height: 10%;
+  margin-bottom: 2%;
+}
+.stammdatenmenue .menue-icon {
+  margin-top: 5px;
   width: 20px;
 }
 .footer {
@@ -330,10 +378,14 @@ button:hover {
 .footer a {
   text-decoration: none;
 }
+/* Buchungsseiten */
 
+.formular {
+  padding-bottom: 10px;
+}
 /* Sonstiges */
-#bilanz-tabelle #zeitraum,
-#abnahmevertraege-tabelle #zeitraum {
+
+#bilanz-tabelle #zeitraum, #abnahmevertraege-tabelle #zeitraum {
   margin-top: 10px;
 }
 .buchungen .table-wrap {
@@ -348,7 +400,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   font-size: 12px;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
 }
 thead.sticky th {
   color: transparent;
@@ -395,21 +449,18 @@ td {
 .t-rechts {
   text-align: right;
 }
-
 }
 /* Diagramme */
-svg.bar-chart g g:first-of-type,
-svg.bar-chart g g:last-of-type {
+
+svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
   display: none;
 }
-
-#bd-bilanz .bar-chart rect{
+#bd-bilanz .bar-chart rect {
   fill: #4B610B;
 }
-#bd-bilanz .bar-chart rect:nth-child(odd){
+#bd-bilanz .bar-chart rect:nth-child(odd) {
   fill: #38610B;
 }
-
 #pie {
   position: relative;
 }
@@ -424,8 +475,36 @@ svg.kreisdiagramm text {
 svg.kreisdiagramm path {
   stroke: #ccc;
 }
+@media screen and (min-width:360px) {
+  .menue {
+    padding: 20px;
+  }
+}
 @media screen and (min-width:960px) {
-   .desktop-tc {
-      display: table-cell;
-   }
+  .desktop-tc {
+    display: table-cell;
+  }
+}
+@media screen and (min-height:660px) {
+  #header-container {
+    margin-top: 20px;
+  }
+  .untermenueinhalt {
+    margin-top: 20px;
+  }
+}
+@media screen and (min-height:730px) {
+  .untermenueinhalt .btn {
+    height: 12%;
+    max-height: 100px;
+  }
+  .untermenueinhalt .menue-icon {
+    margin-top: 10px;
+    width: 40px;
+  }
+}
+@media screen and (min-height:860px) {
+  .untermenueinhalt .btn {
+    margin-bottom: 20px;
+  }
 }

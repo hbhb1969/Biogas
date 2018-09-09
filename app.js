@@ -14,6 +14,7 @@ const express = require('express'),
   rohstoffe = require('./routes/rohstoffe'),
   zugaenge = require('./routes/zugaenge'),
   select = require('./routes/select'),
+  stammdaten = require('./routes/stammdaten'),
   tabellen = require('./routes/tabellen'),
   http = require('http'),
   spdy = require('spdy'),
@@ -66,7 +67,7 @@ app.post('/anmelden', user.anmelden);
 app.get('/hauptmenue', user.hauptmenue);
 app.get('/hauptmenue2', user.hauptmenue2);
 app.get('/abmelden', user.abmelden);
-app.get('/auswertungen', auswertungen.index);
+app.get('/auswertungen', auswertungen.menue);
 app.get('/auswertungen/abnahmevertraege', abnahmevertraege.get);
 app.post('/auswertungen/abnahmevertraege', abnahmevertraege.post);
 app.get('/auswertungen/bilanz', bilanz.get);
@@ -86,6 +87,7 @@ app.get('/buchen/zugaenge', zugaenge.get);
 app.post('/buchen/zugaenge', zugaenge.post);
 app.post('/buchen/zugaenge-put', zugaenge.put);
 app.post('/buchen/zugaenge-delete', zugaenge.delete);
+app.get('/stammdaten', stammdaten.menue);
 app.get('/daten/abnahmevertraege', abnahmevertraegedaten.get);
 app.post('/daten/abnahmevertraege', abnahmevertraegedaten.post);
 app.post('/daten/abnahmevertraege-put', abnahmevertraegedaten.put);

@@ -1,52 +1,57 @@
-   <%- include header %>
-      <div class="container">
-      <div class="hauptblock">
-        <h1>Hauptmenü</h1>
-        <% if (message.length > 0) { %>
-          <div class="alert">
-            <%= message %>
-          </div>
-          <% } %>
-          <h2>Neues Menü</h2>
-          <p>
-            <a class="btn" href="/hauptmenue2" role="button">Neues Menü</a>
-          </p>
-          <h2>Buchen</h2>
-          <p>
-            <a class="btn" href="/buchen/fuetterungen" role="button">Fütterungen</a>
-          </p>
-        <p>
-          <a class="btn" href="/buchen/zugaenge" role="button">Zugänge</a>
-        </p>
-        <p>
-          <a class="btn" href="/buchen/abgaben" role="button">Abgaben</a>
-        </p>
-        <h2>Auswertungen</h2>
-        <p>
-          <a class="btn" href="/auswertungen/bilanz" role="button">Nährstoffbilanz</a>
-        </p>
-        <p>
-          <a class="btn" href="/auswertungen/abnahmevertraege" role="button">Abnahmeverträge</a>
-        </p>
-        <p>
-          <a class="btn" href="#" role="button">Alle Auswertungen</a>
-        </p>
-        <h2>Stammdaten</h2>
-        <p>
-          <a class="btn" href="/daten/betriebe" role="button">Betriebe</a>
-        </p>
-        <p>
-          <a class="btn" href="/daten/abnahmevertraege" role="button">Abnahmeverträge</a>
-        </p>
-        <p>
-          <a class="btn" href="/daten/lager" role="button">Lager</a>
-        </p>
-        <p>
-          <a class="btn" href="/daten/rohstoffe" role="button">Rohstoffe</a>
-        </p>
-        <p>
-          <a class="btn" href="/daten/analysen" role="button">Analysen</a>
-        </p>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Nährstoffmanager</title>
+    <link rel='stylesheet' href='/styles/normalize.css' />
+    <link rel='stylesheet' href='/styles/styles2.css' />
+    <link rel="shortcut icon" type="image/x-icon" href="/bilder/bga.png">
+</head>
+<body>
+<div class="menue">
+  <div class="menueheader">
+    <div class="logo">
+      <img src="\bilder\logo.svg">
+    </div>
+    <div class="biogas">
+      BIOGAS
+    </div>
+    <div class="nsm">
+      Nährstoffmanager
+    </div>
+  </div>
+  <div class="menueinhalt">
+    <div class="ueberschrift">
+      MENÜ
+    </div>
+    <a class="fuetterungen gruen btn btn-gross" href="/buchen/fuetterungen" role="button">Fütterungen
+      <div class="menue-icon">
+        <img src="\bilder\fuetterungen.svg">
       </div>
-      </div>
-    <%- include footer %>
+    </a>
+    <a class="abgaben gruen btn" href="/buchen/abgaben" role="button">Abgaben
+  <div class="menue-icon">
+    <img src="\bilder\abgaben.svg">
+  </div>
+</a>
+    <a class="zugaenge gruen btn" href="/buchen/zugaenge" role="button">Zugänge
+  <div class="menue-icon">
+    <img src="\bilder\zugaenge.svg">
+  </div>
+</a>
+    <a class="btn auswertungen grau" href="/auswertungen" role="button">Auswertungen
+  <div class="menue-icon">
+    <img src="\bilder\auswertungen.svg">
+  </div>
+</a>
+    <a class="btn stammdaten grau" href="/stammdaten" role="button">Stammdaten
+  <div class="menue-icon">
+    <img src="\bilder\stammdaten.svg">
+  </div>
+</a>
+  </div>
+  <div class="menuefooter">
+    <a class="impressum" href="#">Impressum</a>
+    <a href="/abmelden">Abmelden</a>
+  </div>
+</div>

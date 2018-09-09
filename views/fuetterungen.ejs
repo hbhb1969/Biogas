@@ -1,8 +1,9 @@
-<%- include header %>
-  <section id="fuetterungen-formular" class="container">
-    <div class="hauptblock">
-      <h1>Fütterungen</h1>
-      <form role="form">
+<%- include header2 %>
+  <section id="fuetterungen-formular" class="container formular">
+      <div class="ueberschrift-balken gruen">
+        Fütterungen<img src="\bilder\fuetterungen.svg">
+      </div>
+      <form role="form" class="form-fuetterungen">
         <% if (message.length > 0) { %>
           <div class="alert">
             <%= message %>
@@ -12,11 +13,13 @@
               <p>Fehler:</p>
               <span></span>
             </div>
+
+            <h2>Buchung eingeben</h2>
             <div class="form-group">
               <div>
-                <fieldset>
-                  <input type="radio" class="" name="Stoffart" id="lager-radio" value="lager" onchange="ansichtWechseln()" checked="checked"><label for="lager">Lagerrohstoff</label>
-                  <input type="radio" class="" name="Stoffart" id="direkt-radio" value="direkt" onchange="ansichtWechseln()"><label for="lager">Direktrohstoff</label>
+                <fieldset class="stoffart">
+                  <label><input type="radio" class="" name="Stoffart" id="lager-radio" value="lager" onchange="ansichtWechseln()" checked="checked"><span>Lagerrohstoff</span></label>
+                  <label><input type="radio" class="" name="Stoffart" id="direkt-radio" value="direkt" onchange="ansichtWechseln()"><span>Direktrohstoff</span></label>
                 </fieldset>
               </div>
             </div>
@@ -55,30 +58,31 @@
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-buchen" type="submit" class="btn" formaction="/buchen/fuetterungen" formmethod="post">Buchen</button>
+                <button id="btn-buchen" type="submit" class="btn gruen" formaction="/buchen/fuetterungen" formmethod="post">Fütterung buchen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/buchen/fuetterungen-put" formmethod="post">Ändern</button>
+                <button id="btn-aendern" type="submit" class="btn nodisplay gruen" formaction="/buchen/fuetterungen-put" formmethod="post">Ändern</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-loeschen" type="submit" class="btn nodisplay" formaction="/buchen/fuetterungen-delete" formmethod="post">Löschen</button>
+                <button id="btn-loeschen" type="submit" class="btn nodisplay gruen" formaction="/buchen/fuetterungen-delete" formmethod="post">Löschen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/fuetterungen" formmethod="get">Abbrechen</button>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen" formaction="/buchen/fuetterungen" formmethod="get">Abbrechen</button>
               </div>
             </div>
       </form>
-    </div>
   </section>
-  <section id="fuetterungen-tabelle" class="container">
-    <div class="hauptblock buchungen">
-      <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
+  <section id="fuetterungen-tabelle" class="container tabelle">
+    <div class="buchungen">
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
       <div  id="fuetterungen-lager" class="table-wrap">
         <div class="table">
           <table>
