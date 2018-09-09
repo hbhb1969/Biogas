@@ -15,11 +15,6 @@
   font-weight: lighter;
 }
 /* Allgemein ***********************************************************************************************************/
-/* Anmeldung ***********************************************************************************************************/
-/* Hauptmenü ***********************************************************************************************************/
-/* Menüseiten **********************************************************************************************************/
-/* Buchungsseiten ******************************************************************************************************/
-/* Auswertungsseiten ***************************************************************************************************/
 
 * {
   -moz-box-sizing: border-box;
@@ -48,6 +43,267 @@ h2 {
   line-height: 22px;
   margin: 0;
 }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+}
+thead.sticky th {
+  color: transparent;
+  height: 0;
+  line-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+  white-space: nowrap;
+}
+th div {
+  position: absolute;
+  background: transparent;
+  color: #282828;
+  padding: 9px 25px;
+  top: 0;
+  margin-left: -25px;
+  line-height: normal;
+}
+tr {
+  border-bottom: 1px solid #bbb;
+  cursor: pointer;
+  height: 37px;
+}
+tr:hover {
+  background-color: #ccc;
+}
+tr.th {
+  cursor: inherit;
+  height: 0;
+}
+td {
+  padding: 0 5px;
+}
+.t-id {
+  display: none;
+}
+.t-rechts {
+  text-align: right;
+}
+.header-container {
+  margin-top: 0;
+  padding: 10px 20px;
+  width: 320px;
+}
+.header-container a {
+  text-decoration: none;
+}
+.header .logo {
+  float: left;
+  margin-right: 10px;
+  width: 68px;
+}
+.header .biogas {
+  color: #009245;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 25px;
+}
+.header .nsm {
+  color: #009245;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+}
+.navbar {
+  height: 30px;
+}
+.navbar ul {
+  list-style-type: none;
+}
+.navbar ul li {
+  float: right;
+}
+.navbar a {
+  border: 1px solid #009245;
+  color: #009245;
+  display: inline-block;
+  float: right;
+  font-size: 16px;
+  height: 26px;
+  line-height: 19px;
+  margin-left: 5px;
+  padding: 2px 7px;
+  text-decoration: none;
+}
+.container {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 320px;
+  width: 100%;
+}
+.ueberschrift-tabelle {
+  border-top: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  width: 280px;
+}
+.ueberschrift-tabelle h2 {
+  margin-bottom: 10px;
+}
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+.footer a {
+  text-decoration: none;
+}
+.nodisplay {
+  display: none;
+}
+.desktop {
+  display: none;
+}
+.alert {
+  color: red;
+}
+.gruen {
+  background-color: #009245;
+}
+.gruen:hover {
+  background-color: #027538;
+}
+.grau {
+  background-color: #575756;
+}
+.grau:hover {
+  background-color: #454545;
+}
+.ueberschrift-balken {
+  color: #fff;
+  font-size: 18px;
+  height: 36px;
+  line-height: 22px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  text-align: center;
+}
+.ueberschrift-balken.grau:hover {
+  background-color: #575756;
+}
+.ueberschrift-balken.gruen:hover {
+  background-color: #009245;
+}
+.ueberschrift-balken img {
+  margin-left: 10px;
+  width: 20px;
+}
+/* Anmeldung ***********************************************************************************************************/
+
+.hintergrund {
+  background: -webkit-gradient(linear, center top, center bottom, from(#9C9A9A), color-stop(26%, #575756));
+  background: -webkit-linear-gradient(top, #9C9A9A, #575756 142px);
+  background: linear-gradient(to bottom, #9C9A9A, #575756 142px);
+  height: 162px;
+}
+.logo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 116px;
+}
+.loginbox {
+  margin: -55px auto 0;
+  width: 240px;
+}
+.loginbox h2 {
+  text-align: center;
+}
+.loginform {
+  margin-top: 35px;
+}
+/* Menüseiten ***********************************************************************************************************/
+
+.menue {
+  background-color: #dedede;
+}
+.menueheader, .menueinhalt {
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+}
+.menueheader {
+  margin-bottom: 20px;
+  padding: 5px 20px 12px;
+}
+.menueheader .logo {
+  float: left;
+  margin-right: 10px;
+  width: 103px;
+}
+.menueheader .biogas {
+  color: #009245;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-top: 5px;
+}
+.menueheader .nsm {
+  color: #009245;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.menueinhalt {
+  padding: 20px 20px 0;
+}
+.menueinhalt .ueberschrift {
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.menueinhalt .btn {
+  height: 100px;
+  margin-bottom: 20px;
+  width: 130px;
+}
+.menueinhalt .btn-gross {
+  margin-bottom: 20px;
+  width: 280px;
+}
+.menueinhalt .abgaben, .menueinhalt .auswertungen {
+  margin-right: 14px;
+}
+.menueinhalt .menue-icon {
+  margin: 15px auto 0;
+  width: 40px;
+}
+.menuefooter {
+  margin-top: 20px;
+  text-align: center;
+}
+.menuefooter a {
+  text-decoration: none;
+}
+.menuefooter .impressum {
+  margin-right: 70px;
+}
+.untermenueinhalt {
+  padding: 0 0 18px;
+  text-align: center;
+}
+.stammdatenmenue .btn {
+  height: 10%;
+  margin-bottom: 2%;
+}
+.stammdatenmenue .menue-icon {
+  margin-top: 5px;
+  width: 20px;
+}
+/* Buchungsseiten ******************************************************************************************************/
+
 .formular h2 {
   margin-top: -5px;
   margin-bottom: 25px;
@@ -59,28 +315,11 @@ form {
   margin: 0 auto;
   width: 280px;
 }
-.container {
-  background-color: #fff;
-  margin: 0 auto;
-  max-width: 320px;
-  width: 100%;
-}
-/* Allgemein */
-
-.hauptblock {
-  border: 1px solid #a1a1a1;
-  border-radius: 10px;
-  padding: 0 20px 20px;
-  width: 100%;
+.formular {
+  padding-bottom: 10px;
 }
 .form-group {
   margin-top: 10px;
-}
-.nodisplay {
-  display: none;
-}
-.desktop {
-  display: none;
 }
 input, select {
   border: 1px solid #9c9a9a;
@@ -171,222 +410,8 @@ a.btn, button {
   text-align: center;
   color: #FFFFFF;
 }
-#btn-buchen, #btn-login {
+.btn-buchen, .btn-login {
   margin-top: 15px;
-}
-.alert {
-  color: red;
-}
-.ueberschrift-tabelle {
-  border-top: 1px solid;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 20px;
-  width: 280px;
-}
-.ueberschrift-tabelle h2 {
-  margin-bottom: 10px;
-}
-/* Anmeldeseite */
-
-#hintergrund {
-  background: -webkit-gradient(linear, center top, center bottom, from(#9C9A9A), color-stop(26%, #575756));
-  background: -webkit-linear-gradient(top, #9C9A9A, #575756 142px);
-  background: linear-gradient(to bottom, #9C9A9A, #575756 142px);
-  height: 162px;
-}
-.logo {
-  margin-left: auto;
-  margin-right: auto;
-  width: 116px;
-}
-#loginbox {
-  margin: -55px auto 0;
-  width: 240px;
-}
-#loginbox h2 {
-  text-align: center;
-}
-#loginform {
-  margin-top: 35px;
-}
-/* Menü */
-
-.menue {
-  background-color: #dedede;
-}
-.menueheader, .menueinhalt {
-  background-color: #fff;
-  margin-left: auto;
-  margin-right: auto;
-  width: 320px;
-}
-.menueheader {
-  margin-bottom: 20px;
-  padding: 5px 20px 12px;
-}
-.menueheader .logo {
-  float: left;
-  margin-right: 10px;
-  width: 103px;
-}
-.menueheader .biogas {
-  color: #009245;
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 30px;
-  margin-top: 5px;
-}
-.menueheader .nsm {
-  color: #009245;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 22px;
-}
-.menueinhalt {
-  padding: 20px 20px 0;
-}
-.menueinhalt .ueberschrift {
-  font-size: 22px;
-  line-height: 26px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.gruen {
-  background-color: #009245;
-}
-.gruen:hover {
-  background-color: #027538;
-}
-.grau {
-  background-color: #575756;
-}
-.grau:hover {
-  background-color: #454545;
-}
-.menueinhalt .btn {
-  height: 100px;
-  margin-bottom: 20px;
-  width: 130px;
-}
-.menueinhalt .btn-gross {
-  margin-bottom: 20px;
-  width: 280px;
-}
-.menueinhalt .abgaben, .menueinhalt .auswertungen {
-  margin-right: 14px;
-}
-.menueinhalt .menue-icon {
-  margin: 15px auto 0;
-  width: 40px;
-}
-.menuefooter {
-  margin-top: 20px;
-  text-align: center;
-}
-.menuefooter a {
-  text-decoration: none;
-}
-.menuefooter .impressum {
-  margin-right: 70px;
-}
-/* Header */
-
-#header-container {
-  margin-top: 0;
-  padding: 10px 20px;
-  width: 320px;
-}
-#header-container a {
-  text-decoration: none;
-}
-#header-container .logo {
-  float: left;
-  margin-right: 10px;
-  width: 68px;
-}
-#header-container .biogas {
-  color: #009245;
-  font-size: 21px;
-  font-weight: 700;
-  line-height: 25px;
-}
-#header-container .nsm {
-  color: #009245;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 17px;
-}
-#navbar {
-  height: 30px;
-}
-#navbar ul {
-  list-style-type: none;
-}
-#navbar ul li {
-  float: right;
-}
-#navbar a {
-  border: 1px solid #009245;
-  color: #009245;
-  display: inline-block;
-  float: right;
-  font-size: 16px;
-  height: 26px;
-  line-height: 19px;
-  margin-left: 5px;
-  padding: 2px 7px;
-  text-decoration: none;
-}
-/* Menüseiten */
-
-.untermenueinhalt {
-  padding: 0 0 18px;
-  text-align: center;
-}
-.ueberschrift-balken {
-  color: #fff;
-  font-size: 18px;
-  height: 36px;
-  line-height: 22px;
-  margin-bottom: 20px;
-  padding-top: 5px;
-  text-align: center;
-}
-.ueberschrift-balken.grau:hover {
-  background-color: #575756;
-}
-.ueberschrift-balken.gruen:hover {
-  background-color: #009245;
-}
-.ueberschrift-balken img {
-  margin-left: 10px;
-  width: 20px;
-}
-.stammdatenmenue .btn {
-  height: 10%;
-  margin-bottom: 2%;
-}
-.stammdatenmenue .menue-icon {
-  margin-top: 5px;
-  width: 20px;
-}
-.footer {
-  margin-top: 20px;
-  text-align: center;
-}
-.footer a {
-  text-decoration: none;
-}
-/* Buchungsseiten */
-
-.formular {
-  padding-bottom: 10px;
-}
-/* Sonstiges */
-
-#bilanz-tabelle #zeitraum, #abnahmevertraege-tabelle #zeitraum {
-  margin-top: 10px;
 }
 .buchungen .table-wrap {
   padding-top: 37px;
@@ -396,72 +421,28 @@ a.btn, button {
   max-height: 200px;
   overflow-y: auto;
 }
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  font-size: 12px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 280px;
-}
-thead.sticky th {
-  color: transparent;
-  height: 0;
-  line-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  border: none;
-  white-space: nowrap;
-}
-th div {
-  position: absolute;
-  background: transparent;
-  color: #282828;
-  padding: 9px 25px;
-  top: 0;
-  margin-left: -25px;
-  line-height: normal;
-}
-th div#abgaben-menge {
+/* Abgaben */
+
+th .abgaben-menge {
   padding-top: 0;
 }
-th div#abgaben-abnehmer {
+th .abgaben-abnehmer {
   padding-left: 30px;
 }
-tr {
-  border-bottom: 1px solid #bbb;
-  cursor: pointer;
-  height: 37px;
-}
-tr:hover {
-  background-color: #ccc;
-}
-tr.th {
-  cursor: inherit;
-  height: 0;
-}
-td {
-  padding: 0 5px;
-}
-.t-id {
-  display: none;
-}
-.t-rechts {
-  text-align: right;
-}
-}
+/* Auswertungsseiten ***************************************************************************************************/
+
 /* Diagramme */
 
 svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
   display: none;
 }
-#bd-bilanz .bar-chart rect {
+.bd-bilanz .bar-chart rect {
   fill: #4B610B;
 }
-#bd-bilanz .bar-chart rect:nth-child(odd) {
+.bd-bilanz .bar-chart rect:nth-child(odd) {
   fill: #38610B;
 }
-#pie {
+.pie {
   position: relative;
 }
 svg.kreisdiagramm {
@@ -475,6 +456,8 @@ svg.kreisdiagramm text {
 svg.kreisdiagramm path {
   stroke: #ccc;
 }
+/* Media Queries *******************************************************************************************************/
+
 @media screen and (min-width:360px) {
   .menue {
     padding: 20px;
@@ -486,7 +469,7 @@ svg.kreisdiagramm path {
   }
 }
 @media screen and (min-height:660px) {
-  #header-container {
+  .header-container {
     margin-top: 20px;
   }
   .untermenueinhalt {
