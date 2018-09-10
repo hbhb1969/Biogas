@@ -108,12 +108,14 @@ td {
   font-size: 21px;
   font-weight: 700;
   line-height: 25px;
+  text-align: center;
 }
 .header .nsm {
   color: #009245;
   font-size: 14px;
   font-weight: 300;
   line-height: 17px;
+  text-align: center;
 }
 .navbar {
   height: 30px;
@@ -389,8 +391,6 @@ fieldset {
   right: 15px;
   top: 15px;
   color: #c1c1c1;
-}
-.select-wrapper:before {
   pointer-events: none;
 }
 .checkboxen {
@@ -461,6 +461,21 @@ svg.kreisdiagramm path {
 @media screen and (min-width:360px) {
   .menue {
     padding: 20px;
+  }
+}
+@media screen and (min-width:700px) {
+  /* Header */
+  .header-container {
+    max-width: 660px;
+    width: 660px;
+  }
+  .header {
+    float: left;
+    width: 200px;
+  }
+  .navbar {
+    margin-bottom: 5px;
+    margin-top: -5px;
   }
 }
 @media screen and (min-width:960px) {
