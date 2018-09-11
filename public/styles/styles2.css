@@ -148,13 +148,14 @@ td {
   border-top: 1px solid;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
+  padding-top: 15px;
   width: 280px;
 }
 .ueberschrift-tabelle h2 {
   margin-bottom: 10px;
 }
 .footer {
+  clear: both;
   margin-top: 20px;
   text-align: center;
 }
@@ -183,13 +184,18 @@ td {
   background-color: #454545;
 }
 .ueberschrift-balken {
+  height: 36px;
+  margin: 0 auto;
+  padding-top: 5px;
+  position: relative;
+  width: 320px;
+}
+.ueberschrift-balken-inhalt {
   color: #fff;
   font-size: 18px;
-  height: 36px;
   line-height: 22px;
-  margin-bottom: 20px;
-  padding-top: 5px;
-  text-align: center;
+  margin-left: 90px;
+  padding-top: 2px;
 }
 .ueberschrift-balken.grau:hover {
   background-color: #575756;
@@ -199,7 +205,9 @@ td {
 }
 .ueberschrift-balken img {
   margin-left: 10px;
-  width: 20px;
+  position: absolute;
+  top: 3px;
+  width: 30px;
 }
 /* Anmeldung ***********************************************************************************************************/
 
@@ -307,7 +315,6 @@ td {
 /* Buchungsseiten ******************************************************************************************************/
 
 .formular h2 {
-  margin-top: -5px;
   margin-bottom: 25px;
 }
 label {
@@ -315,6 +322,7 @@ label {
 }
 form {
   margin: 0 auto;
+  padding-top: 15px;
   width: 280px;
 }
 .formular {
@@ -413,6 +421,9 @@ a.btn, button {
 .btn-buchen, .btn-login {
   margin-top: 15px;
 }
+.btn-abbrechen {
+  margin-bottom: 10px;
+}
 .buchungen .table-wrap {
   padding-top: 37px;
   position: relative;
@@ -477,6 +488,37 @@ svg.kreisdiagramm path {
     margin-bottom: 5px;
     margin-top: -5px;
   }
+  /* Buchungsseiten */
+  div.ueberschrift-balken {
+    margin: 0 auto 20px;
+    width: 660px;
+  }
+  .ueberschrift-balken-inhalt {
+    margin-left: 20px;
+  }
+  .formular {
+    float: left;
+    margin-left: calc((100% - 660px) / 2);
+  }
+  .tabelle {
+    float: right;
+    margin-right: calc((100% - 660px) / 2);
+  }
+  .ueberschrift-tabelle {
+    border: none;
+  }
+  .buchungen-wrapper {
+    display: flex;
+    flex-wrap: wrap
+  }
+  .buchungen .table {
+    max-height: 270px;
+  }
+  .footer {
+    clear: both;
+    margin-left: calc((100% - 580px) / 2);
+    text-align: left;
+  }
 }
 @media screen and (min-width:960px) {
   .desktop-tc {
@@ -487,7 +529,7 @@ svg.kreisdiagramm path {
   .header-container {
     margin-top: 20px;
   }
-  .untermenueinhalt {
+  .ueberschrift-balken {
     margin-top: 20px;
   }
 }
