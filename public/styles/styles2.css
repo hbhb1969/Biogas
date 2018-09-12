@@ -108,14 +108,12 @@ td {
   font-size: 21px;
   font-weight: 700;
   line-height: 25px;
-  text-align: center;
 }
 .header .nsm {
   color: #009245;
   font-size: 14px;
   font-weight: 300;
   line-height: 17px;
-  text-align: center;
 }
 .navbar {
   height: 30px;
@@ -188,13 +186,14 @@ td {
   margin: 0 auto;
   padding-top: 5px;
   position: relative;
+  text-align: center;
   width: 320px;
 }
 .ueberschrift-balken-inhalt {
   color: #fff;
   font-size: 18px;
   line-height: 22px;
-  margin-left: 90px;
+  margin-left: -20px;
   padding-top: 2px;
 }
 .ueberschrift-balken.grau:hover {
@@ -274,6 +273,9 @@ td {
   margin-bottom: 20px;
   text-align: center;
 }
+.menueinhalt .ueberschrift-balken {
+  margin-bottom: 20px;
+}
 .menueinhalt .btn {
   height: 100px;
   margin-bottom: 20px;
@@ -301,12 +303,15 @@ td {
   margin-right: 70px;
 }
 .untermenueinhalt {
-  padding: 0 0 18px;
+  padding: 0;
   text-align: center;
 }
 .stammdatenmenue .btn {
   height: 10%;
   margin-bottom: 2%;
+}
+.stammdatenmenue .btn:last-of-type {
+  margin-bottom: 20px;
 }
 .stammdatenmenue .menue-icon {
   margin-top: 5px;
@@ -489,12 +494,12 @@ svg.kreisdiagramm path {
     margin-top: -5px;
   }
   /* Buchungsseiten */
-  div.ueberschrift-balken {
+  .ueberschrift-balken.buchungen {
     margin: 0 auto 20px;
     width: 660px;
   }
-  .ueberschrift-balken-inhalt {
-    margin-left: 20px;
+  .ueberschrift-buchungen .ueberschrift-balken-inhalt {
+    margin-left: -20px;
   }
   .formular {
     float: left;
