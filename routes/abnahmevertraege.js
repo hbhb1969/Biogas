@@ -5,6 +5,8 @@ const fetch = require('node-fetch');
 // ---------- Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
+  let headerTitel = "Abnahmeverträge";
+  let headerBild = "fuetterungen.svg ";
   let jahr = '';
   let jahrOptions = '';
   let abnahmevertraege = '';
@@ -26,6 +28,8 @@ exports.get = function(req, res, next) {
     })
     .then(function(json) {
       res.render('abnahmevertraege.ejs', {
+        headerTitel: headerTitel,
+        headerBild: headerBild,
         abnahmevertraege: abnahmevertraege,
         jahr: jahr,
         jahrOptions: jahrOptions,
@@ -40,6 +44,8 @@ exports.get = function(req, res, next) {
 // ---------- Bilanz anzeigen ----------
 exports.post = function(req, res, next) {
   let message = '';
+  let headerTitel = "Abnahmeverträge";
+  let headerBild = "fuetterungen.svg ";
   let abnahmevertraege = '';
   let jahrOptions = '';
   const user = req.session.user,
@@ -82,6 +88,8 @@ exports.post = function(req, res, next) {
         })
         .then(function() {
           res.render('abnahmevertraege.ejs', {
+            headerTitel: headerTitel,
+            headerBild: headerBild,
             abnahmevertraege: abnahmevertraege,
             jahr: jahr,
             jahrOptions: jahrOptions,

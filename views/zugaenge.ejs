@@ -1,7 +1,6 @@
-<%- include header %>
-  <section id="zugaenge-formular" class="container">
-    <div class="hauptblock">
-      <h1>Zugänge</h1>
+<%- include header2 %>
+<div class="buchungen-wrapper">
+    <section id="zugaenge-formular" class="container formular">
       <form role="form">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -12,7 +11,7 @@
               <p>Fehler:</p>
               <span></span>
             </div>
-
+            <h2>Buchung eingeben</h2>
             <div class="form-group">
               <div>
                 <input type="number" class="form-control nodisplay" hidden name="Z_ID" >
@@ -48,30 +47,31 @@
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-buchen" type="submit" class="btn" formaction="/buchen/zugaenge" formmethod="post">Buchen</button>
+                <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/buchen/zugaenge" formmethod="post">Buchen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge-put" formmethod="post">Ändern</button>
+                <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/buchen/zugaenge-put" formmethod="post">Ändern</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-loeschen" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge-delete" formmethod="post">Löschen</button>
+                <button id="btn-loeschen" type="submit" class="btn nodisplay gruen btn-loeschen" formaction="/buchen/zugaenge-delete" formmethod="post">Löschen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/zugaenge" formmethod="get">Abbrechen</button>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/buchen/zugaenge" formmethod="get">Abbrechen</button>
               </div>
             </div>
       </form>
-    </div>
   </section>
-  <section id="zugaenge-tabelle" class="container">
+  <section id="zugaenge-tabelle" class="container tabelle">
     <div class="hauptblock buchungen">
-      <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
       <div class="table-wrap">
         <div class="table">
           <table>
@@ -107,5 +107,6 @@
       </div>
     </div>
   </section>
+</div>
   <script language="javascript" type="text/javascript" src="/scripts/zugaenge.js"></script>
   <%- include footer %>

@@ -1,7 +1,6 @@
-<%- include header %>
-  <section id="abgaben-formular" class="container">
-    <div class="hauptblock">
-      <h1>Abgaben</h1>
+<%- include header2 %>
+<div class="buchungen-wrapper">
+  <section id="abgaben-formular" class="container formular">
       <form role="form" onsubmit="return validiereForm('abgaben')">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -12,6 +11,7 @@
               <p>Fehler:</p>
               <span></span>
             </div>
+            <h2>Buchung eingeben</h2>
             <div class="form-group">
               <div>
                 <input type="number" class="form-control nodisplay" hidden name="AG_ID" >
@@ -47,30 +47,32 @@
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-buchen" type="submit" class="btn" formaction="/buchen/abgaben" formmethod="post">Buchen</button>
+                <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/buchen/abgaben" formmethod="post">Buchen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/buchen/abgaben-put" formmethod="post">Ändern</button>
+                <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/buchen/abgaben-put" formmethod="post">Ändern</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-loeschen" type="submit" class="btn nodisplay" formaction="/buchen/abgaben-delete" formmethod="post">Löschen</button>
+                <button id="btn-loeschen" type="submit" class="btn nodisplay gruen btn-loeschen" formaction="/buchen/abgaben-delete" formmethod="post">Löschen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/buchen/abgaben" formmethod="get">Abbrechen</button>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/buchen/abgaben" formmethod="get">Abbrechen</button>
               </div>
             </div>
       </form>
-    </div>
   </section>
-  <section id="abgaben-tabelle" class="container">
-    <div class="hauptblock buchungen">
-      <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
+  <section id="abgaben-tabelle" class="container tabelle">
+    <div class="buchungen">
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
+
       <div class="table-wrap">
         <div class="table">
           <table id="abgaben">
@@ -106,6 +108,7 @@
       </div>
     </div>
   </section>
+</div>
   <script language="javascript" type="text/javascript" src="/scripts/abgaben.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
   <%- include footer %>

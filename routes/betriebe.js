@@ -9,7 +9,8 @@ exports.get = function(req, res, next) {
 
   const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
-
+  let headerTitel = "Betriebe";
+  let headerBild = "fuetterungen.svg ";
   let buchungenBetriebe = "";
 
   fetch("http://localhost:8080/tabellen/betriebe", options)
@@ -29,6 +30,8 @@ exports.get = function(req, res, next) {
       res.render('betriebe.ejs', {
         user: user,
         message: message,
+        headerTitel: headerTitel,
+        headerBild: headerBild,
         buchungenBetriebe: buchungenBetriebe
       });
     })

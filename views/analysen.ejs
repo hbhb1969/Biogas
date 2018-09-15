@@ -1,7 +1,6 @@
-<%- include header %>
-  <section id="analyse-formular" class="container">
-    <div class="hauptblock">
-      <h1>Analysen</h1>
+<%- include header2 %>
+<div class="buchungen-wrapper">
+    <section id="analyse-formular" class="container formular analyse-formular">
       <form role="form" onsubmit="return validiereForm('analyse')">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -12,6 +11,7 @@
               <p>Fehler:</p>
               <span></span>
             </div>
+            <h2>Buchung eingeben</h2>
             <div class="form-group">
               <div>
                 <input type="number" class="form-control nodisplay" hidden name="A_ID" >
@@ -56,31 +56,32 @@
             <div class="form-group">
               <label for="SA_A_Wert" class="control-label">Wert</label>
               <div>
-                <input type="number" value="" class="form-control" id="wert" name="SA_A_Wert" placeholder="Wert" required>
+                <input type="number" step="0.01" value="" class="form-control" id="wert" name="SA_A_Wert" placeholder="Wert" required>
                 <p id="error-wert" class="nodisplay alert"></p>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-buchen" type="submit" class="btn" formaction="/daten/analysen" formmethod="post">Buchen</button>
+                <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/analysen" formmethod="post">Buchen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/daten/analysen-put" formmethod="post">Ändern</button>
+                <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/analysen-put" formmethod="post">Ändern</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/daten/analysen" formmethod="get">Abbrechen</button>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/analysen" formmethod="get">Abbrechen</button>
               </div>
             </div>
       </form>
-    </div>
   </section>
-  <section id="analysen-tabelle" class="container">
+  <section id="analysen-tabelle" class="container tabelle analysen-tabelle">
     <div class="hauptblock buchungen">
-      <h1>Buchungen</h1> Zum Ändern oder Löschen anklicken.
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
       <div class="table-wrap">
         <div class="table">
           <table id="analysen">
@@ -124,6 +125,7 @@
       </div>
     </div>
   </section>
+</div>
   <script language="javascript" type="text/javascript" src="/scripts/analysen.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
   <%- include footer %>

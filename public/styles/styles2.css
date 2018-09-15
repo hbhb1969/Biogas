@@ -91,12 +91,17 @@ td {
   text-align: right;
 }
 .header-container {
+  height: 65px;
   margin-top: 0;
   padding: 10px 20px;
+  position: relative;
   width: 320px;
 }
 .header-container a {
   text-decoration: none;
+}
+.header {
+  width: 200px;
 }
 .header .logo {
   float: left;
@@ -117,6 +122,9 @@ td {
 }
 .navbar {
   height: 30px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
 }
 .navbar ul {
   list-style-type: none;
@@ -125,16 +133,19 @@ td {
   float: right;
 }
 .navbar a {
-  border: 1px solid #009245;
-  color: #009245;
   display: inline-block;
   float: right;
-  font-size: 16px;
-  height: 26px;
-  line-height: 19px;
-  margin-left: 5px;
-  padding: 2px 7px;
+  margin-left: 20px;
   text-decoration: none;
+  width: 20px;
+}
+.navbar img {
+  margin-top: -5px;
+  transform: scale(0.9);
+  width: 25px;
+}
+.navbar img:hover {
+transform: scale(1);
 }
 .container {
   background-color: #fff;
@@ -303,7 +314,6 @@ td {
   margin-right: 70px;
 }
 .untermenueinhalt {
-  padding: 0;
   text-align: center;
 }
 .stammdatenmenue .btn {
@@ -445,8 +455,36 @@ th .abgaben-menge {
 th .abgaben-abnehmer {
   padding-left: 30px;
 }
-/* Auswertungsseiten ***************************************************************************************************/
+.analysen-tabelle th, .analysen-tabelle th div, .analysen-tabelle td {
+  font-size: 12px;
+}
+.tabelle {
+  padding-bottom: 20px;
+}
 
+/* Auswertungsseiten ***************************************************************************************************/
+.tabelle-auswertung {
+  padding-top: 20px;
+}
+.tabelle-auswertung .hauptblock {
+  margin: auto;
+  width: 280px;
+}
+.tabelle-auswertung tr:hover {
+  background-color: initial;
+}
+.diagramm-beschriftung {
+  background-color: #fff;
+  margin: auto;
+  padding-bottom: 20px;
+  width: 320px;
+}
+.kd-abnahmevertraege {
+  background-color: #fff;
+  height: 350px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 /* Diagramme */
 
 svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
@@ -493,6 +531,19 @@ svg.kreisdiagramm path {
     margin-bottom: 5px;
     margin-top: -5px;
   }
+  .navbar a {
+    width: 40px;
+  }
+  .navbar img {
+    margin-top: -5px;
+    width: 40px;
+  }
+/* Menüseiten */
+.menueinhalt {
+  padding-left: 190px;
+  padding-right: 190px;
+  width: 660px;
+}
   /* Buchungsseiten */
   .ueberschrift-balken.buchungen {
     margin: 0 auto 20px;
@@ -519,15 +570,58 @@ svg.kreisdiagramm path {
   .buchungen .table {
     max-height: 270px;
   }
+  .analyse-formular {
+    max-width: 260px;
+  }
+  .analyse-formular form {
+    width: calc(100% - 40px);
+  }
+  .analysen-tabelle {
+    max-width: 380px;
+  }
+  .analysen-tabelle .ueberschrift-tabelle {
+    width: 340px;
+  }
+  .analysen-tabelle .buchungen .table {
+    max-height: 450px;
+  }
+  .betriebe-tabelle .buchungen .table {
+    max-height: 580px;
+  }
+  .analysen-tabelle th, .analysen-tabelle td {
+    font-size: 14px;
+  }
+  /* Auswertungsseiten */
+  .links {
+    background-color: #fff;
+  float: left;
+  margin-left: calc((100% - 660px) / 2);
+  min-height: 320px;
+    width: 320px;
+  }
+  .links .formular {
+    float: none;
+  margin-left: initial;
+  }
+  .links .tabelle {
+    float: none;
+  margin-right: initial;
+  }
+  .rechts {
+    background-color: #fff;
+    float: right;
+  margin-left: 20px;
+  width: 320px;
+  }
+  .bd-bilanz {
+    padding-top: 80px;
+  }
+
+  /* Footer */
   .footer {
     clear: both;
     margin-left: calc((100% - 580px) / 2);
     text-align: left;
-  }
-}
-@media screen and (min-width:960px) {
-  .desktop-tc {
-    display: table-cell;
   }
 }
 @media screen and (min-height:660px) {
@@ -535,7 +629,7 @@ svg.kreisdiagramm path {
     margin-top: 20px;
   }
   .ueberschrift-balken {
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 @media screen and (min-height:730px) {

@@ -3,6 +3,8 @@ const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
+  let headerTitel = "Lager";
+  let headerBild = "fuetterungen.svg ";
   const fetch = require('node-fetch');
   const user = req.session.user,
     userId = req.session.userId;
@@ -41,6 +43,8 @@ exports.get = function(req, res, next) {
           res.render('lager.ejs', {
             user: user,
             message: message,
+            headerTitel: headerTitel,
+            headerBild: headerBild,
             stoffOptions: stoffOptions,
             buchungenLager: buchungenLager
           });

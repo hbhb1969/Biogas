@@ -1,7 +1,6 @@
-<%- include header %>
-  <section id="stoffe-formular" class="container">
-    <div class="hauptblock">
-      <h1>Rohstoffe</h1>
+<%- include header2 %>
+<div class="buchungen-wrapper">
+  <section id="stoffe-formular" class="container formular">
       <form role="form">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -12,11 +11,12 @@
               <p>Fehler:</p>
               <span></span>
             </div>
+            <h2>Buchung eingeben</h2>
             <div class="form-group">
               <div>
-                <fieldset>
-                  <input type="radio" class="" name="Stoffart" id="lager-radio" value="lager" onchange="ansichtWechseln()" checked="checked"><label for="lager">Lagerrohstoff</label>
-                  <input type="radio" class="" name="Stoffart" id="direkt-radio" value="direkt" onchange="ansichtWechseln()"><label for="lager">Direktrohstoff</label>
+                <fieldset class="stoffart">
+                  <label><input type="radio" class="" name="Stoffart" id="lager-radio" value="lager" onchange="ansichtWechseln()" checked="checked"><span>Lagerrohstoff</span></label>
+                  <label><input type="radio" class="" name="Stoffart" id="direkt-radio" value="direkt" onchange="ansichtWechseln()"><span>Direktrohstoff</span></label>
                 </fieldset>
               </div>
             </div>
@@ -49,25 +49,26 @@
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-buchen" type="submit" class="btn" formaction="/daten/rohstoffe" formmethod="post">Hinzufügen</button>
+                <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/rohstoffe" formmethod="post">Hinzufügen</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-aendern" type="submit" class="btn nodisplay" formaction="/daten/rohstoffe-put" formmethod="post">Ändern</button>
+                <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/rohstoffe-put" formmethod="post">Ändern</button>
               </div>
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-abbrechen" type="submit" class="btn nodisplay" formaction="/daten/rohstoffe" formmethod="get">Abbrechen</button>
+                <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/rohstoffe" formmethod="get">Abbrechen</button>
               </div>
             </div>
       </form>
-    </div>
   </section>
-  <section id="stoffe-tabelle" class="container">
+  <section id="stoffe-tabelle" class="container tabelle stoffe-tabelle">
     <div class="hauptblock buchungen">
-      <h1>Rohstoffe</h1> Zum Ändern anklicken.
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
       <div  id="stoffe-lager" class="table-wrap">
         <div class="table">
           <table>
@@ -124,5 +125,6 @@
       </div>
     </div>
   </section>
+</div>
   <script language="javascript" type="text/javascript" src="/scripts/rohstoffe.js"></script>
   <%- include footer %>

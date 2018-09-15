@@ -11,7 +11,7 @@ for (let i = 0; i < alleZellen.length; i = i + 2) {
   daten.push(Number(alleZellen[i].innerHTML));
 }
 
-let svgWidth = 340;
+let svgWidth = 320;
 let svgHeight = 300;
 let barPadding = 5;
 let axisWidth = 50;
@@ -19,7 +19,7 @@ let animationsdauer = 1000;
 
 let barWidth = ((svgWidth - axisWidth) / daten.length);
 
-let tooltip = d3.select('body').append('div') // Tooltip, der beim Hovern über den Blaken angezeigt wird
+let tooltip = d3.select('body').append('div') // Tooltip, der beim Hovern über den Balken angezeigt wird
   .style('position', 'absolute')
   .style('background', '#f4f4f4')
   .style('padding', '5px 15px')

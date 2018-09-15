@@ -17,7 +17,7 @@
           <img src="\bilder\logo.svg">
         </div>
         <div class="biogas">
-          BIOGAS 
+          BIOGAS
         </div>
         <div class="nsm">
           Nährstoffmanager
@@ -27,9 +27,14 @@
     <nav>
       <div class="navbar">
         <ul class="nav">
-          <li><a href="/abmelden">Abmelden</a></li>
-          <li><a href="/hauptmenue">Menü</a></li>
+          <li><a href="/abmelden"><img src="\bilder\abmelden.png"></a></li>
+          <li><a href="/hauptmenue"><img src="\bilder\menue.png"></a></li>
         </ul>
       </div>
     </nav>
+  </div>
+  <div class="ueberschrift-balken buchungen grau">
+    <div class="ueberschrift-balken-inhalt">
+      <% if (headerTitel.length > 0) { %><%= headerTitel %><% } %><img src="\bilder\<% if (headerBild.length > 0) { %><%= headerBild %><% } %>">
+    </div>
   </div>

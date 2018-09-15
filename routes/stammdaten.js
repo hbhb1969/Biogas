@@ -1,4 +1,9 @@
 exports.menue = function(req, res) {
   let message = '';
-  res.render('stammdaten', {});
+  let headerTitel = "Stammdaten";
+  let headerBild = "stammdaten.svg ";
+  res.render('stammdaten', {
+    headerTitel: headerTitel,
+    headerBild: headerBild,
+  });
 };

@@ -49,6 +49,8 @@ exports.hauptmenue = function(req, res, next) {
     res.redirect("/anmelden");
     return;
   }
+  let headerTitel = "Menü";
+  let headerBild = "menue-weiss.png ";
 
   const sql = "SELECT * FROM `Benutzer` WHERE `BEN_ID`='" + userId + "'";
   db.query(sql, function(err, results) {
@@ -57,7 +59,9 @@ exports.hauptmenue = function(req, res, next) {
     }
     res.render('hauptmenue.ejs', {
       user: user,
-      message: message
+      message: message,
+      headerTitel: headerTitel,
+      headerBild: headerBild
     });
   });
 };

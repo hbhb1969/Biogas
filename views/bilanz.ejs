@@ -1,7 +1,8 @@
-<%- include header %>
-  <section id="bilanz-formular" class="container">
-    <div class="hauptblock">
-      <h1>Nährstoffbilanz</h1>
+<%- include header2 %>
+<div class="buchungen-wrapper">
+  <div class="links">
+
+  <section id="bilanz-formular" class="container formular">
       <form role="form" onsubmit="return validiereForm('bilanz')">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -12,6 +13,7 @@
               <p>Fehler:</p>
               <span></span>
             </div>
+            <h2>Auswertungszeitraum eingeben</h2>
             <div class="form-group">
               <label for="Anfangsdatum" class="control-label">von</label>
               <div>
@@ -27,17 +29,16 @@
             </div>
             <div class="form-group">
               <div>
-                <button id="btn-anzeigen" type="submit" class="btn" formaction="/auswertungen/bilanz" formmethod="post" >Anzeigen</button>
+                <button id="btn-anzeigen" type="submit" class="btn gruen btn-anzeigen" formaction="/auswertungen/bilanz" formmethod="post" >Anzeigen</button>
               </div>
             </div>
       </form>
-    </div>
   </section>
 
   <% if (anfangsdatum.length > 0) { %>
-  <section class="container" id="tabelle-bilanz">
+  <section class="container tabelle tabelle-auswertung" id="tabelle-bilanz">
     <div class="hauptblock ">
-      <div id="zeitraum">Zeitraum vom <%= anfangsdatum %> bis <%= enddatum %></div>
+      <h2>Zeitraum vom <%= anfangsdatum %> bis <%= enddatum %></h2>
       <div class="table-wrap">
         <div class="table">
           <table id="table-bilanz">
@@ -65,12 +66,19 @@
       </div>
     </div>
   </section>
+</div>
+<div class="rechts">
 
   <section class="container bd-bilanz" id="bd-bilanz">
     <svg class="bar-chart"></svg>
   </section>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
+<div class="diagramm-beschriftung">
   <script language="javascript" type="text/javascript" src="/scripts/balkendiagramm.js"></script>
+</div>
+</div>
+</div>
   <% } %>
+
   <%- include footer %>
