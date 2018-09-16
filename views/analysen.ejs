@@ -1,5 +1,5 @@
-<%- include header2 %>
-<div class="buchungen-wrapper">
+<%- include header %>
+  <div class="buchungen-wrapper">
     <section id="analyse-formular" class="container formular analyse-formular">
       <form role="form" onsubmit="return validiereForm('analyse')">
         <% if (message.length > 0) { %>
@@ -14,10 +14,10 @@
             <h2>Buchung eingeben</h2>
             <div class="form-group">
               <div>
-                <input type="number" class="form-control nodisplay" hidden name="A_ID" >
+                <input type="number" class="form-control nodisplay" hidden name="A_ID">
               </div>
             </div>
-            <div class="form-group"id="stoff-wrapper">
+            <div class="form-group" id="stoff-wrapper">
               <label for="S_ID" class="control-label">Stoff</label>
               <div class="select-wrapper">
                 <select id="stoff" class="form-control" name="S_ID" placeholder="Stoff" required>
@@ -45,7 +45,7 @@
                 <p id="error-datum-gueltig" class="nodisplay alert"></p>
               </div>
             </div>
-            <div class="form-group"id="analysetyp-wrapper">
+            <div class="form-group" id="analysetyp-wrapper">
               <label for="AT_ID" class="control-label">Analysetyp</label>
               <div class="select-wrapper">
                 <select id="analysetyp" class="form-control" name="AT_ID" placeholder="Analysetyp" required>
@@ -76,56 +76,56 @@
               </div>
             </div>
       </form>
-  </section>
-  <section id="analysen-tabelle" class="container tabelle analysen-tabelle">
-    <div class="hauptblock buchungen">
-      <div class="ueberschrift-tabelle">
-        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
-      </div>
-      <div class="table-wrap">
-        <div class="table">
-          <table id="analysen">
-            <thead class="sticky">
-              <tr class="th">
-                <th class="t-id">
-                  ID
-                  <div>ID</div>
-                </th>
-                <th class="t-Stoffe">
-                  Stoff
-                  <div>Stoff</div>
-                </th>
-                <th class="t-externeid">
-                  Externe ID
-                  <div>Externe ID</div>
-                </th>
-                <th class="t-datum">
-                  Datum
-                  <div>Datum</div>
-                </th>
-                <th class="t-datum desktop desktop-tc">
-                  Gültigkeitsdatum
-                  <div>Gültigkeitsdatum</div>
-                </th>
-                <th class="t-aanalysetyp">
-                  Analysetyp
-                  <div id="analysetyp">Analysetyp</div>
-                </th>
-                <th class="t-wert desktop desktop-tc">
-                  Wert
-                  <div id="menge">Wert</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody onclick="auswahlTabelle(event)">
-              <%- buchungenAnalysen %>
-            </tbody>
-          </table>
+    </section>
+    <section id="analysen-tabelle" class="container tabelle analysen-tabelle">
+      <div class="hauptblock buchungen">
+        <div class="ueberschrift-tabelle">
+          <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+        </div>
+        <div class="table-wrap">
+          <div class="table">
+            <table id="analysen">
+              <thead class="sticky">
+                <tr class="th">
+                  <th class="t-id">
+                    ID
+                    <div>ID</div>
+                  </th>
+                  <th class="t-Stoffe">
+                    Stoff
+                    <div>Stoff</div>
+                  </th>
+                  <th class="t-externeid">
+                    Externe ID
+                    <div>Externe ID</div>
+                  </th>
+                  <th class="t-datum">
+                    Datum
+                    <div>Datum</div>
+                  </th>
+                  <th class="t-datum desktop desktop-tc">
+                    Gültigkeitsdatum
+                    <div>Gültigkeitsdatum</div>
+                  </th>
+                  <th class="t-aanalysetyp">
+                    Analysetyp
+                    <div id="analysetyp">Analysetyp</div>
+                  </th>
+                  <th class="t-wert desktop desktop-tc">
+                    Wert
+                    <div id="menge">Wert</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody onclick="auswahlTabelle(event)">
+                <%- buchungenAnalysen %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
   <script language="javascript" type="text/javascript" src="/scripts/analysen.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
   <%- include footer %>

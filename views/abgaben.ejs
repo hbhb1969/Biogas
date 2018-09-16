@@ -1,6 +1,6 @@
-<%- include header2 %>
-<div class="buchungen-wrapper">
-  <section id="abgaben-formular" class="container formular">
+<%- include header %>
+  <div class="buchungen-wrapper">
+    <section id="abgaben-formular" class="container formular">
       <form role="form" onsubmit="return validiereForm('abgaben')">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -14,7 +14,7 @@
             <h2>Buchung eingeben</h2>
             <div class="form-group">
               <div>
-                <input type="number" class="form-control nodisplay" hidden name="AG_ID" >
+                <input type="number" class="form-control nodisplay" hidden name="AG_ID">
               </div>
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
                 <p id="error-datum" class="nodisplay alert"></p>
               </div>
             </div>
-            <div class="form-group"id="lager-wrapper">
+            <div class="form-group" id="lager-wrapper">
               <label for="Lager_L_ID" class="control-label">Abnehmer</label>
               <div class="select-wrapper">
                 <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer" required>
@@ -66,49 +66,49 @@
               </div>
             </div>
       </form>
-  </section>
-  <section id="abgaben-tabelle" class="container tabelle">
-    <div class="buchungen">
-      <div class="ueberschrift-tabelle">
-        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
-      </div>
+    </section>
+    <section id="abgaben-tabelle" class="container tabelle">
+      <div class="buchungen">
+        <div class="ueberschrift-tabelle">
+          <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+        </div>
 
-      <div class="table-wrap">
-        <div class="table">
-          <table id="abgaben">
-            <thead class="sticky">
-              <tr class="th">
-                <th class="t-id">
-                  ID
-                  <div>ID</div>
-                </th>
-                <th class="t-datum">
-                  Beginn
-                  <div>Beginn</div>
-                </th>
-                <th class="t-datum">
-                  Ende
-                  <div>Ende</div>
-                </th>
-                <th class="t-menge">
-                  Menge <br>(cbm)
-                  <div class="abgaben-menge">Menge <br>(cbm)</div>
-                </th>
-                <th class="t-abnehmer">
-                  Abnehmer
-                  <div class="abgaben-abnehmer">Abnehmer</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody onclick="auswahlTabelle(event)">
-              <%- buchungenAbgaben %>
-            </tbody>
-          </table>
+        <div class="table-wrap">
+          <div class="table">
+            <table id="abgaben">
+              <thead class="sticky">
+                <tr class="th">
+                  <th class="t-id">
+                    ID
+                    <div>ID</div>
+                  </th>
+                  <th class="t-datum">
+                    Beginn
+                    <div>Beginn</div>
+                  </th>
+                  <th class="t-datum">
+                    Ende
+                    <div>Ende</div>
+                  </th>
+                  <th class="t-menge">
+                    Menge <br>(cbm)
+                    <div class="abgaben-menge">Menge <br>(cbm)</div>
+                  </th>
+                  <th class="t-abnehmer">
+                    Abnehmer
+                    <div class="abgaben-abnehmer">Abnehmer</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody onclick="auswahlTabelle(event)">
+                <%- buchungenAbgaben %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
   <script language="javascript" type="text/javascript" src="/scripts/abgaben.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
   <%- include footer %>

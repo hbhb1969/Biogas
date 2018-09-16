@@ -1,6 +1,6 @@
-<%- include header2 %>
-<div class="buchungen-wrapper">
-  <section id="stoffe-formular" class="container formular">
+<%- include header %>
+  <div class="buchungen-wrapper">
+    <section id="stoffe-formular" class="container formular">
       <form role="form">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
               <div>
-                <input type="number" class="form-control nodisplay" hidden name="S_ID" >
+                <input type="number" class="form-control nodisplay" hidden name="S_ID">
               </div>
             </div>
             <div class="form-group">
@@ -31,10 +31,10 @@
                 <input type="text" id="rohstoffbezeichnung" class="form-control" name="S_Bezeichnung" placeholder="Rohstoffbezeichnung" required>
               </div>
             </div>
-            <div class="form-group"id="stoff-wrapper">
+            <div class="form-group" id="stoff-wrapper">
               <label for="Mengeneinheit_ME_ID" class="control-label">Mengeneinheit</label>
               <div class="select-wrapper">
-                <select id="mengeneinheit" class="form-control" name="Mengeneinheit_ME_ID" placeholder="Mengeneinheit" >
+                <select id="mengeneinheit" class="form-control" name="Mengeneinheit_ME_ID" placeholder="Mengeneinheit">
                      <%- meOptions %>
                 </select>
               </div>
@@ -42,7 +42,7 @@
             <div class="form-group nodisplay" id="rohstoff-wrapper">
               <label for="Person_P_ID" class="control-label">Lieferant</label>
               <div class="select-wrapper">
-                <select id="lieferant" class="form-control" name="Person_P_ID" placeholder="Lieferant" >
+                <select id="lieferant" class="form-control" name="Person_P_ID" placeholder="Lieferant">
                      <%- lieferantOptions %>
                 </select>
               </div>
@@ -63,68 +63,68 @@
               </div>
             </div>
       </form>
-  </section>
-  <section id="stoffe-tabelle" class="container tabelle stoffe-tabelle">
-    <div class="hauptblock buchungen">
-      <div class="ueberschrift-tabelle">
-        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
-      </div>
-      <div  id="stoffe-lager" class="table-wrap">
-        <div class="table">
-          <table>
-            <thead class="sticky">
-              <tr class="th">
-                <th class="t-id">
-                  ID
-                  <div>ID</div>
-                </th>
-                <th class="t-stoffbez">
-                  Lagerrohstoff
-                  <div>Lagerrohstoff</div>
-                </th>
-                <th class="t-me" >
-                  Einheit
-                  <div>Einheit</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody onclick="auswahlTabelle(event)">
-              <%- buchungenLagerRohstoffe %>
-            </tbody>
-          </table>
+    </section>
+    <section id="stoffe-tabelle" class="container tabelle stoffe-tabelle">
+      <div class="hauptblock buchungen">
+        <div class="ueberschrift-tabelle">
+          <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+        </div>
+        <div id="stoffe-lager" class="table-wrap">
+          <div class="table">
+            <table>
+              <thead class="sticky">
+                <tr class="th">
+                  <th class="t-id">
+                    ID
+                    <div>ID</div>
+                  </th>
+                  <th class="t-stoffbez">
+                    Lagerrohstoff
+                    <div>Lagerrohstoff</div>
+                  </th>
+                  <th class="t-me">
+                    Einheit
+                    <div>Einheit</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody onclick="auswahlTabelle(event)">
+                <%- buchungenLagerRohstoffe %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="stoffe-direkt" class="table-wrap nodisplay">
+          <div class="table">
+            <table class="">
+              <thead class="sticky">
+                <tr class="th">
+                  <th class="t-id">
+                    ID
+                    <div>ID</div>
+                  </th>
+                  <th class="t-datum">
+                    Direktrohstoff
+                    <div>Direktrohstoff</div>
+                  </th>
+                  <th class="t-me">
+                    Einheit
+                    <div>Einheit</div>
+                  </th>
+                  <th class="t-lieferant">
+                    Lieferant
+                    <div>Lieferant</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody onclick="auswahlTabelle(event)">
+                <%- buchungenDirektRohstoffe %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div id="stoffe-direkt" class="table-wrap nodisplay">
-        <div class="table">
-          <table class="">
-            <thead class="sticky">
-              <tr class="th">
-                <th class="t-id">
-                  ID
-                  <div>ID</div>
-                </th>
-                <th class="t-datum">
-                  Direktrohstoff
-                  <div>Direktrohstoff</div>
-                </th>
-                <th class="t-me">
-                  Einheit
-                  <div>Einheit</div>
-                </th>
-                <th class="t-lieferant">
-                  Lieferant
-                  <div>Lieferant</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody onclick="auswahlTabelle(event)">
-              <%- buchungenDirektRohstoffe %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
   <script language="javascript" type="text/javascript" src="/scripts/rohstoffe.js"></script>
   <%- include footer %>

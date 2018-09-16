@@ -1,75 +1,75 @@
-<%- include header2 %>
-<div class="buchungen-wrapper">
-  <div class="links">
-  <section id="abnahmevertraege-formular" class="container formular">
-      <form role="form">
-        <% if (message.length > 0) { %>
-          <div class="alert">
-            <%= message %>
-          </div>
-          <% } %>
-            <div id="buchungsfehler" style="display:none" class="alert">
-              <p>Fehler:</p>
-              <span></span>
+<%- include header %>
+  <div class="buchungen-wrapper">
+    <div class="links">
+      <section id="abnahmevertraege-formular" class="container formular">
+        <form role="form">
+          <% if (message.length > 0) { %>
+            <div class="alert">
+              <%= message %>
             </div>
-            <div class="form-group">
-              <label for="Jahr" class="control-label">Jahr</label>
-              <div class="select-wrapper">
-                <select id="jahr" class="form-control" name="Jahr" placeholder="Jahr">
+            <% } %>
+              <div id="buchungsfehler" style="display:none" class="alert">
+                <p>Fehler:</p>
+                <span></span>
+              </div>
+              <div class="form-group">
+                <label for="Jahr" class="control-label">Jahr</label>
+                <div class="select-wrapper">
+                  <select id="jahr" class="form-control" name="Jahr" placeholder="Jahr">
                      <%- jahrOptions %>
                 </select>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <div>
-                <button id="btn-anzeigen" type="submit" class="btn gruen btn-anzeigen" formaction="/auswertungen/abnahmevertraege" formmethod="post" >Anzeigen</button>
+              <div class="form-group">
+                <div>
+                  <button id="btn-anzeigen" type="submit" class="btn gruen btn-anzeigen" formaction="/auswertungen/abnahmevertraege" formmethod="post">Anzeigen</button>
+                </div>
               </div>
-            </div>
-      </form>
-  </section>
+        </form>
+      </section>
 
-  <% if (abnahmevertraege.length > 0) { %>
-  <section class="container tabelle tabelle-auswertung" id="abnahmevertraege-tabelle">
-    <div class="hauptblock ">
-      <h2>Abnahmeverträge im Jahr <%= jahr %></h2>
-      <div class="table-wrap">
-        <div class="table" id="tabelle-av">
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Abnehmer
-                </th>
-                <th class="t-menge">
-                  Soll
-                </th>
-                <th class="t-menge">
-                  Ist
-                </th>
-                <th class="t-menge">
-                  Offen
-                </th>
-              </tr>
-            </thead>
-            <tbody >
-              <%- abnahmevertraege %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <% if (abnahmevertraege.length > 0) { %>
+        <section class="container tabelle tabelle-auswertung" id="abnahmevertraege-tabelle">
+          <div class="hauptblock ">
+            <h2>Abnahmeverträge im Jahr <%= jahr %></h2>
+            <div class="table-wrap">
+              <div class="table" id="tabelle-av">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>
+                        Abnehmer
+                      </th>
+                      <th class="t-menge">
+                        Soll
+                      </th>
+                      <th class="t-menge">
+                        Ist
+                      </th>
+                      <th class="t-menge">
+                        Offen
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%- abnahmevertraege %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+        <% } %>
     </div>
-  </section>
-</div>
-<div class="rechts">
-  <section class="container kd-abnahmevertraege" id="kd-abnahmevertraege">
-    <div class="pie" id="pie"></div>
-  </section>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
-  <script language="javascript" type="text/javascript" src="/scripts/kreisdiagramm.js"></script>
-
-
+    <% if (abnahmevertraege.length > 0) { %>
+      <div class="rechts">
+        <section class="container kd-abnahmevertraege" id="kd-abnahmevertraege">
+          <div class="pie" id="pie"></div>
+        </section>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
+        <script language="javascript" type="text/javascript" src="/scripts/kreisdiagramm.js"></script>
+      </div>
+      <% } %>
   </div>
-  </div>
-  <% } %>
   <%- include footer %>
