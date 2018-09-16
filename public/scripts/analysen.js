@@ -39,7 +39,6 @@ function auswahlTabelle(e) {
   document.getElementsByName('A_DatumGueltigAb')[0].value = gueltigkeitsdatum;
   document.getElementsByName('AT_ID')[0].value = analysetypId;
   document.getElementsByName('SA_A_Wert')[0].value = wert;
-  document.getElementById('btn-buchen').classList.add('nodisplay');
-  document.getElementById('btn-aendern').classList.remove('nodisplay');
-  document.getElementById('btn-abbrechen').classList.remove('nodisplay');
+  btnBuchenAusS();
+  smoothscroll();
 }

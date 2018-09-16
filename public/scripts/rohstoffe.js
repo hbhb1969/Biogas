@@ -43,9 +43,8 @@
 
       document.getElementsByName('Mengeneinheit_ME_ID')[0].value = meId;
       document.getElementsByName('Person_P_ID')[0].value = pid;
-      document.getElementById('btn-buchen').classList.add('nodisplay');
-      document.getElementById('btn-aendern').classList.remove('nodisplay');
-      document.getElementById('btn-abbrechen').classList.remove('nodisplay');
+      btnBuchenAusS();
+      smoothscroll();
     }
 
     // Wechselt zwischen Lager- und Direktrohstoff

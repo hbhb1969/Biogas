@@ -33,8 +33,6 @@ function auswahlTabelle(e) {
   }
 
   document.getElementsByName('Person_P_ID')[0].value = abnehmerId;
-  document.getElementById('btn-buchen').classList.add('nodisplay');
-  document.getElementById('btn-aendern').classList.remove('nodisplay');
-  document.getElementById('btn-loeschen').classList.remove('nodisplay');
-  document.getElementById('btn-abbrechen').classList.remove('nodisplay');
+  btnBuchenAusB();
+  smoothscroll();
 }

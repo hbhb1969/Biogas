@@ -38,10 +38,8 @@
 
       document.getElementsByName('S_Bezeichnung')[0].value = stoffId;
 
-      document.getElementById('btn-buchen').classList.add('nodisplay');
-      document.getElementById('btn-aendern').classList.remove('nodisplay');
-      document.getElementById('btn-abbrechen').classList.remove('nodisplay');
-
+      btnBuchenAusS();
+      smoothscroll();
     };
 
   };

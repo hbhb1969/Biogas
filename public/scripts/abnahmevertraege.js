@@ -34,10 +34,7 @@
 
       document.getElementsByName('B_Name')[0].value = pId;
 
-      document.getElementById('btn-buchen').classList.add('nodisplay');
-      document.getElementById('btn-aendern').classList.remove('nodisplay');
-      document.getElementById('btn-abbrechen').classList.remove('nodisplay');
-
+      btnBuchenAusS();
+      smoothscroll();
     };
-
   };

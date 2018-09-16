@@ -48,18 +48,8 @@
 
       document.getElementsByName('Lager_L_ID')[0].value = lagerId;
       document.getElementsByName('Person_P_ID')[0].value = lieferantId;
-
-      document.getElementById('btn-buchen').classList.add('nodisplay');
-      document.getElementById('btn-aendern').classList.remove('nodisplay');
-      document.getElementById('btn-loeschen').classList.remove('nodisplay');
-      document.getElementById('btn-abbrechen').classList.remove('nodisplay');
-
+      btnBuchenAusB();
+      smoothscroll();
     };
 
   };
-
-  function meAktualisieren() {
-    let lager = document.getElementById('lager')
-    let lagerMe = lager.options[lager.selectedIndex].getAttribute('mebez');
-    document.getElementById('zugang-me').innerHTML = '(' + lagerMe + ')';
-  }

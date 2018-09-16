@@ -54,10 +54,8 @@ function auswahlTabelle(e) {
 
   document.getElementsByName('Lager_L_ID')[0].value = lagerId;
   document.getElementsByName('Stoff_S_ID')[0].value = stoffId;
-  document.getElementById('btn-buchen').classList.add('nodisplay');
-  document.getElementById('btn-aendern').classList.remove('nodisplay');
-  document.getElementById('btn-loeschen').classList.remove('nodisplay');
-  document.getElementById('btn-abbrechen').classList.remove('nodisplay');
+  btnBuchenAusB();
+  smoothscroll();
 }
 
 // Aktualisiert die Mengeneinheit je nach Auswahl in den Selects
@@ -84,3 +82,11 @@ function ansichtWechseln() {
     meAktualisieren('rohstoff');
   };
 }
+// Scrollt zum Anfang der Menüseiten
+// function smoothscroll() {
+//   var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+//   if (currentScroll > 0) {
+//     window.requestAnimationFrame(smoothscroll);
+//     window.scrollTo(0, currentScroll - (currentScroll / 10));
+//   }
+// }

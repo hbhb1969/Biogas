@@ -47,10 +47,8 @@
       document.getElementsByName('AD_PLZ')[0].value = adPLZ;
       document.getElementsByName('AD_Ort')[0].value = adOrt;
 
-      document.getElementById('btn-buchen').classList.add('nodisplay');
-      document.getElementById('btn-aendern').classList.remove('nodisplay');
-      document.getElementById('btn-abbrechen').classList.remove('nodisplay');
-
+      btnBuchenAusS();
+      smoothscroll();
     };
 
   };
