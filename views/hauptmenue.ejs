@@ -1,4 +1,5 @@
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel='stylesheet' href='/styles/styles.css' />
   <link rel="shortcut icon" type="image/x-icon" href="/bilder/bga.png">
 </head>
+
 <body>
   <div class="container header-container">
     <a href="/hauptmenue">
@@ -37,7 +39,7 @@
           <% } %><img src="\bilder\<% if (headerBild.length > 0) { %><%= headerBild %><% } %>">
     </div>
   </div>
-  <div class="menueinhalt">
+  <div class="menueinhalt mobil">
     <a class="fuetterungen gruen btn btn-gross" href="/buchen/fuetterungen" role="button">Fütterungen
       <div class="menue-icon">
         <img src="\bilder\fuetterungen.svg">
@@ -63,5 +65,68 @@
     <img src="\bilder\stammdaten.svg">
   </div>
 </a>
+  </div>
+
+  <!-- Desktop-Menü -->
+  <div class="menueinhalt desktop">
+    <div class="buchungen menuespalte">
+      <h2>Buchungen</h2>
+      <a class="fuetterungen gruen btn btn-gross" href="/buchen/fuetterungen" role="button">Fütterungen
+        <div class="menue-icon">
+          <img src="\bilder\fuetterungen.svg">
+        </div>
+      </a>
+      <a class="abgaben gruen btn" href="/buchen/abgaben" role="button">Abgaben
+        <div class="menue-icon">
+          <img src="\bilder\abgaben.svg">
+        </div>
+      </a>
+      <a class="zugaenge gruen btn" href="/buchen/zugaenge" role="button">Zugänge
+        <div class="menue-icon">
+          <img src="\bilder\zugaenge.svg">
+        </div>
+      </a>
+    </div>
+    <div class="auswertungen menuespalte">
+      <h2>Auswertungen</h2>
+      <a class="gruen btn btn-gross" href="/auswertungen/bilanz" role="button">Nährstoffbilanz
+        <div class="menue-icon">
+          <img src="\bilder\fuetterungen.svg">
+        </div>
+      </a>
+      <a class="gruen btn btn-gross" href="/auswertungen/abnahmevertraege" role="button">Abnahmeverträge
+    <div class="menue-icon">
+      <img src="\bilder\abgaben.svg">
+    </div>
+  </a>
+    </div>
+    <div class="stammdaten menuespalte">
+      <h2>Stammdaten</h2>
+      <a class="gruen btn btn-gross" href="/daten/analysen" role="button">Analysen
+        <div class="menue-icon">
+          <img src="\bilder\fuetterungen.svg">
+        </div>
+      </a>
+      <a class="gruen btn btn-gross" href="/daten/rohstoffe" role="button">Rohstoffe
+        <div class="menue-icon">
+          <img src="\bilder\fuetterungen.svg">
+        </div>
+      </a>
+      <a class="gruen btn btn-gross" href="/daten/lager" role="button">Lager
+        <div class="menue-icon">
+          <img src="\bilder\fuetterungen.svg">
+        </div>
+      </a>
+      <a class="gruen btn btn-gross" href="/daten/betriebe" role="button">Betriebe
+        <div class="menue-icon">
+          <img src="\bilder\fuetterungen.svg">
+        </div>
+      </a>
+      <a class="gruen btn btn-gross" href="/daten/abnahmevertraege" role="button">Abnahmeverträge
+    <div class="menue-icon">
+      <img src="\bilder\fuetterungen.svg">
+    </div>
+  </a>
+    </div>
   </div>
   <%- include footer %>
