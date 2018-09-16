@@ -15,7 +15,7 @@ exports.get = function(req, res, next) {
   let direktOptions = "";
   let buchungenFuetterungenLager = "";
   let buchungenFuetterungenDirekt = "";
-  fetch("http://localhost:8080/select/lager", options)
+  fetch("https://localhost:8081/select/lager", options)
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -27,7 +27,7 @@ exports.get = function(req, res, next) {
       }
     })
     .then(function() {
-      fetch("http://localhost:8080/select/direktrohstoff", options)
+      fetch("https://localhost:8081/select/direktrohstoff", options)
         .then(function(response) {
           if (response.ok) {
             return response.json();
@@ -39,7 +39,7 @@ exports.get = function(req, res, next) {
           }
         })
         .then(function() {
-          fetch("http://localhost:8080/tabellen/fuetterungenlager", options)
+          fetch("https://localhost:8081/tabellen/fuetterungenlager", options)
             .then(function(response) {
               if (response.ok) {
                 return response.json();
@@ -52,7 +52,7 @@ exports.get = function(req, res, next) {
               }
             })
             .then(function() {
-              fetch("http://localhost:8080/tabellen/fuetterungendirekt", options)
+              fetch("https://localhost:8081/tabellen/fuetterungendirekt", options)
                 .then(function(response) {
                   if (response.ok) {
                     return response.json();

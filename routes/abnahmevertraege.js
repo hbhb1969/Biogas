@@ -14,7 +14,7 @@ exports.get = function(req, res, next) {
     userId = req.session.userId;
   const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
-  fetch("http://localhost:8080/select/abnahmevertraege", options)
+  fetch("https://localhost:8081/select/abnahmevertraege", options)
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -59,7 +59,7 @@ exports.post = function(req, res, next) {
   const post = req.body;
   let jahr = post.Jahr;
 
-  fetch("http://localhost:8080/select/abnahmevertraege", options)
+  fetch("https://localhost:8081/select/abnahmevertraege", options)
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -72,7 +72,7 @@ exports.post = function(req, res, next) {
       }
     })
     .then(function(response) {
-      let url = "http://localhost:8080/tabellen/abnahmevertraege?jahr=" + jahr;
+      let url = "https://localhost:8081/tabellen/abnahmevertraege?jahr=" + jahr;
       fetch(url, options)
         .then(function(response) {
           if (response.ok) {

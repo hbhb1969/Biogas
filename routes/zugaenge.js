@@ -14,7 +14,7 @@ exports.get = function(req, res, next) {
   let lagerOptions = "";
   let lieferantenOptions = "";
   let buchungenZugaenge = "";
-  fetch("http://localhost:8080/select/lager", options)
+  fetch("https://localhost:8081/select/lager", options)
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -26,7 +26,7 @@ exports.get = function(req, res, next) {
       }
     })
     .then(function() {
-      fetch("http://localhost:8080/select/lieferant", options)
+      fetch("https://localhost:8081/select/lieferant", options)
         .then(function(response) {
           if (response.ok) {
             return response.json();
@@ -39,7 +39,7 @@ exports.get = function(req, res, next) {
           }
         })
         .then(function() {
-          fetch("http://localhost:8080/tabellen/zugaenge", options)
+          fetch("https://localhost:8081/tabellen/zugaenge", options)
             .then(function(response) {
               if (response.ok) {
                 return response.json();

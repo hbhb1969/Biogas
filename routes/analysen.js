@@ -15,7 +15,7 @@ exports.get = function(req, res, next) {
   let analysetypOptions = "";
   let stoffOptions = "";
   let buchungenAnalysen = "";
-  fetch("http://localhost:8080/select/analysen", options)
+  fetch("https://localhost:8081/select/analysen", options)
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -28,7 +28,7 @@ exports.get = function(req, res, next) {
       }
     })
     .then(function() {
-      fetch("http://localhost:8080/select/stoff", options)
+      fetch("https://localhost:8081/select/stoff", options)
         .then(function(response) {
           if (response.ok) {
             return response.json();
@@ -41,7 +41,7 @@ exports.get = function(req, res, next) {
           }
         })
         .then(function() {
-          fetch("http://localhost:8080/tabellen/analysen", options)
+          fetch("https://localhost:8081/tabellen/analysen", options)
             .then(function(response) {
               if (response.ok) {
                 return response.json();

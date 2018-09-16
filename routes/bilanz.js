@@ -42,7 +42,7 @@ exports.post = function(req, res, next) {
   let enddatumSql = post.Enddatum;
   let anfangsdatum = anfangsdatumSql.split('-')[2] + '.' + anfangsdatumSql.split('-')[1] + '.' + anfangsdatumSql.split('-')[0];
   let enddatum = enddatumSql.split('-')[2] + '.' + enddatumSql.split('-')[1] + '.' + enddatumSql.split('-')[0];
-  let url = "http://localhost:8080/tabellen/bilanz?anfangsdatum=" + anfangsdatumSql + "&enddatum=" + enddatumSql;
+  let url = "https://localhost:8081/tabellen/bilanz?anfangsdatum=" + anfangsdatumSql + "&enddatum=" + enddatumSql;
   fetch(url, options)
     .then(function(response) {
       if (response.ok) {

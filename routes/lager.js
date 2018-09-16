@@ -14,7 +14,7 @@ exports.get = function(req, res, next) {
 
   let stoffOptions = "";
   let buchungenLager = "";
-  fetch("http://localhost:8080/select/lagerrohstoff", options)
+  fetch("https://localhost:8081/select/lagerrohstoff", options)
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -26,7 +26,7 @@ exports.get = function(req, res, next) {
       }
     })
     .then(function() {
-      fetch("http://localhost:8080/tabellen/lager", options)
+      fetch("https://localhost:8081/tabellen/lager", options)
         .then(function(response) {
           if (response.ok) {
             return response.json();

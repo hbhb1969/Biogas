@@ -433,7 +433,7 @@ a.btn, button {
   text-align: center;
   color: #FFFFFF;
 }
-.btn-buchen, .btn-login {
+.btn-buchen, .btn-login, .btn-anzeigen {
   margin-top: 15px;
 }
 .btn-abbrechen {

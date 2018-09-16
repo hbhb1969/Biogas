@@ -13,7 +13,7 @@ exports.get = function(req, res, next) {
   let headerBild = "fuetterungen.svg ";
   let abnehmerOptions = "";
   let buchungenAbnahmevertraege = "";
-  fetch("http://localhost:8080/select/abnehmer", options)
+  fetch("https://localhost:8081/select/abnehmer", options)
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -25,7 +25,7 @@ exports.get = function(req, res, next) {
       }
     })
     .then(function() {
-      fetch("http://localhost:8080/tabellen/abnahmevertraegedaten", options)
+      fetch("https://localhost:8081/tabellen/abnahmevertraegedaten", options)
         .then(function(response) {
           if (response.ok) {
             return response.json();

@@ -1,3 +1,4 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // verhindert eine Fehlermeldung bei selbst-signierten Zertifikaten und kann entfernt werden, wenn ein fremd-signiertes Zertifikat genutzt wird.
 const express = require('express'),
   fs = require('fs'),
   routes = require('./routes'),
@@ -142,6 +143,6 @@ app.use((error, req, res, next) => {
 })
 
 // Server starten
-httpServer.listen(8080);
+// httpServer.listen(8080);
 spdyServer.listen(8081);
-logger.info('Server laufen auf Port 8080 und 8081 (https)');
+logger.info('Server läuft auf Port 8081');
