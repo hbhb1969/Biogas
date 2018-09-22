@@ -11,7 +11,7 @@ exports.get = function(req, res, next) {
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "rohstoffe";
   let headerTitel = "Rohstoffe";
-  let headerBild = "fuetterungen.svg ";
+  let headerBild = "rohstoffe.svg ";
   let meOptions = "";
   let lieferantOptions = "";
   let buchungenLagerRohstoffe = "";

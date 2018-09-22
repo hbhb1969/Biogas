@@ -3,8 +3,9 @@ const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
+  let headerClass = "lager";
   let headerTitel = "Lager";
-  let headerBild = "fuetterungen.svg ";
+  let headerBild = "lager.svg ";
   const fetch = require('node-fetch');
   const user = req.session.user,
     userId = req.session.userId;
@@ -12,7 +13,6 @@ exports.get = function(req, res, next) {
   const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
 
-  let headerClass = "lager";
   let stoffOptions = "";
   let buchungenLager = "";
   fetch("https://localhost:8081/select/lagerrohstoff", options)

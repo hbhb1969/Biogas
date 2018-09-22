@@ -11,7 +11,7 @@ exports.get = function(req, res, next) {
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "betriebe";
   let headerTitel = "Betriebe";
-  let headerBild = "fuetterungen.svg ";
+  let headerBild = "betriebe.svg ";
   let buchungenBetriebe = "";
 
   fetch("https://localhost:8081/tabellen/betriebe", options)

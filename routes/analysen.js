@@ -12,7 +12,7 @@ exports.get = function(req, res, next) {
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "analysen";
   let headerTitel = "Analysen";
-  let headerBild = "fuetterungen.svg ";
+  let headerBild = "analysen.svg ";
   let analysetypOptions = "";
   let stoffOptions = "";
   let buchungenAnalysen = "";
