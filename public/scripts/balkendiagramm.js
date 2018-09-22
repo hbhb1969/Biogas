@@ -11,7 +11,7 @@ for (let i = 0; i < alleZellen.length; i = i + 2) {
   daten.push(Number(alleZellen[i].innerHTML));
 }
 
-let svgWidth = 320;
+let svgWidth = document.getElementById('bd-bilanz').offsetWidth - 40;
 let svgHeight = 300;
 let barPadding = 5;
 let axisWidth = 50;

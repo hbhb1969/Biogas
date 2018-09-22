@@ -40,7 +40,7 @@ for (let i = 0; i < abnehmer.length; i++) {
   dataD.push(datensatz);
 }
 
-let width = document.getElementById("pie").offsetWidth,
+let width = document.getElementById("kd-abnahmevertraege").offsetWidth - 20,
   height = width,
   radius = Math.min(width, height) / 2;
 
@@ -58,8 +58,8 @@ let arc = d3.arc()
   .innerRadius(0);
 
 let labelArc = d3.arc()
-  .outerRadius(radius - 140)
-  .innerRadius(radius - 140);
+  .outerRadius(radius - 130)
+  .innerRadius(radius - 130);
 
 let svg = d3.select("#pie")
   .append("svg")
@@ -118,8 +118,8 @@ let arcD = d3.arc()
   .innerRadius(radius - 100);
 
 let labelArcD = d3.arc()
-  .outerRadius(radius - 40)
-  .innerRadius(radius - 40);
+  .outerRadius(radius - 50)
+  .innerRadius(radius - 50);
 
 let svgD = d3.select("#pie")
   .append("svg")

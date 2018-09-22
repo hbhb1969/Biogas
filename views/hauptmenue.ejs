@@ -35,16 +35,22 @@
     <nav>
       <div class="navbar">
         <ul class="nav">
-          <li><a href="/abmelden"><img src="\bilder\abmelden.png"></a></li>
+          <li>
+            <a href="/abmelden">
+              <div class="icon-click">
+                <img src="\bilder\abmelden.png">
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
   </div>
   <div class="ueberschrift-balken buchungen grau">
-    <div class="ueberschrift-balken-inhalt">
+    <div class="ueberschrift-balken-inhalt balken-menue">
       <% if (headerTitel.length > 0) { %>
         <%= headerTitel %>
-          <% } %><img src="\bilder\<% if (headerBild.length > 0) { %><%= headerBild %><% } %>">
+          <% } %>
     </div>
   </div>
   <div class="menueinhalt mobil">

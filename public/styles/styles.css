@@ -1,5 +1,4 @@
 /* Fonts */
-
 @font-face {
   font-family: "OpenSans";
   src: url(../open-sans/OpenSans-Regular.ttf);
@@ -15,7 +14,6 @@
   font-weight: lighter;
 }
 /* Allgemein ***********************************************************************************************************/
-
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -26,6 +24,10 @@
 }
 body {
   background-color: #dedede;
+  margin: 0;
+}
+body.anmelden {
+  background-color: #fff;
   margin: 0;
 }
 h1 {
@@ -135,12 +137,22 @@ td {
 .navbar a {
   display: inline-block;
   float: right;
-  margin-left: 20px;
+  margin-left: 15px;
   text-decoration: none;
   width: 20px;
 }
-.navbar img {
+.navbar .icon-click {
+  height: 30px;
   margin-top: -5px;
+  position: relative;
+  width: 30px;
+}
+.navbar img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -13.5px;
+  margin-top: -13.5px;
   transform: scale(0.9);
   width: 25px;
 }
@@ -165,10 +177,12 @@ td {
 }
 .footer {
   clear: both;
+  margin-bottom: 20px;
   margin-top: 20px;
   text-align: center;
 }
 .footer a {
+  font-size: 16px;
   text-decoration: none;
 }
 .nodisplay {
@@ -193,9 +207,9 @@ td {
   background-color: #454545;
 }
 .ueberschrift-balken {
-  height: 36px;
+  height: 42px;
   margin: 0 auto;
-  padding-top: 5px;
+  padding-top: 8px;
   position: relative;
   text-align: center;
   width: 320px;
@@ -216,15 +230,14 @@ td {
 .ueberschrift-balken img {
   margin-left: 10px;
   position: absolute;
-  top: 3px;
+  top: 6px;
   width: 30px;
 }
 /* Anmeldung ***********************************************************************************************************/
-
 .hintergrund {
-  background: -webkit-gradient(linear, center top, center bottom, from(#9C9A9A), color-stop(26%, #575756));
-  background: -webkit-linear-gradient(top, #9C9A9A, #575756 142px);
-  background: linear-gradient(to bottom, #9C9A9A, #575756 142px);
+  background: -webkit-gradient(linear, center top, center bottom, from(#d5d5d5), color-stop(26%, #bcbcbc));
+  background: -webkit-linear-gradient(top, #d5d5d5, #bcbcbc 142px);
+  background: linear-gradient(to bottom, #d5d5d5, #bcbcbc 142px);
   height: 162px;
 }
 .logo {
@@ -237,15 +250,24 @@ td {
   width: 280px;
 }
 .loginbox h2 {
+  font-size: 30px;
+  margin-top: 10px;
   text-align: center;
 }
 .loginform {
   margin-top: 35px;
+  padding-top: 0;
+}
+.btn-login {
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 /* Menüseiten ***********************************************************************************************************/
-
 .menue {
   background-color: #dedede;
+}
+.balken-menue {
+  margin-left: 0px;
 }
 .menueheader, .menueinhalt {
   background-color: #fff;
@@ -331,7 +353,6 @@ td {
   width: 20px;
 }
 /* Buchungsseiten ******************************************************************************************************/
-
 .formular h2 {
   margin-bottom: 25px;
 }
@@ -451,7 +472,6 @@ a.btn, button {
   overflow-y: auto;
 }
 /* Abgaben */
-
 th .abgaben-menge {
   padding-top: 0;
 }
@@ -465,7 +485,6 @@ th .abgaben-abnehmer {
   padding-bottom: 20px;
 }
 /* Auswertungsseiten ***************************************************************************************************/
-
 .tabelle-auswertung {
   padding-top: 20px;
 }
@@ -489,15 +508,20 @@ th .abgaben-abnehmer {
   padding-bottom: 20px;
 }
 /* Diagramme */
-
 svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
   display: none;
+}
+.bd-bilanz {
+  padding-left: 20px;
 }
 .bd-bilanz .bar-chart rect {
   fill: #4B610B;
 }
 .bd-bilanz .bar-chart rect:nth-child(odd) {
   fill: #38610B;
+}
+.kd-abnahmevertraege {
+  padding-left: 10px
 }
 .pie {
   position: relative;
@@ -514,7 +538,6 @@ svg.kreisdiagramm path {
   stroke: #ccc;
 }
 /* Media Queries *******************************************************************************************************/
-
 @media screen and (min-width:360px) {
   .menue {
     padding: 20px;
@@ -533,13 +556,10 @@ svg.kreisdiagramm path {
   .navbar {
     margin-bottom: 5px;
     margin-top: -5px;
+    right: 25px;
   }
-  .navbar a {
-    width: 40px;
-  }
-  .navbar img {
-    margin-top: -5px;
-    width: 40px;
+  .navbar .icon-click {
+    margin-top: 0;
   }
   /* Menüseiten */
   .menueinhalt {
@@ -645,6 +665,9 @@ svg.kreisdiagramm path {
     margin-left: 20px;
     width: 320px;
   }
+  .kd-abnahmevertraege {
+    max-width: 320px;
+  }
   .bd-bilanz {
     padding-top: 80px;
   }
@@ -655,10 +678,12 @@ svg.kreisdiagramm path {
     text-align: left;
   }
 }
-@media screen and (min-height:660px) {
+@media screen and (min-height:520px) {
   .header-container {
     margin-top: 20px;
   }
+}
+@media screen and (min-height:660px) {
   .ueberschrift-balken {
     margin-bottom: 20px;
   }

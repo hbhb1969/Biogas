@@ -1,6 +1,6 @@
 window.onload = function() {
   // Mengeneinheit dem Lager anpassen
-  meAktualisieren('lager');
+  meAktualisieren('lager', 'fuetterung-me');
 
   // Datum vorausfüllen
   document.getElementById('datum').valueAsDate = new Date();
@@ -58,13 +58,6 @@ function auswahlTabelle(e) {
   smoothscroll();
 }
 
-// Aktualisiert die Mengeneinheit je nach Auswahl in den Selects
-function meAktualisieren(selectName) {
-  let selectbox = document.getElementById(selectName);
-  let mebez = selectbox.options[selectbox.selectedIndex].getAttribute('mebez');
-  document.getElementById('fuetterung-me').innerHTML = '(' + mebez + ')';
-}
-
 // Wechselt zwischen Lager- und Direktrohstoff
 function ansichtWechseln() {
   let lagerRadio = document.getElementById("lager-radio");
@@ -73,20 +66,12 @@ function ansichtWechseln() {
     document.getElementById('fuetterungen-direkt').classList.add('nodisplay');
     document.getElementById('lager-wrapper').classList.remove('nodisplay');
     document.getElementById('fuetterungen-lager').classList.remove('nodisplay');
-    meAktualisieren('lager');
+    meAktualisieren('lager', 'fuetterung-me');
   } else {
     document.getElementById('rohstoff-wrapper').classList.remove('nodisplay');
     document.getElementById('fuetterungen-direkt').classList.remove('nodisplay');
     document.getElementById('lager-wrapper').classList.add('nodisplay');
     document.getElementById('fuetterungen-lager').classList.add('nodisplay');
-    meAktualisieren('rohstoff');
+    meAktualisieren('rohstoff', 'fuetterung-me');
   };
 }
-// Scrollt zum Anfang der Menüseiten
-// function smoothscroll() {
-//   var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-//   if (currentScroll > 0) {
-//     window.requestAnimationFrame(smoothscroll);
-//     window.scrollTo(0, currentScroll - (currentScroll / 10));
-//   }
-// }

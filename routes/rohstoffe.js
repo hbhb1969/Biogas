@@ -9,6 +9,7 @@ exports.get = function(req, res, next) {
 
   const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
+  let headerClass = "rohstoffe";
   let headerTitel = "Rohstoffe";
   let headerBild = "fuetterungen.svg ";
   let meOptions = "";
@@ -69,6 +70,7 @@ exports.get = function(req, res, next) {
                   res.render('rohstoffe.ejs', {
                     user: user,
                     message: message,
+                    headerClass: headerClass,
                     headerTitel: headerTitel,
                     headerBild: headerBild,
                     meOptions: meOptions,

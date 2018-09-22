@@ -5,6 +5,7 @@ const fetch = require('node-fetch');
 // ---------- Vorbereitung Formular ----------
 exports.get = function(req, res, next) {
   let message = '';
+  let headerClass = "bilanz";
   let headerTitel = "Nährstoffbilanz";
   let headerBild = "fuetterungen.svg ";
   let nBilanz = '';
@@ -14,6 +15,7 @@ exports.get = function(req, res, next) {
     userId = req.session.userId;
 
   res.render('bilanz.ejs', {
+    headerClass: headerClass,
     headerTitel: headerTitel,
     headerBild: headerBild,
     anfangsdatum: anfangsdatum,
@@ -26,6 +28,7 @@ exports.get = function(req, res, next) {
 // ---------- Bilanz anzeigen ----------
 exports.post = function(req, res, next) {
   let message = '';
+  let headerClass = "bilanz";
   let headerTitel = "Nährstoffbilanz";
   let headerBild = "fuetterungen.svg ";
   let nBilanz = '';
@@ -58,6 +61,7 @@ exports.post = function(req, res, next) {
     })
     .then(function() {
       res.render('bilanz.ejs', {
+        headerClass: headerClass,
         headerTitel: headerTitel,
         headerBild: headerBild,
         nBilanz: nBilanz,

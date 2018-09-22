@@ -7,12 +7,14 @@ function smoothscroll() {
   }
 };
 
-// Aktualisiert die Mengeneinheiten für die jeweiligen Stoffe
-function meAktualisieren() {
-  let lager = document.getElementById('lager')
-  let lagerMe = lager.options[lager.selectedIndex].getAttribute('mebez');
-  document.getElementById('zugang-me').innerHTML = '(' + lagerMe + ')';
-};
+// Aktualisiert die Mengeneinheit je nach Auswahl in den Selects
+function meAktualisieren(selectName, label) {
+  let selectbox = document.getElementById(selectName);
+  let mebez = selectbox.options[selectbox.selectedIndex].getAttribute('mebez');
+  document.getElementById(label).innerHTML = '(' + mebez + ')';
+}
+
+
 // Blendet Buchen-Button auf Buchungsseiten aus und andere Buttons ein
 function btnBuchenAusB() {
   document.getElementById('btn-buchen').classList.add('nodisplay');

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <div class="container header-container">
+  <div class="container header-container <% if (headerClass.length > 0) { %><%= headerClass %><% } %>">
     <a href="/hauptmenue">
       <div class="header">
         <div class="logo">
@@ -34,8 +34,20 @@
     <nav>
       <div class="navbar">
         <ul class="nav">
-          <li><a href="/abmelden"><img src="\bilder\abmelden.png"></a></li>
-          <li><a href="/hauptmenue"><img src="\bilder\menue.png"></a></li>
+          <li>
+            <a href="/abmelden">
+              <div class="icon-click">
+                <img src="\bilder\abmelden.png">
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/hauptmenue">
+              <div class="icon-click">
+                <img src="\bilder\menue.png">
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
