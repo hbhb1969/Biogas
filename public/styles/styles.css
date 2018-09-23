@@ -98,6 +98,7 @@ td {
   padding: 10px 20px;
   position: relative;
   width: 320px;
+  z-index: 10;
 }
 .header-container a {
   text-decoration: none;
@@ -121,6 +122,9 @@ td {
   font-size: 14px;
   font-weight: 300;
   line-height: 17px;
+}
+.desktop-nav {
+  display: none;
 }
 .navbar {
   height: 30px;
@@ -147,7 +151,8 @@ td {
   position: relative;
   width: 30px;
 }
-.navbar img {
+.navbar img,
+.desktop-nav img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -554,6 +559,153 @@ svg.kreisdiagramm path {
     float: left;
     width: 200px;
   }
+  .mobile-nav {
+    display: none;
+  }
+  .desktop-nav {
+    display: initial;
+  }
+  .desktop-nav {
+    float: right;
+    width: 400px;
+    padding: 7px 0 0;
+  }
+  .desktop-nav ul {
+    float: left;
+    width: 100%;
+    list-style: none;
+    line-height: 1;
+    color: #009245;
+    background: #FFFFFF;
+    padding: 0;
+    margin: 0 0 1em 0;
+  }
+  .desktop-nav a, .desktop-nav a:visited {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    text-decoration: underline;
+    color: #009245;
+    text-decoration: none;
+    padding: 1em 1em;
+  }
+  .desktop-nav ul ul a {
+    width: 100%;
+    height: 100%;
+  }
+  .desktop-nav ul a {
+    width: 1%;
+  }
+  .desktop-nav li {
+    float: left;
+    margin: 0;
+    padding: 0;
+  }
+  .desktop-nav ul li {
+    float: right;
+    position: relative;
+  }
+  .desktop-nav ul li a {
+    white-space: nowrap;
+  }
+  .desktop-nav li ul {
+    position: absolute;
+    left: -999em;
+    height: auto;
+    width: 125px;
+    background: #FFFFFF;
+    font-weight: normal;
+    /*border: 1px solid #009245;*/
+    margin: 0;
+  }
+  .desktop-nav li ul li {
+    border-right: 1px solid #009245;
+    border-bottom: 1px solid #009245;
+    border-left: 1px solid #009245;
+  }
+  .desktop-nav li ul li:first-child {
+    border-top: 1px solid #009245;
+  }
+  .desktop-nav li li {
+    width: 125px;
+  }
+  .desktop-nav li li a {
+    width: 100px;
+  }
+  .desktop-nav li ul {
+    margin: 0;
+  }
+  .desktop-nav li ul ul {
+    margin: -2.8em 0 0 13.5em;
+  }
+  .ul_ch,
+  .desktop-nav li:hover ul ul,
+  .desktop-nav li li:hover ul ul,
+  .desktop-nav li li li:hover ul ul,
+  .desktop-nav li li li li:hover ul ul,
+  .desktop-nav li li li li li:hover ul ul {
+    left: -999em;
+  }
+  .desktop-nav li:hover ul,
+  .desktop-nav li li:hover ul,
+  .desktop-nav li li li:hover ul,
+  .desktop-nav li li li li:hover ul,
+  .desktop-nav li li li li li:hover ul {
+    left: auto;
+  }
+  .desktop-nav li:hover>ul.ul_ch {
+    left: auto;
+  }
+  .desktop-nav li:hover {
+    background-color: #009245;
+  }
+  .desktop-nav li:hover a, .desktop-nav li:hover a:visited, .desktop-nav li:hover a:hover, .desktop-nav li a:hover {
+    color: #ffffff;
+  }
+  .desktop-nav li:hover li a, .desktop-nav li li:hover li a,
+  .desktop-nav li li li:hover li a, .desktop-nav li li li li:hover li a,
+  .desktop-nav li:hover li a:visited, .desktop-nav li li:hover li a:visited,
+  .desktop-nav li li li:hover li a:visited, .desktop-nav li li li li:hover li a:visited {
+    color: #009245;
+  }
+  .desktop-nav li li:hover, .desktop-nav li li li:hover,
+  .desktop-nav li li li li:hover, .desktop-nav li li li li li:hover, .desktop-nav li li li li li li:hover {
+    background: #009245;
+    z-index: 9999;
+  }
+  .desktop-nav li li:hover a, .desktop-nav li li li:hover a,
+  .desktop-nav li li li li:hover a, .desktop-nav li li li li li:hover a {
+    color: #FFFFFF;
+  }
+  .desktop-nav ul ul a, .desktop-nav ul ul a:visited,
+  .desktop-nav li li a, .desktop-nav li li a:visited {
+    color: #009245;
+  }
+  .desktop-nav ul ul a:hover,
+  .desktop-nav li:hover li:hover a, .desktop-nav li:hover li:hover a:visited,
+  .desktop-nav li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover a:visited,
+  .desktop-nav li:hover li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover li:hover a:visited,
+  .desktop-nav li:hover li:hover li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover li:hover li:hover a:visited,
+  .desktop-nav li:hover li:hover li:hover li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover li:hover li:hover li:hover a:visited {
+    color: #FFFFff;
+  }
+  .desktop-nav li:hover li:hover li a, .desktop-nav li:hover li:hover li a:visited,
+  .desktop-nav li:hover li:hover li:hover li a, .desktop-nav li:hover li:hover li:hover li a:visited,
+  .desktop-nav li:hover li:hover li:hover li:hover li a, .desktop-nav li:hover li:hover li:hover li:hover li a:visited,
+  .desktop-nav li:hover li:hover li:hover li:hover li:hover li a, .desktop-nav li:hover li:hover li:hover li:hover li:hover li a:visited {
+    color: #009245;
+  }
+  .desktop-nav .abmelden {
+    margin-left: 15px;
+    top: 5px;
+  }
+  .desktop-nav .abmelden:hover {
+    background-color: #fff;
+  }
+  .desktop-nav .abmelden img:hover {
+    transform: scale(1);
+  }
   .navbar {
     margin-bottom: 5px;
     margin-top: -5px;
@@ -648,7 +800,7 @@ svg.kreisdiagramm path {
   .links {
     background-color: #fff;
     float: left;
-    margin-left: calc((100% - 660px) / 2);
+    margin-left: 20px;
     min-height: 320px;
     width: 320px;
   }
@@ -664,10 +816,18 @@ svg.kreisdiagramm path {
     background-color: #fff;
     float: right;
     margin-left: 20px;
-    width: 320px;
+    max-width: 420px;
+    width: calc(100% - 380px);
   }
   .kd-abnahmevertraege {
     max-width: 320px;
+  }
+  .header-container.abnahmevertraege,
+  .ueberschrift-balken.abnahmevertraege,
+  .header-container.bilanz,
+  .ueberschrift-balken.bilanz {
+    max-width: 760px;
+    width: calc(100% - 40px);
   }
   .bd-bilanz {
     padding-top: 80px;
@@ -677,6 +837,12 @@ svg.kreisdiagramm path {
     clear: both;
     margin-left: calc((100% - 580px) / 2);
     text-align: left;
+  }
+}
+@media screen and (min-width:800px) {
+  /* Auswertungsseiten */
+  .links {
+    margin-left: calc((100% - 760px) / 2);
   }
 }
 @media screen and (min-height:520px) {

@@ -31,7 +31,7 @@
         </div>
       </div>
     </a>
-    <nav>
+    <nav class="mobile-nav">
       <div class="navbar">
         <ul class="nav">
           <li>
@@ -51,11 +51,45 @@
         </ul>
       </div>
     </nav>
+    <nav class="desktop-nav">
+      <ul>
+        <li class="abmelden">
+          <a href="/abmelden">
+            <div class="icon-click">
+              <img src="\bilder\abmelden.png">
+            </div>
+          </a>
+        </li>
+        <li class="li_hc"><a href="#" target="_self" >Stammdaten</a>
+          <ul class="ul_ch">
+            <li class="li_nc"><a href="#" target="_self" >Analysen</a></li>
+            <li class="li_nc"><a href="#" target="_self" >Rohstoffe</a></li>
+            <li class="li_nc"><a href="#" target="_self" >Lager</a></li>
+            <li class="li_nc"><a href="#" target="_self" >Betriebe</a></li>
+            <li class="li_nc"><a href="#" target="_self" >Abnahmeverträge</a></li>
+          </ul>
+        </li>
+        <li class="li_hc"><a href="#" target="_self" >Auswertungen</a>
+          <ul class="ul_ch">
+            <li class="li_nc"><a href="#" target="_self" >Nährstoffbilanz</a></li>
+            <li class="li_nc"><a href="#" target="_self" >Abnahmeverträge</a></li>
+          </ul>
+        </li>
+        <li class="li_hc"><a href="#" target="_self" >Buchungen</a>
+          <ul class="ul_ch">
+            <li class="li_hc"><a href="#" target="_self" >Fütterungen</a></li>
+            <li class="li_nc"><a href="#" target="_self" >Abgaben</a></li>
+            <li class="li_nc"><a href="#" target="_self" >Zugänge</a></li>
+          </ul>
+        </li>
+        <li class="li_hc"><a href="#" target="_self" >Menü</a></li>
+      </ul>
+    </nav>
   </div>
-  <div class="ueberschrift-balken buchungen grau">
+  <div class="ueberschrift-balken buchungen grau <% if (headerClass.length > 0) { %><%= headerClass %><% } %>">
     <div class="ueberschrift-balken-inhalt">
       <% if (headerTitel.length > 0) { %>
-        <%= headerTitel %>
-          <% } %><img src="\bilder\<% if (headerBild.length > 0) { %><%= headerBild %><% } %>">
+      <%= headerTitel %>
+      <% } %><img src="\bilder\<% if (headerBild.length > 0) { %><%= headerBild %><% } %>">
     </div>
-  </div>
+    </div>
