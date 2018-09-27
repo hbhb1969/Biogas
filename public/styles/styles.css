@@ -170,8 +170,7 @@ td {
 .container {
   background-color: #fff;
   margin: 0 auto;
-  max-width: 320px;
-  width: 100%;
+  width: calc(100% - 40px);
 }
 .ueberschrift-tabelle {
   border-top: 1px solid;
@@ -220,7 +219,7 @@ td {
   padding-top: 8px;
   position: relative;
   text-align: center;
-  width: 320px;
+  width: calc(100% - 40px);
 }
 .ueberschrift-balken-inhalt {
   color: #fff;
@@ -309,7 +308,8 @@ td {
   line-height: 22px;
 }
 .menueinhalt {
-  padding: 20px 20px 0;
+  padding: 20px calc((100% - 320px) /2) 0;
+  width: calc(100% - 40px);
 }
 .menueinhalt .ueberschrift {
   font-size: 22px;
@@ -508,11 +508,11 @@ th .abgaben-abnehmer {
   background-color: #fff;
   margin: auto;
   padding-bottom: 20px;
-  width: 320px;
+  width: calc(100% - 40px);
 }
 .kd-abnahmevertraege {
   background-color: #fff;
-  height: 350px;
+  height: 95vw;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -554,6 +554,9 @@ svg.kreisdiagramm path {
 }
 @media screen and (min-width:700px) {
   /* Header */
+  .container {
+    max-width: 320px;
+  }
   .header-container {
     max-width: 660px;
     width: 660px;
@@ -793,11 +796,11 @@ svg.kreisdiagramm path {
   }
   .links .formular {
     float: none;
-    margin-left: initial;
+    margin-left: 20px;
   }
   .links .tabelle {
     float: none;
-    margin-right: initial;
+    margin-left: 20px;
   }
   .rechts {
     background-color: #fff;
