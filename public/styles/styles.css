@@ -86,6 +86,9 @@ tr.th {
 td {
   padding: 0 5px;
 }
+.cursor-default {
+  cursor: default;
+}
 .t-id {
   display: none;
 }
@@ -641,17 +644,11 @@ svg.kreisdiagramm path {
   }
   .ul_ch,
   .desktop-nav li:hover ul ul,
-  .desktop-nav li li:hover ul ul,
-  .desktop-nav li li li:hover ul ul,
-  .desktop-nav li li li li:hover ul ul,
-  .desktop-nav li li li li li:hover ul ul {
+  .desktop-nav li li:hover ul ul {
     left: -999em;
   }
   .desktop-nav li:hover ul,
-  .desktop-nav li li:hover ul,
-  .desktop-nav li li li:hover ul,
-  .desktop-nav li li li li:hover ul,
-  .desktop-nav li li li li li:hover ul {
+  .desktop-nav li li:hover ul {
     left: auto;
   }
   .desktop-nav li:hover>ul.ul_ch {
@@ -665,17 +662,14 @@ svg.kreisdiagramm path {
   }
   .desktop-nav li:hover li a, .desktop-nav li li:hover li a,
   .desktop-nav li li li:hover li a, .desktop-nav li li li li:hover li a,
-  .desktop-nav li:hover li a:visited, .desktop-nav li li:hover li a:visited,
-  .desktop-nav li li li:hover li a:visited, .desktop-nav li li li li:hover li a:visited {
+  .desktop-nav li:hover li a:visited, .desktop-nav li li:hover li a:visited {
     color: #009245;
   }
-  .desktop-nav li li:hover, .desktop-nav li li li:hover,
-  .desktop-nav li li li li:hover, .desktop-nav li li li li li:hover, .desktop-nav li li li li li li:hover {
+  .desktop-nav li li:hover {
     background: #009245;
     z-index: 9999;
   }
-  .desktop-nav li li:hover a, .desktop-nav li li li:hover a,
-  .desktop-nav li li li li:hover a, .desktop-nav li li li li li:hover a {
+  .desktop-nav li li:hover a {
     color: #FFFFFF;
   }
   .desktop-nav ul ul a, .desktop-nav ul ul a:visited,
@@ -683,17 +677,10 @@ svg.kreisdiagramm path {
     color: #009245;
   }
   .desktop-nav ul ul a:hover,
-  .desktop-nav li:hover li:hover a, .desktop-nav li:hover li:hover a:visited,
-  .desktop-nav li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover a:visited,
-  .desktop-nav li:hover li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover li:hover a:visited,
-  .desktop-nav li:hover li:hover li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover li:hover li:hover a:visited,
-  .desktop-nav li:hover li:hover li:hover li:hover li:hover li:hover a, .desktop-nav li:hover li:hover li:hover li:hover li:hover li:hover a:visited {
+  .desktop-nav li:hover li:hover a, .desktop-nav li:hover li:hover a:visited {
     color: #FFFFff;
   }
-  .desktop-nav li:hover li:hover li a, .desktop-nav li:hover li:hover li a:visited,
-  .desktop-nav li:hover li:hover li:hover li a, .desktop-nav li:hover li:hover li:hover li a:visited,
-  .desktop-nav li:hover li:hover li:hover li:hover li a, .desktop-nav li:hover li:hover li:hover li:hover li a:visited,
-  .desktop-nav li:hover li:hover li:hover li:hover li:hover li a, .desktop-nav li:hover li:hover li:hover li:hover li:hover li a:visited {
+  .desktop-nav li:hover li:hover li a, .desktop-nav li:hover li:hover li a:visited {
     color: #009245;
   }
   .desktop-nav .abmelden {
