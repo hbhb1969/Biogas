@@ -170,7 +170,7 @@ td {
 .container {
   background-color: #fff;
   margin: 0 auto;
-  width: calc(100% - 40px);
+  width: 100%;
 }
 .ueberschrift-tabelle {
   border-top: 1px solid;
@@ -219,7 +219,7 @@ td {
   padding-top: 8px;
   position: relative;
   text-align: center;
-  width: calc(100% - 40px);
+  width: 100%;
 }
 .ueberschrift-balken-inhalt {
   color: #fff;
@@ -309,7 +309,7 @@ td {
 }
 .menueinhalt {
   padding: 20px calc((100% - 320px) /2) 0;
-  width: calc(100% - 40px);
+  width: 100%;
 }
 .menueinhalt .ueberschrift {
   font-size: 22px;
@@ -328,6 +328,9 @@ td {
 .menueinhalt .btn-gross {
   margin-bottom: 20px;
   width: 280px;
+}
+.menueinhalt .btn-left {
+  margin-left: calc((100% - 280px) / 2);
 }
 .menueinhalt .abgaben, .menueinhalt .auswertungen {
   margin-right: 14px;
@@ -550,6 +553,11 @@ svg.kreisdiagramm path {
 @media screen and (min-width:360px) {
   .menue {
     padding: 20px;
+  }
+  .container,
+  .ueberschrift-balken,
+  .menueinhalt {
+    width: calc(100% - 40px);
   }
 }
 @media screen and (min-width:700px) {
