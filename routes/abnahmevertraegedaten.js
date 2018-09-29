@@ -1,7 +1,7 @@
 const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Vorbereitung Formular ----------
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
   const user = req.session.user,
@@ -15,31 +15,31 @@ exports.get = function(req, res, next) {
   let abnehmerOptions = "";
   let buchungenAbnahmevertraege = "";
   fetch("https://localhost:8081/select/abnehmer", options)
-    .then(function(response) {
+    .then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then(function(json) {
+    .then(json => {
       for (let row of json) {
         abnehmerOptions += "<option value=" + row.P_ID + ">" + row.B_Name + "</option> ";
       }
     })
-    .then(function() {
+    .then(() => {
       fetch("https://localhost:8081/tabellen/abnahmevertraegedaten", options)
-        .then(function(response) {
+        .then(response => {
           if (response.ok) {
             return response.json();
           }
         })
-        .then(function(json) {
+        .then(json => {
           for (let row of json) {
             buchungenAbnahmevertraege +=
               "<tr><td class='t-id'>" + row.AV_ID + "</td><td>" + row.B_Name + "</td><td>" + row.AV_Jahr + "</td><td class='t-rechts'>" + row.AV_Menge + "</td></tr>";
           }
         })
 
-        .then(function(json) {
+        .then(json => {
           res.render('abnahmevertraege-daten.ejs', {
             user: user,
             message: message,
@@ -52,13 +52,13 @@ exports.get = function(req, res, next) {
         })
     })
 
-    .catch(function(error) {
+    .catch(error => {
       logger.error(error);
     })
 };
 
 // ---------- Abnahmevertraege buchen ----------
-exports.post = function(req, res, next) {
+exports.post = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -82,7 +82,7 @@ exports.post = function(req, res, next) {
 };
 
 // ---------- Abgabevertraege ändern ----------
-exports.put = function(req, res, next) {
+exports.put = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;

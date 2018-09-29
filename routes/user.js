@@ -1,5 +1,5 @@
 //----------------------------------------------- Anmeldeseite ------------------------------------------------------
-exports.anmelden = function(req, res) {
+exports.anmelden = (req, res) => {
   let message = '';
   const sess = req.session;
 
@@ -10,7 +10,7 @@ exports.anmelden = function(req, res) {
     const email = post.email;
     const bga = post.bga;
     const sql = "SELECT BEN_ID, BEN_Name, BEN_Passwort FROM `Benutzer` WHERE `BEN_Name`='" + name + "' and BEN_Passwort = '" + pass + "'";
-    db.query(sql, function(err, results) {
+    db.query(sql, (err, results) => {
       if (err) {
         logger.error(err);
       }
@@ -40,7 +40,7 @@ exports.anmelden = function(req, res) {
 
 };
 //----------------------------------------------- Hauptmenü ----------------------------------------------
-exports.hauptmenue = function(req, res, next) {
+exports.hauptmenue = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -53,7 +53,7 @@ exports.hauptmenue = function(req, res, next) {
   let headerBild = "menue-weiss.png ";
 
   const sql = "SELECT * FROM `Benutzer` WHERE `BEN_ID`='" + userId + "'";
-  db.query(sql, function(err, results) {
+  db.query(sql, (err, results) => {
     if (err) {
       logger.error(err);
     }
@@ -67,7 +67,7 @@ exports.hauptmenue = function(req, res, next) {
 };
 
 //------------------------------------ Abmelden ----------------------------------------------
-exports.abmelden = function(req, res) {
+exports.abmelden = (req, res) => {
   req.session = null;
   res.redirect("/anmelden");
 };

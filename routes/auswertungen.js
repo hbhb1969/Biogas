@@ -1,4 +1,4 @@
-exports.menue = function(req, res) {
+exports.menue = (req, res) => {
   let message = '';
   let headerClass = "auswertungen";
   let headerTitel = "Auswertungen";

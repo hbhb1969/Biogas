@@ -3,7 +3,7 @@ const qa = require('../eigene_module/queryAsync');
 const fetch = require('node-fetch');
 
 // ---------- Vorbereitung Formular ----------
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   let message = '';
   let headerClass = "bilanz";
   let headerTitel = "Nährstoffbilanz";
@@ -26,7 +26,7 @@ exports.get = function(req, res, next) {
 };
 
 // ---------- Bilanz anzeigen ----------
-exports.post = function(req, res, next) {
+exports.post = (req, res, next) => {
   let message = '';
   let headerClass = "bilanz";
   let headerTitel = "Nährstoffbilanz";
@@ -47,19 +47,19 @@ exports.post = function(req, res, next) {
   let enddatum = enddatumSql.split('-')[2] + '.' + enddatumSql.split('-')[1] + '.' + enddatumSql.split('-')[0];
   let url = "https://localhost:8081/tabellen/bilanz?anfangsdatum=" + anfangsdatumSql + "&enddatum=" + enddatumSql;
   fetch(url, options)
-    .then(function(response) {
+    .then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then(function(json) {
+    .then(json => {
       for (let row of json) {
         nBilanz +=
           "<tr><td>" + row.Naehrstoff + "</td><td class='t-rechts'>" + row.Zugang + "</td><td class='t-rechts'>" + row.Abgang + "</td><td class='t-rechts'>" + row.Saldo + "</td></tr>";
       }
 
     })
-    .then(function() {
+    .then(() => {
       res.render('bilanz.ejs', {
         headerClass: headerClass,
         headerTitel: headerTitel,

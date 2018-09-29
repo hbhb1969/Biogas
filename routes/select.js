@@ -1,6 +1,6 @@
 const bc = require('../eigene_module/benutzer_checken');
 // Optionen für Abnahmevertraege
-exports.abnahmevertraege = function(req, res, next) {
+exports.abnahmevertraege = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT DISTINCT AV_Jahr FROM  `Abnahmevertrag` ORDER BY AV_Jahr DESC";
@@ -10,7 +10,7 @@ exports.abnahmevertraege = function(req, res, next) {
 };
 
 // Optionen für Abnehmer
-exports.abnehmer = function(req, res, next) {
+exports.abnehmer = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT P_ID, B_Name FROM `Person` WHERE Geschaeftsp_Typ_GPT_ID = 1 OR Geschaeftsp_Typ_GPT_ID = 3 ORDER BY B_Name";
@@ -20,7 +20,7 @@ exports.abnehmer = function(req, res, next) {
 };
 
 // Optionen für Analysen
-exports.analysen = function(req, res, next) {
+exports.analysen = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT AT_ID, AT_Bezeichnung FROM `Analysetyp` ORDER BY AT_Bezeichnung";
@@ -30,7 +30,7 @@ exports.analysen = function(req, res, next) {
 };
 
 // Optionen für Direktrohstoffe
-exports.direktrohstoff = function(req, res, next) {
+exports.direktrohstoff = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT S_ID, S_Bezeichnung, ME_ID, ME_Bezeichnung FROM `Mengeneinheit`, `Stoff` WHERE Stofftyp = 'Direktrohstoff' AND Mengeneinheit_ME_ID = ME_ID  ORDER BY S_Bezeichnung ";
@@ -40,7 +40,7 @@ exports.direktrohstoff = function(req, res, next) {
 };
 
 // Optionen für Lager
-exports.lager = function(req, res, next) {
+exports.lager = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT L_ID, L_Name, ME_ID, ME_Bezeichnung FROM `Lager`, `Mengeneinheit`, `Stoff` WHERE Stoff_S_ID = S_ID AND Mengeneinheit_ME_ID = ME_ID  ORDER BY L_Name ";
@@ -50,7 +50,7 @@ exports.lager = function(req, res, next) {
 };
 
 // Optionen für Lagerrohstoffe
-exports.lagerrohstoff = function(req, res, next) {
+exports.lagerrohstoff = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT S_ID, S_Bezeichnung, Mengeneinheit_ME_ID, ME_Bezeichnung FROM Stoff, Mengeneinheit WHERE Stofftyp = 'Lagerrohstoff' AND Mengeneinheit_ME_ID = ME_ID ORDER BY S_Bezeichnung";
@@ -60,7 +60,7 @@ exports.lagerrohstoff = function(req, res, next) {
 };
 
 // Optionen für Lieferanten
-exports.lieferant = function(req, res, next) {
+exports.lieferant = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT P_ID, B_Name FROM `Person` WHERE Geschaeftsp_Typ_GPT_ID = 2 OR Geschaeftsp_Typ_GPT_ID = 3 ORDER BY B_Name";
@@ -70,7 +70,7 @@ exports.lieferant = function(req, res, next) {
 };
 
 // Optionen für Mengeneinheiten
-exports.mengeneinheit = function(req, res, next) {
+exports.mengeneinheit = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT * FROM Mengeneinheit ORDER BY ME_Bezeichnung";
@@ -80,7 +80,7 @@ exports.mengeneinheit = function(req, res, next) {
 };
 
 // Optionen für Stoffe
-exports.stoff = function(req, res, next) {
+exports.stoff = (req, res, next) => {
   bc.headersBenutzerChecken(req, res);
 
   const sql = "SELECT S_ID, S_Bezeichnung FROM Stoff ORDER BY S_Bezeichnung";
@@ -91,7 +91,7 @@ exports.stoff = function(req, res, next) {
 
 // Führt die Abfrage aus und sendet das Ergebnis zur Seite, die gefetched wird
 function sqlQuery(res, sql, logText) {
-  db.query(sql, function(err, rows) {
+  db.query(sql, (err, rows) => {
     if (err) {
       logger.error(err);
     }

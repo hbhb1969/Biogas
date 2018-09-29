@@ -1,7 +1,7 @@
 const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
   const user = req.session.user,
@@ -17,56 +17,56 @@ exports.get = function(req, res, next) {
   let buchungenLagerRohstoffe = "";
   let buchungenDirektRohstoffe = "";
   fetch("https://localhost:8081/select/mengeneinheit", options)
-    .then(function(response) {
+    .then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then(function(json) {
+    .then(json => {
       for (let row of json) {
         meOptions += " <option value=" + row.ME_ID + ">" + row.ME_Bezeichnung + "</option>";
       }
     })
-    .then(function() {
+    .then(() => {
       fetch("https://localhost:8081/select/lieferant", options)
-        .then(function(response) {
+        .then(response => {
           if (response.ok) {
             return response.json();
           }
         })
-        .then(function(json) {
+        .then(json => {
           for (let row of json) {
             lieferantOptions += "<option value=" + row.P_ID + ">" + row.B_Name + "</option>";
           }
         })
-        .then(function() {
+        .then(() => {
           fetch("https://localhost:8081/tabellen/stoffelager", options)
-            .then(function(response) {
+            .then(response => {
               if (response.ok) {
                 return response.json();
               }
             })
-            .then(function(json) {
+            .then(json => {
               for (let row of json) {
                 buchungenLagerRohstoffe +=
                   "<tr><td class='t-id'>" + row.ID + "</td><td>" + row.Lagerrohstoff + "</td><td>" + row.Einheit + "</td></tr>";
               }
             })
-            .then(function() {
+            .then(() => {
               fetch("https://localhost:8081/tabellen/stoffedirekt", options)
-                .then(function(response) {
+                .then(response => {
                   if (response.ok) {
                     return response.json();
                   }
                 })
-                .then(function(json) {
+                .then(json => {
                   for (let row of json) {
                     buchungenDirektRohstoffe +=
                       "<tr><td class='t-id'>" + row.S_ID + "</td><td class='t-id'>" + row.P_ID + "</td><td>" + row.Direktrohstoff + "</td><td>" + row.Einheit + "</td><td>" + row.Lieferant + "</td></tr>";
                   }
                 })
 
-                .then(function(json) {
+                .then(json => {
                   res.render('rohstoffe.ejs', {
                     user: user,
                     message: message,
@@ -80,7 +80,7 @@ exports.get = function(req, res, next) {
                   });
                 })
             })
-            .catch(function(error) {
+            .catch(error => {
               logger.error(error);
             })
         })
@@ -89,7 +89,7 @@ exports.get = function(req, res, next) {
 
 
 // ---------- Rohstoff buchen ----------
-exports.post = function(req, res, next) {
+exports.post = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -120,7 +120,7 @@ exports.post = function(req, res, next) {
 };
 
 // ---------- Rohstoff ändern ----------
-exports.put = function(req, res, next) {
+exports.put = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;

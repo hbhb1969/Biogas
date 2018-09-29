@@ -1,7 +1,7 @@
 const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
   const user = req.session.user,
@@ -15,19 +15,19 @@ exports.get = function(req, res, next) {
   let buchungenBetriebe = "";
 
   fetch("https://localhost:8081/tabellen/betriebe", options)
-    .then(function(response) {
+    .then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then(function(json) {
+    .then(json => {
       for (let row of json) {
         buchungenBetriebe +=
           "<tr><td class='t-id'>" + row.ID + "</td><td>" + row.Betrieb + "</td><td>" + row.Betriebsnummer + "</td><td class='nodisplay'>" + row.GPT_ID + "</td><td class='nodisplay'>" + row.AD_ID + "</td><td class='nodisplay'>" + row.AD_Strasse + "</td><td class='nodisplay'>" + row.AD_Postfach + "</td><td class='nodisplay'>" + row.AD_PLZ + "</td><td class='nodisplay'>" + row.AD_Ort + "</td></tr>";
       }
     })
 
-    .then(function(json) {
+    .then(json => {
       res.render('betriebe.ejs', {
         user: user,
         message: message,
@@ -38,13 +38,13 @@ exports.get = function(req, res, next) {
       });
     })
 
-    .catch(function(error) {
+    .catch(error => {
       logger.error(error);
     })
 };
 
 // ---------- Zugänge buchen ----------
-exports.post = function(req, res, next) {
+exports.post = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -82,7 +82,7 @@ exports.post = function(req, res, next) {
 };
 
 // ---------- Zugänge ändern ----------
-exports.put = function(req, res, next) {
+exports.put = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;

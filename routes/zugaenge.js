@@ -1,7 +1,7 @@
 const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
   const user = req.session.user,
@@ -16,44 +16,44 @@ exports.get = function(req, res, next) {
   let lieferantenOptions = "";
   let buchungenZugaenge = "";
   fetch("https://localhost:8081/select/lager", options)
-    .then(function(response) {
+    .then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then(function(json) {
+    .then(json => {
       for (let row of json) {
         lagerOptions += " <option value=" + row.L_ID + " meid=" + row.ME_ID + " mebez=" + row.ME_Bezeichnung + ">" + row.L_Name + "</option>";
       }
     })
-    .then(function() {
+    .then(() => {
       fetch("https://localhost:8081/select/lieferant", options)
-        .then(function(response) {
+        .then(response => {
           if (response.ok) {
             return response.json();
           }
         })
-        .then(function(json) {
+        .then(json => {
           for (let row of json) {
             lieferantenOptions +=
               "<option value=" + row.P_ID + ">" + row.B_Name + "</option> ";
           }
         })
-        .then(function() {
+        .then(() => {
           fetch("https://localhost:8081/tabellen/zugaenge", options)
-            .then(function(response) {
+            .then(response => {
               if (response.ok) {
                 return response.json();
               }
             })
-            .then(function(json) {
+            .then(json => {
               for (let row of json) {
                 buchungenZugaenge +=
                   "<tr><td class='t-id'>" + row.ID + "</td><td>" + row.Datum + "</td><td class='t-rechts'>" + row.Menge + "</td><td>" + row.Einheit + "</td><td>" + row.Lager + "</td><td>" + row.Lieferant + "</td></tr>";
               }
             })
 
-            .then(function(json) {
+            .then(json => {
               res.render('zugaenge.ejs', {
                 user: user,
                 message: message,
@@ -67,13 +67,13 @@ exports.get = function(req, res, next) {
             })
         })
     })
-    .catch(function(error) {
+    .catch(error => {
       logger.error(error);
     })
 };
 
 // ---------- Zugänge buchen ----------
-exports.post = function(req, res, next) {
+exports.post = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -98,7 +98,7 @@ exports.post = function(req, res, next) {
 };
 
 // ---------- Zugänge ändern ----------
-exports.put = function(req, res, next) {
+exports.put = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -125,7 +125,7 @@ exports.put = function(req, res, next) {
 };
 
 // ---------- Zugang löschen ----------
-exports.delete = function(req, res, next) {
+exports.delete = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;

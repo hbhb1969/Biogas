@@ -2,7 +2,7 @@ const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 
 // ---------- Vorbereitung Formular ----------
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
   const user = req.session.user,
@@ -16,31 +16,31 @@ exports.get = function(req, res, next) {
   let abnehmerOptions = "";
   let buchungenAbgaben = "";
   fetch("https://localhost:8081/select/abnehmer", options)
-    .then(function(response) {
+    .then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then(function(json) {
+    .then(json => {
       for (let row of json) {
         abnehmerOptions +=
           "<option value=" + row.P_ID + ">" + row.B_Name + "</option> ";
       }
     })
-    .then(function() {
+    .then(() => {
       fetch("https://localhost:8081/tabellen/abgaben", options)
-        .then(function(response) {
+        .then(response => {
           if (response.ok) {
             return response.json();
           }
         })
-        .then(function(json) {
+        .then(json => {
           for (let row of json) {
             buchungenAbgaben +=
               "<tr><td class='t-id'>" + row.ID + "</td><td>" + row.Anfangsdatum + "</td><td>" + row.Enddatum + "</td><td class='t-rechts'>" + row.Menge + "</td><td>" + row.Abnehmer + "</td></tr>";
           }
         })
-        .then(function(json) {
+        .then(json => {
           res.render('abgaben.ejs', {
             headerClass: headerClass,
             headerTitel: headerTitel,
@@ -52,13 +52,13 @@ exports.get = function(req, res, next) {
           });
         })
     })
-    .catch(function(error) {
+    .catch(error => {
       logger.error(error);
     })
 };
 
 // ---------- Abgabe buchen ----------
-exports.post = function(req, res, next) {
+exports.post = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -83,7 +83,7 @@ exports.post = function(req, res, next) {
 };
 
 // ---------- Abgabe ändern ----------
-exports.put = function(req, res, next) {
+exports.put = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -109,7 +109,7 @@ exports.put = function(req, res, next) {
 };
 
 // ---------- Abgabe löschen ----------
-exports.delete = function(req, res, next) {
+exports.delete = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;

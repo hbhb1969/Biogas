@@ -1,7 +1,7 @@
 const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
-exports.get = function(req, res, next) {
+exports.get = (req, res, next) => {
   let message = '';
   let headerClass = "lager";
   let headerTitel = "Lager";
@@ -16,31 +16,31 @@ exports.get = function(req, res, next) {
   let stoffOptions = "";
   let buchungenLager = "";
   fetch("https://localhost:8081/select/lagerrohstoff", options)
-    .then(function(response) {
+    .then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then(function(json) {
+    .then(json => {
       for (let row of json) {
         stoffOptions += " <option value=" + row.S_ID + " meid=" + row.Mengeneinheit_ME_ID + " mebez=" + row.ME_Bezeichnung + ">" + row.S_Bezeichnung + "</option>";
       }
     })
-    .then(function() {
+    .then(() => {
       fetch("https://localhost:8081/tabellen/lager", options)
-        .then(function(response) {
+        .then(response => {
           if (response.ok) {
             return response.json();
           }
         })
-        .then(function(json) {
+        .then(json => {
           for (let row of json) {
             buchungenLager +=
               "<tr><td class='t-id'>" + row.ID + "</td><td>" + row.Lager + "</td><td>" + row.Rohstoff + "</td><td class='t-rechts'>" + row.Bestand + "</td><td>" + row.Einheit + "</td></tr>";
           }
         })
 
-        .then(function(json) {
+        .then(json => {
           res.render('lager.ejs', {
             user: user,
             message: message,
@@ -53,13 +53,13 @@ exports.get = function(req, res, next) {
         })
     })
 
-    .catch(function(error) {
+    .catch(error => {
       logger.error(error);
     })
 };
 
 // ---------- Zugänge buchen ----------
-exports.post = function(req, res, next) {
+exports.post = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
@@ -83,7 +83,7 @@ exports.post = function(req, res, next) {
 };
 
 // ---------- Zugänge ändern ----------
-exports.put = function(req, res, next) {
+exports.put = (req, res, next) => {
   let message = '';
   const user = req.session.user,
     userId = req.session.userId;
