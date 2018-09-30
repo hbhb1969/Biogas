@@ -1,34 +1,38 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // verhindert eine Fehlermeldung bei selbst-signierten Zertifikaten und kann entfernt werden, wenn ein fremd-signiertes Zertifikat genutzt wird.
-const express = require('express'),
-  fs = require('fs'),
-  routes = require('./routes'),
-  user = require('./routes/user'),
-  abgaben = require('./routes/abgaben'),
-  abnahmevertraege = require('./routes/abnahmevertraege'),
-  abnahmevertraegedaten = require('./routes/abnahmevertraegedaten'),
-  analysen = require('./routes/analysen'),
-  auswertungen = require('./routes/auswertungen'),
-  betriebe = require('./routes/betriebe'),
-  bilanz = require('./routes/bilanz'),
-  fuetterungen = require('./routes/fuetterungen'),
-  lager = require('./routes/lager'),
-  rohstoffe = require('./routes/rohstoffe'),
-  zugaenge = require('./routes/zugaenge'),
-  select = require('./routes/select'),
-  stammdaten = require('./routes/stammdaten'),
-  tabellen = require('./routes/tabellen'),
-  http = require('http'),
-  spdy = require('spdy'),
-  privateKey = fs.readFileSync('./https/privateKey.pem', 'utf8'),
-  certificate = fs.readFileSync('./https/certificate.pem', 'utf8'),
-  credentials = {
-    key: privateKey,
-    cert: certificate
-  },
-  path = require('path'),
-  session = require('cookie-session'),
-  mysql = require('mysql'),
-  bodyParser = require('body-parser')
+
+// eigene Routen
+const routes = require('./routes');
+const user = require('./routes/user');
+const abgaben = require('./routes/abgaben');
+const abnahmevertraege = require('./routes/abnahmevertraege');
+const abnahmevertraegedaten = require('./routes/abnahmevertraegedaten');
+const analysen = require('./routes/analysen');
+const auswertungen = require('./routes/auswertungen');
+const betriebe = require('./routes/betriebe');
+const bilanz = require('./routes/bilanz');
+const fuetterungen = require('./routes/fuetterungen');
+const lager = require('./routes/lager');
+const rohstoffe = require('./routes/rohstoffe');
+const zugaenge = require('./routes/zugaenge');
+const select = require('./routes/select');
+const stammdaten = require('./routes/stammdaten');
+const tabellen = require('./routes/tabellen');
+
+// externe Module
+const express = require('express');
+const fs = require('fs');
+const http = require('http');
+const spdy = require('spdy');
+const privateKey = fs.readFileSync('./https/privateKey.pem', 'utf8');
+const certificate = fs.readFileSync('./https/certificate.pem', 'utf8');
+const credentials = {
+  key: privateKey,
+  cert: certificate
+};
+const path = require('path');
+const session = require('cookie-session');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
 pool = require('./db/pool');
 logger = require('winston');
 logger.add(logger.transports.File, {
@@ -142,6 +146,5 @@ app.use((error, req, res, next) => {
 })
 
 // Server starten
-// httpServer.listen(8080);
 spdyServer.listen(8081);
 logger.info('Server läuft auf Port 8081');
