@@ -12,6 +12,7 @@ const betriebe = require('./routes/betriebe');
 const bilanz = require('./routes/bilanz');
 const fuetterungen = require('./routes/fuetterungen');
 const hauptmenue = require('./routes/hauptmenue');
+const index = require('./routes/index');
 const lager = require('./routes/lager');
 const rohstoffe = require('./routes/rohstoffe');
 const zugaenge = require('./routes/zugaenge');
@@ -67,10 +68,10 @@ app.use(session({
 }))
 
 // Routen
-app.get('/', routes.index);
-app.get('/anmelden', routes.index);
-app.post('/anmelden', user.anmelden);
-app.get('/abmelden', user.abmelden);
+app.get('/', index.get);
+app.get('/anmelden', index.get);
+app.post('/anmelden', index.post);
+app.get('/abmelden', index.get);
 app.get('/hauptmenue', hauptmenue.get);
 app.get('/auswertungen', auswertungen.get);
 app.get('/auswertungen/abnahmevertraege', abnahmevertraege.get);
