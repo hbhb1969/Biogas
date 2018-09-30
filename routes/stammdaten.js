@@ -1,4 +1,4 @@
-exports.menue = (req, res) => {
+exports.get = (req, res) => {
   let message = '';
   let headerClass = "stammdaten";
   let headerTitel = "Stammdaten";
