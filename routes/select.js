@@ -1,4 +1,3 @@
-const bc = require('../eigene_module/benutzer_checken');
 // Optionen für Abnahmevertraege
 exports.abnahmevertraege = (req, res, next) => {
   const sql = "SELECT DISTINCT AV_Jahr FROM  `Abnahmevertrag` ORDER BY AV_Jahr DESC";
