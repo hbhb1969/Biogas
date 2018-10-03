@@ -1,4 +1,3 @@
-const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
@@ -7,15 +6,13 @@ exports.get = (req, res, next) => {
   let headerTitel = "Lager";
   let headerBild = "lager.svg ";
   const fetch = require('node-fetch');
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
 
   let stoffOptions = "";
   let buchungenLager = "";
-  fetch("https://localhost:8081/select/lagerrohstoff", options)
+  fetch('https://localhost:8081/select/lagerrohstoff', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -27,7 +24,9 @@ exports.get = (req, res, next) => {
       }
     })
     .then(() => {
-      fetch("https://localhost:8081/tabellen/lager", options)
+      fetch('https://localhost:8081/tabellen/lager', {
+          credentials: 'include'
+        })
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -42,7 +41,6 @@ exports.get = (req, res, next) => {
 
         .then(json => {
           res.render('lager.ejs', {
-            user: user,
             message: message,
             headerClass: headerClass,
             headerTitel: headerTitel,
@@ -61,13 +59,6 @@ exports.get = (req, res, next) => {
 // ---------- Zugänge buchen ----------
 exports.post = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const lagername = post.L_Name;
   const lagerrohstoff = post.S_Bezeichnung;
@@ -85,13 +76,6 @@ exports.post = (req, res, next) => {
 // ---------- Zugänge ändern ----------
 exports.put = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const id = post.L_ID;
   const lagername = post.L_Name;

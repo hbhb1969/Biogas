@@ -1,20 +1,17 @@
-const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "abnahmevertraege-d";
   let headerTitel = "Abnahmeverträge";
   let headerBild = "abnahmevertraege-d.svg ";
   let abnehmerOptions = "";
   let buchungenAbnahmevertraege = "";
-  fetch("https://localhost:8081/select/abnehmer", options)
+  fetch('https://localhost:8081/select/abnehmer', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -26,7 +23,9 @@ exports.get = (req, res, next) => {
       }
     })
     .then(() => {
-      fetch("https://localhost:8081/tabellen/abnahmevertraegedaten", options)
+      fetch('https://localhost:8081/tabellen/abnahmevertraegedaten', {
+          credentials: 'include'
+        })
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -41,7 +40,6 @@ exports.get = (req, res, next) => {
 
         .then(json => {
           res.render('abnahmevertraege-daten.ejs', {
-            user: user,
             message: message,
             headerClass: headerClass,
             headerTitel: headerTitel,
@@ -60,13 +58,6 @@ exports.get = (req, res, next) => {
 // ---------- Abnahmevertraege buchen ----------
 exports.post = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const abnehmer = post.B_Name;
   const jahr = post.AV_Jahr;
@@ -84,13 +75,6 @@ exports.post = (req, res, next) => {
 // ---------- Abgabevertraege ändern ----------
 exports.put = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const id = post.AV_ID;
   const abnehmer = post.B_Name;

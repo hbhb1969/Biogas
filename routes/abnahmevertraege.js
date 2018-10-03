@@ -1,4 +1,3 @@
-const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 const fetch = require('node-fetch');
 
@@ -11,11 +10,10 @@ exports.get = (req, res, next) => {
   let jahr = '';
   let jahrOptions = '';
   let abnahmevertraege = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
-  fetch("https://localhost:8081/select/abnahmevertraege", options)
+  fetch('https://localhost:8081/select/abnahmevertraege', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -51,18 +49,12 @@ exports.post = (req, res, next) => {
   let headerBild = "abnahmevertraege.svg ";
   let abnahmevertraege = '';
   let jahrOptions = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   let jahr = post.Jahr;
 
-  fetch("https://localhost:8081/select/abnahmevertraege", options)
+  fetch('https://localhost:8081/select/abnahmevertraege', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -76,7 +68,9 @@ exports.post = (req, res, next) => {
     })
     .then(response => {
       let url = "https://localhost:8081/tabellen/abnahmevertraege?jahr=" + jahr;
-      fetch(url, options)
+      fetch(url, {
+          credentials: 'include'
+        })
         .then(response => {
           if (response.ok) {
             return response.json();

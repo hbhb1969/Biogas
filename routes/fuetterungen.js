@@ -1,13 +1,8 @@
-const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "fuetterungen";
   let headerTitel = "Fütterungen";
@@ -16,7 +11,9 @@ exports.get = (req, res, next) => {
   let direktOptions = "";
   let buchungenFuetterungenLager = "";
   let buchungenFuetterungenDirekt = "";
-  fetch("https://localhost:8081/select/lager", options)
+  fetch('https://localhost:8081/select/lager', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -28,7 +25,9 @@ exports.get = (req, res, next) => {
       }
     })
     .then(() => {
-      fetch("https://localhost:8081/select/direktrohstoff", options)
+      fetch('https://localhost:8081/select/direktrohstoff', {
+          credentials: 'include'
+        })
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -40,7 +39,9 @@ exports.get = (req, res, next) => {
           }
         })
         .then(() => {
-          fetch("https://localhost:8081/tabellen/fuetterungenlager", options)
+          fetch('https://localhost:8081/tabellen/fuetterungenlager', {
+              credentials: 'include'
+            })
             .then(response => {
               if (response.ok) {
                 return response.json();
@@ -53,7 +54,9 @@ exports.get = (req, res, next) => {
               }
             })
             .then(() => {
-              fetch("https://localhost:8081/tabellen/fuetterungendirekt", options)
+              fetch('https://localhost:8081/tabellen/fuetterungendirekt', {
+                  credentials: 'include'
+                })
                 .then(response => {
                   if (response.ok) {
                     return response.json();
@@ -71,7 +74,6 @@ exports.get = (req, res, next) => {
                     headerClass: headerClass,
                     headerTitel: headerTitel,
                     headerBild: headerBild,
-                    user: user,
                     message: message,
                     lagerOptions: lagerOptions,
                     direktOptions: direktOptions,
@@ -91,13 +93,6 @@ exports.get = (req, res, next) => {
 // ---------- Zugänge buchen ----------
 exports.post = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body,
     bga = 1,
     datum = post.F_Datum,
@@ -123,13 +118,6 @@ exports.post = (req, res, next) => {
 // ---------- Fütterung ändern ----------
 exports.put = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const id = post.F_ID;
   const datum = post.F_Datum;
@@ -156,13 +144,6 @@ exports.put = (req, res, next) => {
 // ---------- Fuetterung löschen ----------
 exports.delete = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const id = post.F_ID;
 

@@ -6,11 +6,6 @@
 }
 @font-face {
   font-family: "OpenSans";
-  src: url(../open-sans/OpenSans-Semibold.ttf);
-  font-weight: bolder;
-}
-@font-face {
-  font-family: "OpenSans";
   src: url(../open-sans/OpenSans-Bold.ttf);
   font-weight: bold;
 }

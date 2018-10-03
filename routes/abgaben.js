@@ -1,21 +1,18 @@
-const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "abgaben";
   let headerTitel = "Abgaben";
   let headerBild = "abgaben.svg ";
   let abnehmerOptions = "";
   let buchungenAbgaben = "";
-  fetch("https://localhost:8081/select/abnehmer", options)
+  fetch('https://localhost:8081/select/abnehmer', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -28,7 +25,9 @@ exports.get = (req, res, next) => {
       }
     })
     .then(() => {
-      fetch("https://localhost:8081/tabellen/abgaben", options)
+      fetch('https://localhost:8081/tabellen/abgaben', {
+          credentials: 'include'
+        })
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -45,7 +44,6 @@ exports.get = (req, res, next) => {
             headerClass: headerClass,
             headerTitel: headerTitel,
             headerBild: headerBild,
-            user: user,
             message: message,
             abnehmerOptions: abnehmerOptions,
             buchungenAbgaben: buchungenAbgaben
@@ -60,13 +58,6 @@ exports.get = (req, res, next) => {
 // ---------- Abgabe buchen ----------
 exports.post = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const anfangsdatum = post.AG_DatumBeginn;
   const enddatum = post.AG_DatumEnde;
@@ -85,13 +76,6 @@ exports.post = (req, res, next) => {
 // ---------- Abgabe ändern ----------
 exports.put = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const id = post.AG_ID;
   const anfangsdatum = post.AG_DatumBeginn;
@@ -111,13 +95,6 @@ exports.put = (req, res, next) => {
 // ---------- Abgabe löschen ----------
 exports.delete = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const id = post.AG_ID;
 

@@ -1,14 +1,9 @@
-const bc = require('../eigene_module/benutzer_checken');
 const qa = require('../eigene_module/queryAsync');
 
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';
   const fetch = require('node-fetch');
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  const options = bc.sessionBenutzerChecken(user, userId, res); // options werden für fetch benötigt
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "analysen";
   let headerTitel = "Analysen";
@@ -16,7 +11,9 @@ exports.get = (req, res, next) => {
   let analysetypOptions = "";
   let stoffOptions = "";
   let buchungenAnalysen = "";
-  fetch("https://localhost:8081/select/analysen", options)
+  fetch('https://localhost:8081/select/analysen', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -29,7 +26,9 @@ exports.get = (req, res, next) => {
       }
     })
     .then(() => {
-      fetch("https://localhost:8081/select/stoff", options)
+      fetch('https://localhost:8081/select/stoff', {
+          credentials: 'include'
+        })
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -42,7 +41,9 @@ exports.get = (req, res, next) => {
           }
         })
         .then(() => {
-          fetch("https://localhost:8081/tabellen/analysen", options)
+          fetch('https://localhost:8081/tabellen/analysen', {
+              credentials: 'include'
+            })
             .then(response => {
               if (response.ok) {
                 return response.json();
@@ -56,7 +57,6 @@ exports.get = (req, res, next) => {
             })
             .then(json => {
               res.render('analysen.ejs', {
-                user: user,
                 message: message,
                 headerClass: headerClass,
                 headerTitel: headerTitel,
@@ -76,13 +76,6 @@ exports.get = (req, res, next) => {
 // ---------- Analyse buchen ----------
 exports.post = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const stoff = post.S_ID;
   const externeid = post.A_ExterneID;
@@ -104,13 +97,6 @@ exports.post = (req, res, next) => {
 // ---------- Analyse ändern ----------
 exports.put = (req, res, next) => {
   let message = '';
-  const user = req.session.user,
-    userId = req.session.userId;
-
-  if (userId == null) {
-    res.redirect("/anmelden");
-    return;
-  }
   const post = req.body;
   const id = post.A_ID;
   const stoff = post.S_ID;
