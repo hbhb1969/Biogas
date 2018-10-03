@@ -2,6 +2,12 @@
 @font-face {
   font-family: "OpenSans";
   src: url(../open-sans/OpenSans-Regular.ttf);
+  font-weight: normal;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url(../open-sans/OpenSans-Semibold.ttf);
+  font-weight: bolder;
 }
 @font-face {
   font-family: "OpenSans";
@@ -21,6 +27,7 @@
   color: #575756;
   font-family: "OpenSans", Arial, sans-serif;
   font-size: 14px;
+  font-weight: normal;
 }
 body {
   background-color: #dedede;
@@ -191,6 +198,11 @@ td {
 .footer a {
   font-size: 16px;
   text-decoration: none;
+  font-weight: normal;
+  transition: text-shadow .3s;
+}
+.footer a:hover {
+  text-shadow: 0 0 .35px #575756, 0 0 .35px #575756;
 }
 .nodisplay {
   display: none;
@@ -366,7 +378,7 @@ td {
 }
 /* Buchungsseiten ******************************************************************************************************/
 .formular h2 {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 label {
   font-size: 14px;
@@ -414,6 +426,13 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 input[type="number"] {
   -moz-appearance: textfield;
 }
+input[type=checkbox] {
+  margin-left: 4px;
+  transform: scale(1.5);
+}
+.checkboxen label {
+  margin-right: 15px;
+}
 fieldset {
   border: none;
   margin: 0;
@@ -421,6 +440,7 @@ fieldset {
 }
 .stoffart {
   margin-bottom: -10px;
+  margin-top: 25px;
 }
 .stoffart label {
   height: 30px;
@@ -435,6 +455,10 @@ fieldset {
 }
 .stoffart label input {
   display: none;
+}
+.stoffart input[type="radio"]+span:hover {
+  border: 1px solid #282828;
+  box-sizing: border-box;
 }
 .stoffart input[type="radio"]:checked+span {
   border: 2px solid #009245;
@@ -599,12 +623,12 @@ svg.kreisdiagramm path {
   .desktop-nav a, .desktop-nav a:visited {
     display: block;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-style: normal;
     text-decoration: underline;
     color: #009245;
     text-decoration: none;
-    padding: 1em 1em;
+    padding: 1em 0.4em;
   }
   .desktop-nav ul ul a {
     width: 100%;
@@ -767,6 +791,9 @@ svg.kreisdiagramm path {
   }
   .ueberschrift-tabelle {
     border: none;
+  }
+  #abgaben-tabelle .ueberschrift-tabelle {
+    margin-bottom: 10px;
   }
   .buchungen-wrapper {
     display: flex;

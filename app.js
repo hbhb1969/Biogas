@@ -2,7 +2,6 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // verhindert eine Fehlermeldung
 
 // eigene Routen
 const routes = require('./routes');
-const user = require('./routes/user');
 const abgaben = require('./routes/abgaben');
 const abnahmevertraege = require('./routes/abnahmevertraege');
 const abnahmevertraegedaten = require('./routes/abnahmevertraegedaten');
