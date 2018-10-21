@@ -1,6 +1,6 @@
 <%- include header %>
   <div class="buchungen-wrapper inhalt">
-    <section id="abgaben-formular" class="container formular">
+    <section id="abgaben-formular" class="container formular links">
       <form role="form" onsubmit="return validiereForm('abgaben')">
         <% if (message.length > 0) { %>
           <div class="alert">
@@ -67,7 +67,7 @@
             </div>
       </form>
     </section>
-    <section id="abgaben-tabelle" class="container tabelle">
+    <section id="abgaben-tabelle" class="container tabelle rechts">
       <div class="buchungen">
         <div class="ueberschrift-tabelle">
           <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.

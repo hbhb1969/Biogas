@@ -1,4 +1,5 @@
 exports.get = (req, res) => {
+  delete req.session.user;
   let message = '';
   res.render('index', {
     message: message

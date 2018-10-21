@@ -22,7 +22,6 @@ const tabellen = require('./routes/tabellen');
 // externe Module
 const express = require('express');
 const fs = require('fs');
-const http = require('http');
 const spdy = require('spdy');
 const privateKey = fs.readFileSync('./https/privateKey.pem', 'utf8');
 const certificate = fs.readFileSync('./https/certificate.pem', 'utf8');
@@ -42,7 +41,6 @@ logger.add(logger.transports.File, {
 });
 
 const app = express();
-const httpServer = http.createServer(app);
 const spdyServer = spdy.createServer(credentials, app);
 
 global.db = pool;

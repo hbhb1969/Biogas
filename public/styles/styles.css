@@ -618,12 +618,12 @@ svg.kreisdiagramm path {
   .desktop-nav a, .desktop-nav a:visited {
     display: block;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-style: normal;
     text-decoration: underline;
     color: #009245;
     text-decoration: none;
-    padding: 1em 0.4em;
+    padding: 0.8em 0.6em;
   }
   .desktop-nav ul ul a {
     width: 100%;
@@ -648,10 +648,9 @@ svg.kreisdiagramm path {
     position: absolute;
     left: -999em;
     height: auto;
-    width: 125px;
+    width: 130px;
     background: #FFFFFF;
     font-weight: normal;
-    /*border: 1px solid #009245;*/
     margin: 0;
   }
   .desktop-nav li ul li {
@@ -663,7 +662,7 @@ svg.kreisdiagramm path {
     border-top: 1px solid #009245;
   }
   .desktop-nav li li {
-    width: 125px;
+    width: 130px;
   }
   .desktop-nav li li a {
     width: 100px;
@@ -737,7 +736,6 @@ svg.kreisdiagramm path {
   .menueinhalt {
     padding-left: 190px;
     padding-right: 190px;
-    width: 660px;
   }
   .menueinhalt.mobil {
     display: none;
@@ -746,13 +744,15 @@ svg.kreisdiagramm path {
     background-color: #dedede;
     display: flex;
     flex-wrap: wrap;
+    max-width: 760px;
     padding: 0;
+    width: calc(100% -40px);
   }
   .menueinhalt.desktop .menuespalte {
     background-color: #fff;
     margin-right: 19px;
     padding: 20px;
-    width: 207px;
+    width: calc((100% - 40px) / 3);
   }
   .menueinhalt.desktop .stammdaten.menuespalte {
     margin-right: 0;
@@ -771,7 +771,6 @@ svg.kreisdiagramm path {
   /* Buchungsseiten */
   .ueberschrift-balken.buchungen {
     margin: 0 auto 20px;
-    width: 660px;
   }
   .ueberschrift-buchungen .ueberschrift-balken-inhalt {
     margin-left: -20px;
@@ -782,10 +781,14 @@ svg.kreisdiagramm path {
   }
   .tabelle {
     float: right;
-    margin-right: calc((100% - 660px) / 2);
+  }
+  table {
+    margin-left: 20px;
+    width: calc(100% - 40px);
   }
   .ueberschrift-tabelle {
     border: none;
+    margin-left: 20px;
   }
   #abgaben-tabelle .ueberschrift-tabelle {
     margin-bottom: 10px;
@@ -802,9 +805,6 @@ svg.kreisdiagramm path {
   }
   .analyse-formular form {
     width: calc(100% - 40px);
-  }
-  .analysen-tabelle {
-    max-width: 380px;
   }
   .analysen-tabelle .ueberschrift-tabelle {
     width: 340px;
@@ -823,6 +823,7 @@ svg.kreisdiagramm path {
     background-color: #fff;
     float: left;
     margin-left: 20px;
+    margin-right: 0;
     min-height: 320px;
     width: 320px;
   }
@@ -841,6 +842,10 @@ svg.kreisdiagramm path {
     max-width: 420px;
     width: calc(100% - 380px);
   }
+  .analysen-tabelle {
+    max-width: 480px;
+    width: calc(100% - 320px);
+  }
   .diagramm-beschriftung {
     margin-left: calc((100% - 280px) / 2);
     padding-left: 0;
@@ -849,10 +854,10 @@ svg.kreisdiagramm path {
   .kd-abnahmevertraege {
     max-width: 320px;
   }
-  .header-container.abnahmevertraege,
-  .ueberschrift-balken.abnahmevertraege,
-  .header-container.bilanz,
-  .ueberschrift-balken.bilanz {
+  .header-container,
+  .ueberschrift-balken,
+  .header-container,
+  .ueberschrift-balken {
     max-width: 760px;
     width: calc(100% - 40px);
   }
@@ -867,9 +872,20 @@ svg.kreisdiagramm path {
   }
 }
 @media screen and (min-width:800px) {
+  .desktop-nav {
+    width: 500px;
+  }
+  .desktop-nav a, .desktop-nav a:visited {
+    font-size: 14px;
+    padding: 0.7em 0.6em;
+  }
   /* Auswertungsseiten */
   .links {
     margin-left: calc((100% - 760px) / 2);
+    margin-right: 0;
+  }
+  .rechts {
+    margin-right: 0;
   }
 }
 @media screen and (min-height:520px) {

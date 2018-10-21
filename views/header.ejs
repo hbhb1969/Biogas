@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <div class="container header-container <% if (headerClass.length > 0) { %><%= headerClass %><% } %>">
+  <header class="container header-container <% if (headerClass.length > 0) { %><%= headerClass %><% } %>">
     <a href="/hauptmenue">
       <div class="header">
         <div class="logo">
@@ -52,7 +52,7 @@
       </div>
     </nav>
     <nav class="desktop-nav">
-      <ul>        
+      <ul>
         <li><a href="/abmelden" >Abmelden</a></li>
         <li>
           <a class="cursor-default" href="#">Stammdaten</a>
@@ -80,11 +80,11 @@
         <li><a href="/hauptmenue" >Menü</a></li>
       </ul>
     </nav>
-  </div>
+  </header>
   <div class="ueberschrift-balken buchungen grau <% if (headerClass.length > 0) { %><%= headerClass %><% } %>">
     <div class="ueberschrift-balken-inhalt">
       <% if (headerTitel.length > 0) { %>
       <%= headerTitel %>
       <% } %><img src="\bilder\<% if (headerBild.length > 0) { %><%= headerBild %><% } %>">
     </div>
-    </div>
+  </div>
