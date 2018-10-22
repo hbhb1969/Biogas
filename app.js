@@ -18,6 +18,7 @@ const zugaenge = require('./routes/zugaenge');
 const select = require('./routes/select');
 const stammdaten = require('./routes/stammdaten');
 const tabellen = require('./routes/tabellen');
+const pdf = require('./routes/pdf');
 
 // externe Module
 const express = require('express');
@@ -54,6 +55,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
+app.use('/pdf', express.static(__dirname + '/public/pdf'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'geheimnis',
@@ -124,6 +126,8 @@ app.get('/tabellen/lager', tabellen.lager);
 app.get('/tabellen/stoffedirekt', tabellen.stoffedirekt);
 app.get('/tabellen/stoffelager', tabellen.stoffelager);
 app.get('/tabellen/zugaenge', tabellen.zugaenge);
+app.get('/pdf/abnehmerdaten', pdf.abnehmerdaten);
+app.get('/pdf/lieferschein', pdf.lieferschein);
 
 // Fehlerbehandlung für nicht vorhandene routes
 app.use((req, res, next) => {

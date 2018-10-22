@@ -32,7 +32,18 @@ function auswahlTabelle(e) {
     }
   }
 
-  document.getElementsByName('Person_P_ID')[0].value = abnehmerId;
+  document.getElementById('btn-lieferschein').setAttribute("formaction", "/pdf/lieferschein?abgabeId=" + id);
+
   btnBuchenAusB();
   smoothscroll();
+}
+
+function pdfZeigen() {
+  let urlParams = new URLSearchParams(window.location.search);
+  let ls = urlParams.get('ls');
+  if (ls == 1) {
+    if (confirm("Lieferschein anzeigen")) {
+      window.open('../pdf/LieferscheinGaerrest.pdf');
+    }
+  }
 }

@@ -1,9 +1,10 @@
 const qa = require('../eigene_module/queryAsync');
+const fetch = require('node-fetch');
 
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';
-  const fetch = require('node-fetch');
+
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "abgaben";
   let headerTitel = "Abgaben";

@@ -199,7 +199,8 @@ td {
 .footer a:hover {
   text-shadow: 0 0 .35px #575756, 0 0 .35px #575756;
 }
-.nodisplay {
+.nodisplay,
+.form-group a.nodisplay {
   display: none;
 }
 .desktop {
@@ -476,7 +477,7 @@ fieldset {
 }
 a.btn {
   display: inline-block;
-  padding-top: 8px;
+  padding-top: 10px;
   text-align: center;
   text-decoration: none;
 }

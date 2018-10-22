@@ -21,6 +21,7 @@ function btnBuchenAusB() {
   document.getElementById('btn-aendern').classList.remove('nodisplay');
   document.getElementById('btn-loeschen').classList.remove('nodisplay');
   document.getElementById('btn-abbrechen').classList.remove('nodisplay');
+  document.getElementById('btn-lieferschein').classList.remove('nodisplay');
 };
 // Blendet Buchen-Button auf Stammdatenseiten aus und andere Buttons ein
 function btnBuchenAusS() {
