@@ -33,12 +33,16 @@ function auswahlTabelle(e) {
   }
 
   document.getElementById('btn-lieferschein').setAttribute("formaction", "/pdf/lieferschein?abgabeId=" + id);
-
+  document.getElementById('btn-lieferschein').disabled = false;
   btnBuchenAusB();
   smoothscroll();
 }
 
-function pdfZeigen() {
+function deaktiviereLs() {
+  document.getElementById("btn-lieferschein").disabled = true;
+}
+
+function checkLieferschein() {
   let urlParams = new URLSearchParams(window.location.search);
   let ls = urlParams.get('ls');
   if (ls == 1) {

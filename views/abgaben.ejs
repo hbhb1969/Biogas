@@ -20,20 +20,20 @@
             <div class="form-group">
               <label for="AG_DatumBeginn" class="control-label">Anfangsdatum</label>
               <div>
-                <input type="date" id="datum-beginn" class="form-control" name="AG_DatumBeginn" placeholder="Anfangsdatum" required>
+                <input type="date" id="datum-beginn" class="form-control" name="AG_DatumBeginn" placeholder="Anfangsdatum" onclick="deaktiviereLs()" required>
               </div>
             </div>
             <div class="form-group">
               <label for="Ag_DatumEnde" class="control-label">Enddatum</label>
               <div>
-                <input type="date" id="datum-ende" class="form-control" name="AG_DatumEnde" placeholder="Enddatum" required>
+                <input type="date" id="datum-ende" class="form-control" name="AG_DatumEnde" placeholder="Enddatum" onclick="deaktiviereLs()" required>
                 <p id="error-datum" class="nodisplay alert"></p>
               </div>
             </div>
             <div class="form-group" id="lager-wrapper">
               <label for="Lager_L_ID" class="control-label">Abnehmer</label>
               <div class="select-wrapper">
-                <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer" required>
+                <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer" onclick="deaktiviereLs()" required>
                      <%- abnehmerOptions %>
                                        </select>
               </div>
@@ -41,7 +41,7 @@
             <div class="form-group">
               <label for="AG_Menge" class="control-label">Menge (cbm)</label>
               <div>
-                <input type="number" value="" class="form-control" id="menge" name="AG_Menge" placeholder="Menge" required>
+                <input type="number" value="" class="form-control" id="menge" name="AG_Menge" placeholder="Menge" onclick="deaktiviereLs()" required>
                 <p id="error-menge" class="nodisplay alert"></p>
               </div>
             </div>
@@ -117,7 +117,5 @@
   <script language="javascript" type="text/javascript" src="/scripts/hilfsfunktionen.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/abgaben.js"></script>
   <script language="javascript" type="text/javascript" src="/scripts/formularcheck.js"></script>
-  <script>
-    window.onload = pdfZeigen();
-  </script>
+  <script language="javascript" type="text/javascript">window.onload = checkLieferschein();</script>
   <%- include footer %>

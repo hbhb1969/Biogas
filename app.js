@@ -126,7 +126,7 @@ app.get('/tabellen/lager', tabellen.lager);
 app.get('/tabellen/stoffedirekt', tabellen.stoffedirekt);
 app.get('/tabellen/stoffelager', tabellen.stoffelager);
 app.get('/tabellen/zugaenge', tabellen.zugaenge);
-app.get('/pdf/abnehmerdaten', pdf.abnehmerdaten);
+app.get('/pdf/abgabedaten', pdf.abgabedaten);
 app.get('/pdf/lieferschein', pdf.lieferschein);
 
 // Fehlerbehandlung für nicht vorhandene routes

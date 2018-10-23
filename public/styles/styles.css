@@ -215,6 +215,9 @@ td {
 .gruen:hover {
   background-color: #027538;
 }
+.gruen:disabled {
+  background-color: #00b656;
+}
 .grau {
   background-color: #575756;
 }
