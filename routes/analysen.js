@@ -1,4 +1,4 @@
-const qa = require('../eigene_module/queryAsync');
+const qa = require('../eigene_module/query');
 
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {

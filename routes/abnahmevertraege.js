@@ -1,4 +1,4 @@
-const qa = require('../eigene_module/queryAsync');
+const qa = require('../eigene_module/query');
 const fetch = require('node-fetch');
 
 // ---------- Vorbereitung Formular ----------

@@ -1,11 +1,12 @@
+const q = require('../eigene_module/query');
 const fetch = require('node-fetch');
-// Optionen für Abnahmevertraege
+// Abgabedaten für Lieferschein
 exports.abgabedaten = (req, res, next) => {
   let abgabeId = req.query.abgabeId;
   const sql = "SELECT * FROM `Abgabe`,`Naehrstoff_Abgabe`,`Person`,`Person_Adresse`,`Adresse` WHERE AG_ID = " + abgabeId + " AND Abgabe_AG_ID = AG_ID AND P_ID = Abgabe.Person_P_ID AND P_ID = Person_Adresse.Person_P_ID AND Adresse_AD_ID = AD_ID";
   const logText = "Query Abgabedaten: " + sql;
 
-  sqlQuery(res, sql, logText)
+  q.query(res, sql, logText)
 };
 
 exports.lieferschein = (req, res, next) => {
@@ -238,20 +239,4 @@ exports.lieferschein = (req, res, next) => {
 function formatDatum(datum) {
   const [jahr, monat, tag] = datum.split("-")
   return new String(tag + "." + monat + "." + jahr);
-}
-
-// Führt die Abfrage aus und sendet das Ergebnis zur Seite, die gefetched wird
-function sqlQuery(res, sql, logText) {
-  db.query(sql, (err, rows) => {
-    if (err) {
-      logger.error(err);
-    }
-    if (rows) {
-      logger.info(logText + ': err: ' + err + ', rows: ' + rows.length);
-      res.json(rows);
-    } else {
-      logger.warn('Keine ' + logText + ' gefunden: err:' + err);
-      res.redirect('/hauptmenue');
-    }
-  });
 }
