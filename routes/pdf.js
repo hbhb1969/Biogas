@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 exports.abgabedaten = (req, res, next) => {
   let abgabeId = req.query.abgabeId;
   const sql = "SELECT * FROM `Abgabe`,`Naehrstoff_Abgabe`,`Person`,`Person_Adresse`,`Adresse` WHERE AG_ID = " + abgabeId + " AND Abgabe_AG_ID = AG_ID AND P_ID = Abgabe.Person_P_ID AND P_ID = Person_Adresse.Person_P_ID AND Adresse_AD_ID = AD_ID";
-  const logText = "Query Abnehmerdaten: " + sql;
+  const logText = "Query Abgabedaten: " + sql;
 
   sqlQuery(res, sql, logText)
 };
@@ -17,10 +17,10 @@ exports.lieferschein = (req, res, next) => {
 
   logger.info('lieferschein-abgabeId: ' + abgabeId);
 
-  // fetch Abnehmerdaten
-  let urlAbnehmerdaten = 'https://localhost:8081/pdf/abgabedaten?abgabeId=' + abgabeId;
+  // fetch Abgabedaten
+  let urlAbgabedaten = 'https://localhost:8081/pdf/abgabedaten?abgabeId=' + abgabeId;
 
-  logger.info('lieferschein-urlAbnehmerdaten: ' + urlAbnehmerdaten);
+  logger.info('lieferschein-urlAbgabedaten: ' + urlAbgabedaten);
   let abnehmerName = '';
   let abnehmerStrasse = '';
   let abnehmerPLZ = '';
@@ -29,7 +29,7 @@ exports.lieferschein = (req, res, next) => {
   let stickstoff = '';
   let kalium = '';
   let phosphor = '';
-  fetch(urlAbnehmerdaten, {
+  fetch(urlAbgabedaten, {
       credentials: 'include'
     })
     .then(response => {
