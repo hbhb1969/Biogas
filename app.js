@@ -128,6 +128,9 @@ app.get('/tabellen/stoffelager', tabellen.stoffelager);
 app.get('/tabellen/zugaenge', tabellen.zugaenge);
 app.get('/pdf/abgabedaten', pdf.abgabedaten);
 app.get('/pdf/lieferschein', pdf.lieferschein);
+app.get('/pdf/nsabgaben', pdf.nsabgaben);
+app.get('/pdf/nszugaenge', pdf.nszugaenge);
+app.get('/pdf/bilanz', pdf.bilanz);
 
 // Fehlerbehandlung für nicht vorhandene routes
 app.use((req, res, next) => {

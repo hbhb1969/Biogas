@@ -235,6 +235,148 @@ exports.lieferschein = (req, res, next) => {
   res.redirect('/buchen/abgaben?ls=1');
 };
 
+exports.nsabgaben = (req, res, next) => {
+  let anfangsdatum = req.query.ad;
+  let enddatum = req.query.ed;
+  const sql = "SELECT N_ID, SUM(N_Menge) AS NS_Menge, SUM(AG_Menge) AS AG_Menge  FROM `Naehrstoff`, `Naehrstoff_Abgabe`, `Abgabe` WHERE AG_DatumEnde >= '" + anfangsdatum + "' AND AG_DatumEnde <= '" + enddatum + "' AND N_ID = Naehrstoff_N_ID AND AG_ID = Abgabe_AG_ID      GROUP BY N_ID ORDER BY N_ID";
+  const logText = "Query Abgabemengen: " + sql;
+
+  q.query(res, sql, logText)
+};
+
+exports.nszugaenge = (req, res, next) => {
+  let anfangsdatum = req.query.ad;
+  let enddatum = req.query.ed;
+  const sql = "SELECT * FROM (SELECT S_Bezeichnung AS Stoff, N_Bezeichnung AS Naehrstoff, SUM(N_Menge) AS N_Menge, SUM(Z_BruttoMenge) AS S_Menge FROM `Naehrstoff`, `Naehrstoff_N_Eingang`, `N_Eingang`, `Zugang` , `Lager` , `Stoff` WHERE Z_Datum >= '" + anfangsdatum + "' AND Z_Datum <= '" + enddatum + "' AND N_ID = Naehrstoff_N_ID AND NE_ID = N_Eingang_NE_ID AND Z_ID = Zugang_Z_ID AND L_ID = Lager_L_ID AND S_ID = Stoff_S_ID GROUP BY Stoff, Naehrstoff ORDER BY Stoff) as Zugang UNION ALL SELECT * FROM (SELECT S_Bezeichnung AS Stoff, N_Bezeichnung AS Naehrstoff, SUM(N_Menge) AS N_Menge, SUM(F_BruttoMenge) AS S_Menge FROM `Naehrstoff`, `Naehrstoff_N_Eingang`, `N_Eingang`, `Fuetterung` , `Stoff` WHERE F_Datum >= '" + anfangsdatum + "' AND F_Datum <= '" + enddatum + "' AND N_ID = Naehrstoff_N_ID AND NE_ID = N_Eingang_NE_ID AND F_ID = Fuetterung_F_ID AND S_ID = Stoff_S_ID GROUP BY Stoff, Naehrstoff ORDER BY Stoff) AS f";
+  const logText = "Query Zugangsmengenmengen: " + sql;
+
+  q.query(res, sql, logText)
+};
+
+exports.bilanz = (req, res, next) => {
+  logger.info('in bilanz');
+  let anfangsdatum = req.query.Anfangsdatum;
+  let enddatum = req.query.Enddatum;
+  logger.info('Anfangsdatum: ' + anfangsdatum);
+  logger.info('Enddatum: ' + enddatum);
+
+  // fetch Abgabemengen
+  let urlAbgabemengen = 'https://localhost:8081/pdf/nsabgaben?ad=' + anfangsdatum + '&ed=' + enddatum;
+  let urlZugangsmengen = 'https://localhost:8081/pdf/nszugaenge?ad=' + anfangsdatum + '&ed=' + enddatum;
+  let agK = '';
+  let agN = '';
+  let agP = '';
+  let agMenge = '';
+  let zTabelle = '';
+  let zugaenge = [];
+  fetch(urlAbgabemengen, {
+      credentials: 'include'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(json => {
+      for (let row of json) {
+        agMenge = row.AG_Menge;
+        if (row.N_ID == 1) {
+          agN = row.NS_Menge;
+        } else if (row.N_ID == 2) {
+          agP = row.NS_Menge;
+        } else if (row.N_ID == 3) {
+          agK = row.NS_Menge;
+        }
+      }
+    })
+    .then(() => {
+      fetch(urlZugangsmengen, {
+          credentials: 'include'
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then(json => {
+          let i = 1;
+          for (let row of json) {
+            if (i == 1) {
+              zugaenge.push(row.Stoff);
+              zugaenge.push(row.S_Menge);
+              zugaenge.push(row.N_Menge);
+
+              i++;
+            } else if (i == 2) {
+              zugaenge.push(row.N_Menge);
+              i++;
+            } else if (i == 3) {
+
+              zugaenge.push(row.N_Menge);
+              i = 1;
+            }
+          }
+        })
+        .then(() => {
+          // Erzeuge PDF
+
+          let PDFDocument = require('pdfkit');
+          let fs = require('fs');
+          let docname = 'public/pdf/Bilanz.pdf';
+          let doc = new PDFDocument();
+
+          doc.pipe(fs.createWriteStream(docname));
+          //doc.pipe(res);
+          doc.fontSize(20)
+            .text('Nährstofbilanz', 28, 30, {
+              align: 'center'
+            });
+          doc.fontSize(11)
+            .text('gemäß §3 Bundesverbringungsverordnung (Stand 07.2012)', 28, 51, {
+              align: 'center'
+            });
+          doc.fontSize(11)
+            .text('Abgabe N: ' + agN, 38, 80);
+          doc.fontSize(11)
+            .text('Abgabe P: ' + agP, 38, 100);
+          doc.fontSize(11)
+            .text('Abgabe K ' + agK, 38, 120);
+          doc.fontSize(11)
+            .text('Abgabemenge: ' + agMenge, 38, 140);
+          doc.fontSize(11)
+            .text('Zugänge: ' + zugaenge.length, 38, 160);
+          doc.moveDown();
+          let y = 200;
+          for (i = 0; i < zugaenge.length; i++) {
+            doc.fontSize(11)
+              .text(zugaenge.shift(), 35, y)
+              .text(zugaenge.shift(), 100, y, {
+                width: 100,
+                align: 'right'
+              })
+              .text(zugaenge.shift(), 200, y, {
+                width: 100,
+                align: 'right'
+              })
+              .text(zugaenge.shift(), 300, y, {
+                width: 100,
+                align: 'right'
+              })
+              .text(zugaenge.shift(), 400, y, {
+                width: 100,
+                align: 'right'
+              });
+            y = y + 20;
+          }
+          doc.end();
+        })
+    })
+    .catch(error => {
+      logger.error(error);
+    })
+  res.redirect('/auswertungen/bilanz?pdf=1');
+};
+
 // Formatiert das Datum in deutsches Formatiert
 function formatDatum(datum) {
   const [jahr, monat, tag] = datum.split("-")
