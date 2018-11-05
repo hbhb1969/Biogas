@@ -1,8 +1,9 @@
 const qa = require('../eigene_module/query');
+const fetch = require('node-fetch');
+
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';
-  const fetch = require('node-fetch');
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "zugaenge";
   let headerTitel = "Zugänge";
@@ -75,6 +76,7 @@ exports.get = (req, res, next) => {
 // ---------- Zugänge buchen ----------
 exports.post = (req, res, next) => {
   let message = '';
+  const post = req.body;
   const datum = post.Z_Datum;
   const menge = post.Z_BruttoMenge;
   const lager = post.Lager_L_ID;

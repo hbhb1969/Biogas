@@ -267,8 +267,15 @@ exports.bilanz = (req, res, next) => {
   let agN = '';
   let agP = '';
   let agMenge = '';
-  let zTabelle = '';
   let zugaenge = [];
+  let zK = 0;
+  let zN = 0;
+  let zP = 0;
+  let zMenge = 0;
+  let sK = 0;
+  let sN = 0;
+  let sP = 0;
+  let sMenge = 0;
   fetch(urlAbgabemengen, {
       credentials: 'include'
     })
@@ -279,13 +286,13 @@ exports.bilanz = (req, res, next) => {
     })
     .then(json => {
       for (let row of json) {
-        agMenge = row.AG_Menge;
+        agMenge = row.AG_Menge * -1;
         if (row.N_ID == 1) {
-          agN = row.NS_Menge;
+          agN = row.NS_Menge * -1;
         } else if (row.N_ID == 2) {
-          agP = row.NS_Menge;
+          agP = row.NS_Menge * -1;
         } else if (row.N_ID == 3) {
-          agK = row.NS_Menge;
+          agK = row.NS_Menge * -1;
         }
       }
     })
@@ -302,16 +309,19 @@ exports.bilanz = (req, res, next) => {
           let i = 1;
           for (let row of json) {
             if (i == 1) {
+              zMenge = zMenge + row.S_Menge;
+              zK = zK + row.N_Menge;
               zugaenge.push(row.Stoff);
               zugaenge.push(row.S_Menge);
               zugaenge.push(row.N_Menge);
 
               i++;
             } else if (i == 2) {
+              zN = zN + row.N_Menge;
               zugaenge.push(row.N_Menge);
               i++;
             } else if (i == 3) {
-
+              zP = zP + row.N_Menge;
               zugaenge.push(row.N_Menge);
               i = 1;
             }
@@ -328,46 +338,105 @@ exports.bilanz = (req, res, next) => {
           doc.pipe(fs.createWriteStream(docname));
           //doc.pipe(res);
           doc.fontSize(20)
-            .text('Nährstofbilanz', 28, 30, {
+            .text('Nährstoffbilanz', 28, 30, {
               align: 'center'
             });
           doc.fontSize(11)
             .text('gemäß §3 Bundesverbringungsverordnung (Stand 07.2012)', 28, 51, {
               align: 'center'
-            });
-          doc.fontSize(11)
-            .text('Abgabe N: ' + agN, 38, 80);
-          doc.fontSize(11)
-            .text('Abgabe P: ' + agP, 38, 100);
-          doc.fontSize(11)
-            .text('Abgabe K ' + agK, 38, 120);
-          doc.fontSize(11)
-            .text('Abgabemenge: ' + agMenge, 38, 140);
-          doc.fontSize(11)
-            .text('Zugänge: ' + zugaenge.length, 38, 160);
-          doc.moveDown();
+            })
           let y = 200;
           for (i = 0; i < zugaenge.length; i++) {
             doc.fontSize(11)
               .text(zugaenge.shift(), 35, y)
-              .text(zugaenge.shift(), 100, y, {
+              .text(zugaenge.shift().toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
                 width: 100,
                 align: 'right'
               })
-              .text(zugaenge.shift(), 200, y, {
+              .text(zugaenge.shift().toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
                 width: 100,
                 align: 'right'
               })
-              .text(zugaenge.shift(), 300, y, {
+              .text(zugaenge.shift().toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 300, y, {
                 width: 100,
                 align: 'right'
               })
-              .text(zugaenge.shift(), 400, y, {
+              .text(zugaenge.shift().toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 400, y, {
                 width: 100,
                 align: 'right'
               });
             y = y + 20;
           }
+          let yLinie = y - 10;
+          doc.moveTo(35, yLinie)
+            .lineTo(500, yLinie)
+            .stroke()
+            .text("Gesamt: ", 35, y)
+            .text(zMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(zK.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(zN.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 300, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(zP.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 400, y, {
+              width: 100,
+              align: 'right'
+            });
+          y = y + 20;
+          yLinie = y + 10;
+          doc.text("Abgabe Gärrest ", 35, y)
+            .text(agMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(agK.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(agN.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 300, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(agP.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 400, y, {
+              width: 100,
+              align: 'right'
+            })
+            .moveTo(35, yLinie)
+            .lineTo(500, yLinie)
+            .stroke();
+          sMenge = zMenge + agMenge;
+          sK = zK + agK;
+          sN = zN + agN;
+          sP = zP + agP;
+          y = y + 20;
+          yLinie = y + 10;
+          doc.text("Saldo ", 35, y)
+            .text(sMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(sK.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(sN.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 300, y, {
+              width: 100,
+              align: 'right'
+            })
+            .text(sP.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 400, y, {
+              width: 100,
+              align: 'right'
+            })
+            .moveTo(35, yLinie)
+            .lineTo(500, yLinie)
+            .stroke();
+
           doc.end();
         })
     })
