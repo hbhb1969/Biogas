@@ -443,7 +443,7 @@ exports.bilanz = (req, res, next) => {
     .catch(error => {
       logger.error(error);
     })
-  res.redirect('/auswertungen/bilanz?pdf=1');
+  res.redirect('/auswertungen/bilanz-pdf?pdf=1&ad=' + anfangsdatum + '&ed=' + enddatum);
 };
 
 // Formatiert das Datum in deutsches Formatiert

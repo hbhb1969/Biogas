@@ -77,6 +77,7 @@ app.get('/auswertungen/abnahmevertraege', abnahmevertraege.get);
 app.post('/auswertungen/abnahmevertraege', abnahmevertraege.post);
 app.get('/auswertungen/bilanz', bilanz.get);
 app.post('/auswertungen/bilanz', bilanz.post);
+app.get('/auswertungen/bilanz-pdf', bilanz.post);
 app.get('/buchen/abgaben', abgaben.get);
 app.post('/buchen/abgaben', abgaben.post);
 app.post('/buchen/abgaben-put', abgaben.put);
