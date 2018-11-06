@@ -27,6 +27,11 @@ exports.lieferschein = (req, res, next) => {
   let abnehmerPLZ = '';
   let abnehmerOrt = '';
   let abnehmerNummer = '';
+  let abnehmerNation = '';
+  let abnehmerLand = '';
+  let abnehmerLandkreis = '';;
+  let abnehmerGemeinde = '';
+  let abnehmerBetrieb = '';
   let stickstoff = '';
   let kalium = '';
   let phosphor = '';
@@ -72,156 +77,143 @@ exports.lieferschein = (req, res, next) => {
       doc.fontSize(20)
         .text('Aufzeichnung über Wirtschaftsdüngerlieferung', 28, 30, {
           align: 'center'
-        });
-      doc.fontSize(11)
+        })
+        .fontSize(11)
         .text('gemäß §3 Bundesverbringungsverordnung (Stand 07.2012)', 28, 51, {
           align: 'center'
-        });
-      doc.fontSize(11)
+        })
+        .fontSize(11)
         .text('Lieferschein aus der Anwendung Nährstoffmanager erstellt', 28, 65, {
           align: 'center'
-        });
-      doc.rect(28, 80, 539, 95)
-        .stroke();
-      doc.fontSize(14)
-        .text('1. Abgeber', 35, 88);
-      doc.fontSize(11)
-        .text('Firma / Name:', 38, 105);
-      doc.fontSize(11)
-        .text('Brokser Bioenergie GmbH & Co. KG', 130, 105);
-      doc.fontSize(11)
-        .text('Anschrift:', 38, 116);
-      doc.fontSize(11)
-        .text('Lange Str. 101, 27305 Bruchhausen-Vilsen', 130, 116);
-      doc.fontSize(9)
-        .text('Betriebsnummer Agrarförderung bzw.', 38, 134)
-        .text('Nation', 265, 134)
-        .text('Land', 320, 134)
-        .text('Landkreis', 375, 134)
-        .text('Gemeinde', 430, 134)
-        .text('Betrieb', 485, 134);
-      doc.fontSize(9)
-        .text('Registriernummer Viehverkehrsverordnung', 38, 148)
-        .text('276', 280, 148)
-        .text('03', 340, 148)
-        .text('251', 390, 148)
-        .text('010', 445, 148)
-        .text('0038', 500, 148);
-      doc.rect(260, 130, 283, 28)
-        .stroke();
-      doc.moveTo(260, 144)
-        .lineTo(543, 144)
-        .stroke();
-      doc.moveTo(315, 130)
-        .lineTo(315, 158)
-        .stroke();
-      doc.moveTo(370, 130)
-        .lineTo(370, 158)
-        .stroke();
-      doc.moveTo(425, 130)
-        .lineTo(425, 158)
-        .stroke();
-      doc.moveTo(480, 130)
-        .lineTo(480, 158)
-        .stroke();
-      // 2. hauptblock
-      doc.rect(28, 180, 539, 95)
-        .stroke();
-      doc.fontSize(14)
-        .text('2. Empfänger', 35, 188);
-      doc.fontSize(11)
-        .text('Firma / Name:', 38, 205);
-      doc.fontSize(11)
-        .text(abnehmerName, 130, 205);
-      doc.fontSize(11)
-        .text('Anschrift:', 38, 216);
-      doc.fontSize(11)
-        .text(abnehmerStrasse + ', ' + abnehmerPLZ + ' ' + abnehmerOrt, 130, 216);
-      doc.fontSize(9)
-        .text('Betriebsnummer Agrarförderung bzw.', 38, 234)
-        .text('Nation', 265, 234)
-        .text('Land', 320, 234)
-        .text('Landkreis', 375, 234)
-        .text('Gemeinde', 430, 234)
-        .text('Betrieb', 485, 234);
-      doc.fontSize(9)
-        .text('Registriernummer Viehverkehrsverordnung', 38, 248)
-        .text(abnehmerNation, 280, 248)
-        .text(abnehmerLand, 340, 248)
-        .text(abnehmerLandkreis, 390, 248)
-        .text(abnehmerGemeinde, 445, 248)
-        .text(abnehmerBetrieb, 500, 248);
-      doc.rect(260, 230, 283, 28)
-        .stroke();
-      doc.moveTo(260, 244)
-        .lineTo(543, 244)
-        .stroke();
-      doc.moveTo(315, 230)
-        .lineTo(315, 258)
-        .stroke();
-      doc.moveTo(370, 230)
-        .lineTo(370, 258)
-        .stroke();
-      doc.moveTo(425, 230)
-        .lineTo(425, 258)
-        .stroke();
-      doc.moveTo(480, 230)
-        .lineTo(480, 258)
-        .stroke();
-      // 3. Block
-      doc.rect(28, 280, 539, 165)
-        .stroke();
-      doc.fontSize(14)
-        .text('3. Art des Wirtschaftsdüngers ', 35, 288);
-      doc.fontSize(11)
-        .text('Gärrest', 130, 305);
-      doc.fontSize(14)
-        .text('4. Inhaltsstoffe ', 35, 325);
-      doc.fontSize(11)
-        .text('Ges.-N', 130, 342);
-      doc.fontSize(11)
-        .text('P2O5', 190, 342);
-      doc.fontSize(11)
-        .text('K2O', 250, 342);
-      doc.fontSize(11)
-        .text('Gesamt', 38, 359);
-      doc.fontSize(11)
-        .text(stickstoff, 145, 359);
-      doc.fontSize(11)
-        .text(phosphor, 200, 359);
-      doc.fontSize(11)
-        .text(kalium, 252, 359);
-      doc.fontSize(14)
-        .text('5. Abgabedatum ', 35, 376);
-      doc.fontSize(11)
-        .text('von ' + anfangsdatum + ' bis ' + enddatum, 130, 393);
-      doc.fontSize(14)
-        .text('6. Abgabemenge ', 35, 410);
-      doc.fontSize(11)
-        .text(menge + ' in cbm Frischmasse ', 130, 427);
-      // Rest
-      doc.moveTo(28, 500)
+        })
+        .rect(28, 80, 539, 95)
+        .stroke()
+        .fontSize(14)
+        .text('1. Abgeber', 35, 88)
+        .fontSize(11)
+        .text('Firma / Name:', 38, 105)
+        .text('Brokser Bioenergie GmbH & Co. KG', 130, 105)
+        .text('Anschrift:', 38, 120)
+        .text('Lange Str. 101, 27305 Bruchhausen-Vilsen', 130, 120)
+        .fontSize(9)
+        .text('Betriebsnummer Agrarförderung bzw.', 38, 138)
+        .text('Nation', 265, 138)
+        .text('Land', 320, 138)
+        .text('Landkreis', 375, 138)
+        .text('Gemeinde', 430, 138)
+        .text('Betrieb', 485, 138)
+        .text('Registriernummer Viehverkehrsverordnung', 38, 152)
+        .text('276', 280, 152)
+        .text('03', 340, 152)
+        .text('251', 390, 152)
+        .text('010', 445, 152)
+        .text('0038', 500, 152)
+        .rect(260, 134, 283, 28)
+        .stroke()
+        .moveTo(260, 148)
+        .lineTo(543, 148)
+        .stroke()
+        .moveTo(315, 134)
+        .lineTo(315, 162)
+        .stroke()
+        .moveTo(370, 134)
+        .lineTo(370, 162)
+        .stroke()
+        .moveTo(425, 134)
+        .lineTo(425, 162)
+        .stroke()
+        .moveTo(480, 134)
+        .lineTo(480, 162)
+        .stroke()
+        // 2. hauptblock
+        .rect(28, 180, 539, 95)
+        .stroke()
+        .fontSize(14)
+        .text('2. Empfänger', 35, 188)
+        .fontSize(11)
+        .text('Firma / Name:', 38, 205)
+        .text(abnehmerName, 130, 205)
+        .text('Anschrift:', 38, 220)
+        .text(abnehmerStrasse + ', ' + abnehmerPLZ + ' ' + abnehmerOrt, 130, 220)
+        .fontSize(9)
+        .text('Betriebsnummer Agrarförderung bzw.', 38, 238)
+        .text('Nation', 265, 238)
+        .text('Land', 320, 238)
+        .text('Landkreis', 375, 238)
+        .text('Gemeinde', 430, 238)
+        .text('Betrieb', 485, 238)
+        .fontSize(9)
+        .text('Registriernummer Viehverkehrsverordnung', 38, 252)
+        .text(abnehmerNation, 280, 252)
+        .text(abnehmerLand, 340, 252)
+        .text(abnehmerLandkreis, 390, 252)
+        .text(abnehmerGemeinde, 445, 252)
+        .text(abnehmerBetrieb, 500, 252)
+        .rect(260, 234, 283, 28)
+        .stroke()
+        .moveTo(260, 248)
+        .lineTo(543, 248)
+        .stroke()
+        .moveTo(315, 234)
+        .lineTo(315, 262)
+        .stroke()
+        .moveTo(370, 234)
+        .lineTo(370, 262)
+        .stroke()
+        .moveTo(425, 234)
+        .lineTo(425, 262)
+        .stroke()
+        .moveTo(480, 234)
+        .lineTo(480, 262)
+        .stroke()
+        // 3. Block
+        .rect(28, 280, 539, 165)
+        .stroke()
+        .fontSize(14)
+        .text('3. Art des Wirtschaftsdüngers ', 35, 288)
+        .fontSize(11)
+        .text('Gärrest', 130, 305)
+        .fontSize(14)
+        .text('4. Inhaltsstoffe ', 35, 325)
+        .fontSize(11)
+        .text('Ges.-N', 130, 342)
+        .text('P2O5', 190, 342)
+        .text('K2O', 250, 342)
+        .text('Gesamt', 38, 359)
+        .text(stickstoff, 145, 359)
+        .text(phosphor, 200, 359)
+        .text(kalium, 252, 359)
+        .fontSize(14)
+        .text('5. Abgabedatum ', 35, 376)
+        .fontSize(11)
+        .text('von ' + anfangsdatum + ' bis ' + enddatum, 130, 393)
+        .fontSize(14)
+        .text('6. Abgabemenge ', 35, 410)
+        .fontSize(11)
+        .text(menge + ' in cbm Frischmasse ', 130, 427)
+        // Rest
+        .moveTo(28, 500)
         .lineTo(539, 500)
-        .stroke();
-      doc.fontSize(11)
-        .text('Ort, Datum, Unterschriften', 28, 505);
-      doc.fontSize(11)
-        .text('Abgeber', 258, 505);
-      doc.fontSize(11)
-        .text('Empfänger', 428, 505);
-      doc.text('Bringt der Empfänger die hier nachgewiesene Lieferung erneut in Verkehr, ist auch diese Abgabe aufzeichnungspflichtig. ', 28, 535);
-      doc.moveDown();
-      doc.text('Haben Abgeber und Empfänger ihren Sitz in unterschiedlichen Bundesländern, hat der Empfänger jeweils zum 31. März die im vorangegangenem Jahr empfangenem Mengen der zuständigen Behörde zu melden (siehe Formular zur Meldepflicht nach § 4).', {
-        width: '539'
-      });
-      doc.moveDown();
-      doc.text('Die Aufzeichnungen sind für drei Jahre ab dem Datum der Abgabe aufzubewahren. Abgeber haben die Nds. Verordnung über Meldepflichten(Internet - Datenbankeintrag) zu beachten.', {
-        width: '539'
-      });
-      doc.moveDown();
-      doc.text('Hinweis: Diese Aufzeichnungen entbinden nicht von den düngemittelrechtlichen Kennzeichnungspflichten. Insbesondere bei Gärresten aus Biogas - Anlagen, Pilzkultursubstraten oder sonstigen Mischungen aus Wirtschaftsdüngern ist dies zu beachten.Dem Aufnehmer bzw.Empfänger ist mit jeder Partie unverzüglich eine nach Düngemittelverordnung vorgeschriebene Kennzeichnung auszuhändigen.', {
-        width: '539'
-      });
+        .stroke()
+        .fontSize(11)
+        .text('Ort, Datum, Unterschriften', 28, 505)
+        .fontSize(11)
+        .text('Abgeber', 258, 505)
+        .fontSize(11)
+        .text('Empfänger', 428, 505)
+        .text('Bringt der Empfänger die hier nachgewiesene Lieferung erneut in Verkehr, ist auch diese Abgabe aufzeichnungspflichtig. ', 28, 535)
+        .moveDown()
+        .text('Haben Abgeber und Empfänger ihren Sitz in unterschiedlichen Bundesländern, hat der Empfänger jeweils zum 31. März die im vorangegangenem Jahr empfangenem Mengen der zuständigen Behörde zu melden (siehe Formular zur Meldepflicht nach § 4).', {
+          width: '539'
+        })
+        .moveDown()
+        .text('Die Aufzeichnungen sind für drei Jahre ab dem Datum der Abgabe aufzubewahren. Abgeber haben die Nds. Verordnung über Meldepflichten(Internet - Datenbankeintrag) zu beachten.', {
+          width: '539'
+        })
+        .moveDown()
+        .text('Hinweis: Diese Aufzeichnungen entbinden nicht von den düngemittelrechtlichen Kennzeichnungspflichten. Insbesondere bei Gärresten aus Biogas - Anlagen, Pilzkultursubstraten oder sonstigen Mischungen aus Wirtschaftsdüngern ist dies zu beachten.Dem Aufnehmer bzw.Empfänger ist mit jeder Partie unverzüglich eine nach Düngemittelverordnung vorgeschriebene Kennzeichnung auszuhändigen.', {
+          width: '539'
+        });
 
 
 
@@ -365,9 +357,9 @@ exports.bilanz = (req, res, next) => {
                 width: 100,
                 align: 'right'
               });
-            y = y + 20;
+            y = y + 15;
           }
-          let yLinie = y - 10;
+          let yLinie = y - 5;
           doc.moveTo(35, yLinie)
             .lineTo(500, yLinie)
             .stroke()
@@ -388,7 +380,7 @@ exports.bilanz = (req, res, next) => {
               width: 100,
               align: 'right'
             });
-          y = y + 20;
+          y = y + 15;
           yLinie = y + 10;
           doc.text("Abgabe Gärrest ", 35, y)
             .text(agMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
@@ -414,7 +406,7 @@ exports.bilanz = (req, res, next) => {
           sK = zK + agK;
           sN = zN + agN;
           sP = zP + agP;
-          y = y + 20;
+          y = y + 15;
           yLinie = y + 10;
           doc.text("Saldo ", 35, y)
             .text(sMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
