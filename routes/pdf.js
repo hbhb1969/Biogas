@@ -239,7 +239,7 @@ exports.nsabgaben = (req, res, next) => {
 exports.nszugaenge = (req, res, next) => {
   let anfangsdatum = req.query.ad;
   let enddatum = req.query.ed;
-  const sql = "SELECT * FROM (SELECT S_Bezeichnung AS Stoff, N_Bezeichnung AS Naehrstoff, SUM(N_Menge) AS N_Menge, SUM(Z_BruttoMenge) AS S_Menge FROM `Naehrstoff`, `Naehrstoff_N_Eingang`, `N_Eingang`, `Zugang` , `Lager` , `Stoff` WHERE Z_Datum >= '" + anfangsdatum + "' AND Z_Datum <= '" + enddatum + "' AND N_ID = Naehrstoff_N_ID AND NE_ID = N_Eingang_NE_ID AND Z_ID = Zugang_Z_ID AND L_ID = Lager_L_ID AND S_ID = Stoff_S_ID GROUP BY Stoff, Naehrstoff ORDER BY Stoff) as Zugang UNION ALL SELECT * FROM (SELECT S_Bezeichnung AS Stoff, N_Bezeichnung AS Naehrstoff, SUM(N_Menge) AS N_Menge, SUM(F_BruttoMenge) AS S_Menge FROM `Naehrstoff`, `Naehrstoff_N_Eingang`, `N_Eingang`, `Fuetterung` , `Stoff` WHERE F_Datum >= '" + anfangsdatum + "' AND F_Datum <= '" + enddatum + "' AND N_ID = Naehrstoff_N_ID AND NE_ID = N_Eingang_NE_ID AND F_ID = Fuetterung_F_ID AND S_ID = Stoff_S_ID GROUP BY Stoff, Naehrstoff ORDER BY Stoff) AS f";
+  const sql = "SELECT * FROM(SELECT S_Bezeichnung AS Stoff, SUM(Z_BruttoMenge) AS S_Menge, ME_Bezeichnung AS ME, N_Bezeichnung AS Naehrstoff, SUM(N_Menge) AS N_Menge FROM `Naehrstoff`, `Naehrstoff_N_Eingang`, `N_Eingang`, `Zugang`, `Lager` , `Stoff`, `Mengeneinheit` WHERE Z_Datum >= '" + anfangsdatum + "' AND Z_Datum <= '" + enddatum + "' AND N_ID = Naehrstoff_N_ID	AND NE_ID = N_Eingang_NE_ID AND Z_ID = Zugang_Z_ID AND L_ID = Lager_L_ID AND S_ID = Stoff_S_ID AND ME_ID = Mengeneinheit_ME_ID GROUP BY Stoff, Naehrstoff, ME ORDER BY Stoff) as Zugang UNION ALL SELECT * FROM (SELECT S_Bezeichnung AS Stoff, SUM(F_BruttoMenge) AS S_Menge, ME_Bezeichnung AS ME, N_Bezeichnung AS Naehrstoff, SUM(N_Menge) AS N_Menge FROM `Naehrstoff`, `Naehrstoff_N_Eingang`, `N_Eingang`, `Fuetterung` , `Stoff`, `Mengeneinheit` WHERE F_Datum >= '" + anfangsdatum + "' AND F_Datum <= '" + enddatum + "' AND N_ID = Naehrstoff_N_ID	AND NE_ID = N_Eingang_NE_ID AND F_ID = Fuetterung_F_ID AND S_ID = Stoff_S_ID AND ME_ID = Mengeneinheit_ME_ID GROUP BY Stoff, Naehrstoff,ME ORDER BY Stoff) AS f";
   const logText = "Query Zugangsmengenmengen: " + sql;
 
   q.query(res, sql, logText)
@@ -249,8 +249,6 @@ exports.bilanz = (req, res, next) => {
   logger.info('in bilanz');
   let anfangsdatum = req.query.Anfangsdatum;
   let enddatum = req.query.Enddatum;
-  logger.info('Anfangsdatum: ' + anfangsdatum);
-  logger.info('Enddatum: ' + enddatum);
 
   // fetch Abgabemengen
   let urlAbgabemengen = 'https://localhost:8081/pdf/nsabgaben?ad=' + anfangsdatum + '&ed=' + enddatum;
@@ -278,7 +276,7 @@ exports.bilanz = (req, res, next) => {
     })
     .then(json => {
       for (let row of json) {
-        agMenge = row.AG_Menge * -1;
+        agMenge = row.AG_Menge;
         if (row.N_ID == 1) {
           agN = row.NS_Menge * -1;
         } else if (row.N_ID == 2) {
@@ -305,6 +303,7 @@ exports.bilanz = (req, res, next) => {
               zK = zK + row.N_Menge;
               zugaenge.push(row.Stoff);
               zugaenge.push(row.S_Menge);
+              zugaenge.push(row.ME);
               zugaenge.push(row.N_Menge);
 
               i++;
@@ -332,18 +331,36 @@ exports.bilanz = (req, res, next) => {
           doc.fontSize(20)
             .text('Nährstoffbilanz', 28, 30, {
               align: 'center'
-            });
-          doc.fontSize(11)
+            })
+            .fontSize(11)
             .text('gemäß §3 Bundesverbringungsverordnung (Stand 07.2012)', 28, 51, {
               align: 'center'
             })
+            .fontSize(14)
+            .text('Meldender Betrieb', 50, 75)
+            .fontSize(11)
+            .text('Firma / Name:', 50, 95)
+            .text('Brokser Bioenergie GmbH & Co. KG', 150, 95)
+            .text('Anschrift:', 50, 110)
+            .text('Lange Str. 101, 27305 Bruchhausen-Vilsen', 150, 110)
+            .text('Betriebsnummer: ', 50, 125)
+            .text('276 03 251 010 0038', 150, 125)
+            .fontSize(14)
+            .text('Zeitraum', 50, 150)
+            .fontSize(11)
+            .text(formatDatum(anfangsdatum) + ' bis ' + formatDatum(enddatum), 50, 170);
+
           let y = 200;
           for (i = 0; i < zugaenge.length; i++) {
             doc.fontSize(11)
-              .text(zugaenge.shift(), 35, y)
+              .text(zugaenge.shift(), 50, y)
               .text(zugaenge.shift().toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
                 width: 100,
                 align: 'right'
+              })
+              .text(zugaenge.shift(), 205, y, {
+                width: 30,
+                align: 'left'
               })
               .text(zugaenge.shift().toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
                 width: 100,
@@ -360,14 +377,10 @@ exports.bilanz = (req, res, next) => {
             y = y + 15;
           }
           let yLinie = y - 5;
-          doc.moveTo(35, yLinie)
+          doc.moveTo(50, yLinie)
             .lineTo(500, yLinie)
             .stroke()
-            .text("Gesamt: ", 35, y)
-            .text(zMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
-              width: 100,
-              align: 'right'
-            })
+            .text("Gesamt: ", 50, y)
             .text(zK.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
               width: 100,
               align: 'right'
@@ -382,10 +395,14 @@ exports.bilanz = (req, res, next) => {
             });
           y = y + 15;
           yLinie = y + 10;
-          doc.text("Abgabe Gärrest ", 35, y)
+          doc.text("Abgabe Gärrest ", 50, y)
             .text(agMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
               width: 100,
               align: 'right'
+            })
+            .text('cbm', 205, y, {
+              width: 30,
+              align: 'left'
             })
             .text(agK.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
               width: 100,
@@ -399,7 +416,7 @@ exports.bilanz = (req, res, next) => {
               width: 100,
               align: 'right'
             })
-            .moveTo(35, yLinie)
+            .moveTo(50, yLinie)
             .lineTo(500, yLinie)
             .stroke();
           sMenge = zMenge + agMenge;
@@ -408,11 +425,7 @@ exports.bilanz = (req, res, next) => {
           sP = zP + agP;
           y = y + 15;
           yLinie = y + 10;
-          doc.text("Saldo ", 35, y)
-            .text(sMenge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 100, y, {
-              width: 100,
-              align: 'right'
-            })
+          doc.text("Saldo ", 50, y)
             .text(sK.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), 200, y, {
               width: 100,
               align: 'right'
@@ -425,7 +438,7 @@ exports.bilanz = (req, res, next) => {
               width: 100,
               align: 'right'
             })
-            .moveTo(35, yLinie)
+            .moveTo(50, yLinie)
             .lineTo(500, yLinie)
             .stroke();
 
