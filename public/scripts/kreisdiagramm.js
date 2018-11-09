@@ -105,7 +105,7 @@ function pieTween(b) {
 }
 // Detail-Ring
 let colorD = d3.scaleOrdinal()
-  .range(["#4B610B", "#38610B", "#21610B", "#088A08"]);
+  .range(["#993366", "#003B4D", "#F28C00", "#C21135", "#00ABD4"]);
 
 let pieD = d3.pie()
   .sort(null)

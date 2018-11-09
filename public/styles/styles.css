@@ -552,10 +552,10 @@ svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
   padding-left: 20px;
 }
 .bd-bilanz .bar-chart rect {
-  fill: #4B610B;
+  fill: #F28C00;
 }
 .bd-bilanz .bar-chart rect:nth-child(odd) {
-  fill: #38610B;
+  fill: #003B4D;
 }
 .kd-abnahmevertraege {
   padding-left: 10px
