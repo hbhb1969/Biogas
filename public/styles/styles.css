@@ -552,7 +552,7 @@ svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
   padding-left: 20px;
 }
 .bd-bilanz .bar-chart rect {
-  fill: #F28C00;
+  fill: #009245;
 }
 .bd-bilanz .bar-chart rect:nth-child(odd) {
   fill: #003B4D;

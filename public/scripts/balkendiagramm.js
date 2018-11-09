@@ -52,16 +52,16 @@ let barChart = svg.selectAll("rect") // gibt zunächst eine leere Selection zur�
   .enter() // führt den nachflogenden Code für alle Elemente von daten aus
   .append("rect") // hängt ein Rechteck an svg an
   .attr('y', svgHeight) // wird für die Aimation auf svgHeigth gesetzt, normalerweise wie hier drunter
-  // .attr("y", function(d) { // Attribut für die y-Achse gibt an, wo die obere Kante des Rechtecks sein soll; d ist jedes einzelne Element von daten
-  //   return svgHeight - yScale(d); //Gesamthöhe svg - Höhe konkreter Balken
-  // })
   .attr('height', 0) // wird für die Animation auf 0 gesetzt, normalerweise wie hier drunter
-  // .attr("height", function(d) {
-  //   return yScale(d); // die relative Höhe bezogen auf height des svg wird zurückgegeben
-  // })
   .attr("width", barWidth - barPadding)
   .attr("transform", function(d, i) {
-    let translate = [barWidth * i + axisWidth, 0];
+    let translate = 0
+    if (i % 2 == 0) {
+      translate = [barWidth * i + axisWidth, 0];
+    } else {
+      translate = [barWidth * i - 5 + axisWidth, 0];
+    }
+    //let translate = [barWidth * i + axisWidth, 0];
     return "translate(" + translate + ")"; // verschiebt das Rechteck um barWidth * i nach rechts und um 0 nach unten
   })
   .on('mouseover', function(d) { // mouseover für jeden Balken
@@ -87,6 +87,6 @@ barChart.transition() // Animation zum einblenden der einzelnen Balken
   })
   .duration(animationsdauer)
 
-let spanBreite = (svgWidth - axisWidth) / nsNamen.length;
+let spanBreite = (svgWidth - axisWidth) / nsNamen.length - 2;
 
 document.write('<div style="width: ' + axisWidth + 'px; display: inline-block;"></div><div style="width: ' + spanBreite + 'px; text-align: center; display: inline-block;">' + nsNamen[0] + '</div><div style="width: ' + spanBreite + 'px; text-align: center; display: inline-block;">' + nsNamen[1] + '</div><div style="width: ' + spanBreite + 'px; text-align: center; display: inline-block;">' + nsNamen[2] + '</div>');
