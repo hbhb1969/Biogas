@@ -46,16 +46,23 @@
                   <th class="t-menge">
                     Soll
                   </th>
-                  <th class="t-menge">
-                    Ist
+                  <th class="t-menge th-ist">
+                    Ist <div class="farbe-ist"></div>
                   </th>
-                  <th class="t-menge">
-                    Offen
+                  <th class="t-menge th-offen">
+                    Offen <div class="farbe-offen"></div>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <%- abnahmevertraege %>
+                <tr>
+                  <td></td>
+                  <td>Gesamt</td>
+                  <td id="sollGesamt" class="t-rechts"></td>
+                  <td id="istGesamt" class="t-rechts"></td>
+                  <td id="offenGesamt" class="t-rechts"></td>
+                </tr>
               </tbody>
             </table>
           </div>

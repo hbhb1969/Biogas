@@ -541,12 +541,43 @@ th .abgaben-abnehmer {
   background-color: #fff;
   height: 95vw;
   max-height: 500px;
-  padding-top: 20px;
+  padding-top: 60px;
   padding-bottom: 20px;
 }
-.farbe {
+.t-menge {
+  position: relative;
+}
+.th-ist,
+.th-offen {
+  text-align: right;
+  width: 60px;
+}
+.th-ist {
+  padding-right: 5px;
+}
+.farbe,
+.farbe-ist,
+.farbe-offen {
   height: 20px;
+  padding: 0;
   width: 20px;
+}
+.farbe-ist,
+.farbe-offen {
+  position: absolute;
+  top: 10px;
+}
+.farbe-ist {
+  left: 45px;
+}
+.farbe-offen {
+  left: 28px;
+}
+.farbe-ist {
+  background-color: #c2c2c2;
+}
+.farbe-offen {
+  background-color: #666;
 }
 #tabelle-av tr:nth-of-type(1) .farbe {
   background-color: #009245;
@@ -554,16 +585,16 @@ th .abgaben-abnehmer {
 #tabelle-av tr:nth-of-type(2) .farbe {
   background-color: #003B4D;
 }
-#tabelle-av tr:nth-of-type(2) .farbe {
+#tabelle-av tr:nth-of-type(3) .farbe {
   background-color: #993366;
 }
-#tabelle-av tr:nth-of-type(2) .farbe {
+#tabelle-av tr:nth-of-type(4) .farbe {
   background-color: #F28C00;
 }
-#tabelle-av tr:nth-of-type(2) .farbe {
+#tabelle-av tr:nth-of-type(5) .farbe {
   background-color: #C21135;
 }
-#tabelle-av tr:nth-of-type(2) .farbe {
+#tabelle-av tr:nth-of-type(6) .farbe {
   background-color: #00ABD4;
 }
 /* Diagramme */
@@ -592,6 +623,7 @@ svg.kreisdiagramm {
 svg.kreisdiagramm text {
   font-size: 10px;
   text-anchor: middle;
+  display: none;
 }
 svg.kreisdiagramm path {
   stroke: #ccc;
@@ -811,6 +843,10 @@ svg.kreisdiagramm path {
   table {
     margin-left: 20px;
     width: calc(100% - 40px);
+  }
+  #tabelle-av table {
+    margin-left: 0px;
+    width: 100%;
   }
   .ueberschrift-tabelle {
     border: none;

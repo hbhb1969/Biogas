@@ -154,6 +154,10 @@ gD.append("text")
   })
   .style("fill", "#fff");
 
+document.getElementById('sollGesamt').innerHTML = data[0].menge + data[1].menge;
+document.getElementById('istGesamt').innerHTML = data[0].menge;
+document.getElementById('offenGesamt').innerHTML = data[1].menge;
+
 function pieTweenD(b) {
   b.innerRadius = 0;
   let i = d3.interpolate({
