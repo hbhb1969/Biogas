@@ -7,6 +7,7 @@ let offen = [];
 
 // Arrays werden mit Daten aus der Tabelle befüllt
 for (let i = 0; i < alleZellen.length; i++) {
+  i++;
   abnehmer.push(alleZellen[i].innerHTML);
   i = i + 2;
   ist.push(Number(alleZellen[i].innerHTML));
@@ -105,7 +106,7 @@ function pieTween(b) {
 }
 // Detail-Ring
 let colorD = d3.scaleOrdinal()
-  .range(["#993366", "#003B4D", "#F28C00", "#C21135", "#00ABD4"]);
+  .range(["#009245", "#003B4D", "#993366", "#F28C00", "#C21135", "#00ABD4"]);
 
 let pieD = d3.pie()
   .sort(null)

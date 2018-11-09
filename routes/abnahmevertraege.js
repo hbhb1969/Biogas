@@ -79,7 +79,7 @@ exports.post = (req, res, next) => {
         .then(json => {
           for (let row of json) {
             abnahmevertraege +=
-              "<tr><td>" + row.B_Name + "</td><td class='t-rechts'>" + row.Soll + "</td><td class='t-rechts'>" + row.Ist + "</td><td class='t-rechts'>" + row.Differenz + "</td></tr>";
+              "<tr><td><div class='farbe'></div></td><td>" + row.B_Name + "</td><td class='t-rechts'>" + row.Soll + "</td><td class='t-rechts'>" + row.Ist + "</td><td class='t-rechts'>" + row.Differenz + "</td></tr>";
           }
 
         })

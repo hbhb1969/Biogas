@@ -544,6 +544,28 @@ th .abgaben-abnehmer {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.farbe {
+  height: 20px;
+  width: 20px;
+}
+#tabelle-av tr:nth-of-type(1) .farbe {
+  background-color: #009245;
+}
+#tabelle-av tr:nth-of-type(2) .farbe {
+  background-color: #003B4D;
+}
+#tabelle-av tr:nth-of-type(2) .farbe {
+  background-color: #993366;
+}
+#tabelle-av tr:nth-of-type(2) .farbe {
+  background-color: #F28C00;
+}
+#tabelle-av tr:nth-of-type(2) .farbe {
+  background-color: #C21135;
+}
+#tabelle-av tr:nth-of-type(2) .farbe {
+  background-color: #00ABD4;
+}
 /* Diagramme */
 svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
   display: none;
