@@ -10,9 +10,9 @@ for (let i = 0; i < alleZellen.length; i++) {
   i++;
   abnehmer.push(alleZellen[i].innerHTML);
   i = i + 2;
-  ist.push(Number(alleZellen[i].innerHTML));
+  ist.push(Number(alleZellen[i].innerHTML.replace(".", "")));
   i++;
-  offen.push(Number(alleZellen[i].innerHTML));
+  offen.push(Number(alleZellen[i].innerHTML.replace(".", "")));
 }
 
 // data wird befüllt
@@ -154,9 +154,9 @@ gD.append("text")
   })
   .style("fill", "#fff");
 
-document.getElementById('sollGesamt').innerHTML = data[0].menge + data[1].menge;
-document.getElementById('istGesamt').innerHTML = data[0].menge;
-document.getElementById('offenGesamt').innerHTML = data[1].menge;
+document.getElementById('sollGesamt').innerHTML = (data[0].menge + data[1].menge).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+document.getElementById('istGesamt').innerHTML = data[0].menge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+document.getElementById('offenGesamt').innerHTML = data[1].menge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 function pieTweenD(b) {
   b.innerRadius = 0;
