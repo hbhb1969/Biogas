@@ -56,7 +56,7 @@ exports.post = (req, res, next) => {
     .then(json => {
       for (let row of json) {
         nBilanz +=
-          "<tr><td>" + row.Naehrstoff + "</td><td class='t-rechts'>" + row.Zugang + "</td><td class='t-rechts'>" + row.Abgang + "</td><td class='t-rechts'>" + row.Saldo + "</td></tr>";
+          "<tr><td>" + row.Naehrstoff + "</td><td class='t-rechts'>" + row.Zugang.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "</td><td class='t-rechts'>" + row.Abgang.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "</td><td class='t-rechts'>" + row.Saldo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "</td></tr>";
       }
 
     })

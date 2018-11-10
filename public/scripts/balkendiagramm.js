@@ -6,9 +6,9 @@ let daten = [];
 for (let i = 0; i < alleZellen.length; i = i + 2) {
   nsNamen.push(alleZellen[i].innerHTML);
   i++;
-  daten.push(Number(alleZellen[i].innerHTML));
+  daten.push(Number(alleZellen[i].innerHTML.replace(".", "")));
   i++;
-  daten.push(Number(alleZellen[i].innerHTML));
+  daten.push(Number(alleZellen[i].innerHTML.replace(".", "")));
 }
 
 let svgWidth = document.getElementById('bd-bilanz').offsetWidth - 40;
