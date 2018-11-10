@@ -539,45 +539,17 @@ th .abgaben-abnehmer {
 }
 .kd-abnahmevertraege {
   background-color: #fff;
-  height: 95vw;
-  max-height: 500px;
+  height: calc(95vw + 100px);
   padding-top: 60px;
   padding-bottom: 20px;
 }
 .t-menge {
   position: relative;
 }
-.th-ist,
-.th-offen {
-  text-align: right;
-  width: 60px;
-}
-.th-ist {
-  padding-right: 5px;
-}
-.farbe,
-.farbe-ist,
-.farbe-offen {
+.farbe {
   height: 20px;
   padding: 0;
   width: 20px;
-}
-.farbe-ist,
-.farbe-offen {
-  position: absolute;
-  top: 10px;
-}
-.farbe-ist {
-  left: 45px;
-}
-.farbe-offen {
-  left: 28px;
-}
-.farbe-ist {
-  background-color: #c2c2c2;
-}
-.farbe-offen {
-  background-color: #666;
 }
 #tabelle-av tr:nth-of-type(1) .farbe {
   background-color: #009245;
@@ -602,6 +574,26 @@ th .abgaben-abnehmer {
   height: 20px;
   position: relative;
   width: 180px;
+}
+.legende-av {
+  margin-top: calc(95vw);
+}
+.legende div.ist {
+  background-color: #c2c2c2;
+  position: absolute;
+}
+.legende div.offen {
+  background-color: #666;
+  left: 100px;
+  position: absolute;
+}
+.legende span.ist {
+  left: 30px;
+  position: absolute;
+}
+.legende span.offen {
+  left: 130px;
+  position: absolute;
 }
 .legende div.zugang {
   background-color: #009245;
@@ -937,7 +929,11 @@ svg.kreisdiagramm path {
     width: initial;
   }
   .kd-abnahmevertraege {
+    max-height: 500px;
     max-width: 320px;
+  }
+  .legende-av {
+    margin-top: 320px;
   }
   .header-container,
   .ueberschrift-balken,
