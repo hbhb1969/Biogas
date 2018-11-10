@@ -597,6 +597,29 @@ th .abgaben-abnehmer {
 #tabelle-av tr:nth-of-type(6) .farbe {
   background-color: #00ABD4;
 }
+.legende {
+  margin: 20px auto 0;
+  height: 20px;
+  position: relative;
+  width: 180px;
+}
+.legende div.zugang {
+  background-color: #009245;
+  position: absolute;
+}
+.legende div.abgang {
+  background-color: #003B4D;
+  left: 100px;
+  position: absolute;
+}
+.legende span.zugang {
+  left: 30px;
+  position: absolute;
+}
+.legende span.abgang {
+  left: 130px;
+  position: absolute;
+}
 /* Diagramme */
 svg.bar-chart g g:first-of-type, svg.bar-chart g g:last-of-type {
   display: none;
