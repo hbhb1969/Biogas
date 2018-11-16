@@ -15,7 +15,7 @@ function auswahlTabelle(e) {
   let id = data[0];
   let anfangsdatum = '20' + data[1].split('.')[2] + '-' + data[1].split('.')[1] + '-' + data[1].split('.')[0];
   let enddatum = '20' + data[2].split('.')[2] + '-' + data[2].split('.')[1] + '-' + data[2].split('.')[0];
-  let menge = data[3];
+  let menge = Number(data[3].replace(".", ""));
   let abnehmer = data[4];
   let abnehmerId = '';
 

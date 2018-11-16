@@ -34,7 +34,7 @@ exports.get = (req, res, next) => {
         .then(json => {
           for (let row of json) {
             buchungenAbnahmevertraege +=
-              "<tr><td class='t-id'>" + row.AV_ID + "</td><td>" + row.B_Name + "</td><td>" + row.AV_Jahr + "</td><td class='t-rechts'>" + row.AV_Menge + "</td></tr>";
+              "<tr><td class='t-id'>" + row.AV_ID + "</td><td>" + row.B_Name + "</td><td>" + row.AV_Jahr + "</td><td class='t-rechts'>" + row.AV_Menge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "</td></tr>";
           }
         })
 

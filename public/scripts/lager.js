@@ -21,7 +21,7 @@
       let id = data[0];
       let lager = data[1];
       let rohstoff = data[2];
-      let bestand = data[3];
+      let bestand = Number(data[3].replace(".", ""));
       let me = data[4];
       let stoffId = '';
 

@@ -18,7 +18,7 @@
       let id = data[0];
       let abnehmer = data[1];
       let jahr = data[2];
-      let menge = data[3];
+      let menge = Number(data[3].replace(".", ""));
       let pId = '';
 
       // Daten der angeklickten Tabellenzeile werden in das Formular geschrieben
