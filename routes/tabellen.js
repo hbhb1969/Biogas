@@ -1,7 +1,7 @@
 const q = require('../eigene_module/query');
 // Gebuchte Zugänge
 exports.abgaben = (req, res, next) => {
-  const sql = 'SELECT AG_ID AS ID, DATE_FORMAT(AG_DatumBeginn, "%d.%m.%y") AS Anfangsdatum, DATE_FORMAT(AG_DatumEnde, "%d.%m.%y") AS Enddatum, AG_Menge AS Menge, B_Name As Abnehmer FROM Abgabe, Person  WHERE Person_P_ID = P_ID AND AG_Menge > 0 ORDER BY AG_ID DESC ';
+  const sql = 'SELECT AG_ID AS ID, DATE_FORMAT(AG_DatumBeginn, "%d.%m.%y") AS Anfangsdatum, DATE_FORMAT(AG_DatumEnde, "%d.%m.%y") AS Enddatum, AG_Menge AS Menge, B_Name As Abnehmer FROM Abgabe, Person  WHERE Person_P_ID = P_ID AND AG_Menge > 0 ORDER BY AG_DatumBeginn DESC ';
   const logText = "Abgaben";
 
   q.query(res, sql, logText)
@@ -44,14 +44,14 @@ exports.bilanz = (req, res, next) => {
   q.query(res, sql, logText)
 };
 exports.fuetterungenlager = (req, res, next) => {
-  const sql = 'SELECT F_ID AS ID, DATE_FORMAT(F_Datum, "%d.%m.%y") AS Datum, S_Bezeichnung AS Stoff, F_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit, L_Name AS Lager FROM Fuetterung, Stoff, Mengeneinheit, Lager WHERE Lager_L_ID = L_ID AND Mengeneinheit_ME_ID = ME_ID AND Lager.Stoff_S_ID = S_ID ORDER BY F_ID DESC';
+  const sql = 'SELECT F_ID AS ID, DATE_FORMAT(F_Datum, "%d.%m.%y") AS Datum, S_Bezeichnung AS Stoff, F_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit, L_Name AS Lager FROM Fuetterung, Stoff, Mengeneinheit, Lager WHERE Lager_L_ID = L_ID AND Mengeneinheit_ME_ID = ME_ID AND Lager.Stoff_S_ID = S_ID ORDER BY F_Datum DESC';
   const logText = "Fütterungen Lager";
 
   q.query(res, sql, logText)
 };
 
 exports.fuetterungendirekt = (req, res, next) => {
-  const sql = 'SELECT F_ID AS ID, DATE_FORMAT(F_Datum, "%d.%m.%y") AS Datum, S_Bezeichnung AS Stoff, F_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit FROM Fuetterung, Stoff, Mengeneinheit WHERE Lager_L_ID IS NULL AND Fuetterung.Stoff_S_ID = S_ID AND Mengeneinheit_ME_ID = ME_ID ORDER BY F_ID DESC';
+  const sql = 'SELECT F_ID AS ID, DATE_FORMAT(F_Datum, "%d.%m.%y") AS Datum, S_Bezeichnung AS Stoff, F_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit FROM Fuetterung, Stoff, Mengeneinheit WHERE Lager_L_ID IS NULL AND Fuetterung.Stoff_S_ID = S_ID AND Mengeneinheit_ME_ID = ME_ID ORDER BY F_Datum DESC';
   const logText = "Fütterungen Direkt";
 
   q.query(res, sql, logText)
@@ -79,7 +79,7 @@ exports.stoffelager = (req, res, next) => {
 };
 
 exports.zugaenge = (req, res, next) => {
-  const sql = 'SELECT Z_ID AS ID, DATE_FORMAT(Z_Datum, "%d.%m.%y") AS Datum, Z_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit, L_Name AS Lager, B_Name As Lieferant FROM Zugang, Stoff, Mengeneinheit, Lager, Person  WHERE Lager_L_ID = L_ID AND Stoff_S_ID = S_ID AND Mengeneinheit_ME_ID = ME_ID AND Person_P_ID = P_ID  ORDER BY Z_ID DESC ';
+  const sql = 'SELECT Z_ID AS ID, DATE_FORMAT(Z_Datum, "%d.%m.%y") AS Datum, Z_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit, L_Name AS Lager, B_Name As Lieferant FROM Zugang, Stoff, Mengeneinheit, Lager, Person  WHERE Lager_L_ID = L_ID AND Stoff_S_ID = S_ID AND Mengeneinheit_ME_ID = ME_ID AND Person_P_ID = P_ID  ORDER BY Z_Datum DESC ';
   const logText = "Zugänge";
 
   q.query(res, sql, logText)

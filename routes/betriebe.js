@@ -61,7 +61,7 @@ exports.post = (req, res, next) => {
     gpTyp = 1;
   }
 
-  const sql = "INSERT INTO `Person`(`B_Nummer`,`B_Name`,`Geschaeftsp_Typ_GPT_ID`,`Personentyp`) VALUES ('" + betriebsnummer + "','" + betrieb + "','" + gpTyp + "','Betrieb'); INSERT INTO Adresse (`AD_Strasse`,`AD_Postfach`,`AD_PLZ`,`AD_Ort`) VALUES ('" + strasse + "','" + postfach + "','" + plz + "','" + ort + "'); INSERT INTO Person_Adresse (Person_P_ID, Adresse_AD_ID) VALUES((SELECT MAX(P_ID) FROM Person), (SELECT MAX(AD_ID) FROM Adresse)";
+  const sql = "INSERT INTO `Person`(`B_Nummer`,`B_Name`,`Geschaeftsp_Typ_GPT_ID`,`Personentyp`) VALUES ('" + betriebsnummer + "','" + betrieb + "','" + gpTyp + "','Betrieb'); INSERT INTO Adresse (`AD_Strasse`,`AD_Postfach`,`AD_PLZ`,`AD_Ort`) VALUES ('" + strasse + "','" + postfach + "','" + plz + "','" + ort + "'); INSERT INTO Person_Adresse (Person_P_ID, Adresse_AD_ID) VALUES((SELECT MAX(P_ID) FROM Person), (SELECT MAX(AD_ID) FROM Adresse))";
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);

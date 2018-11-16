@@ -40,10 +40,6 @@
       }
       document.getElementsByName('AD_ID')[0].value = adID;
       document.getElementsByName('AD_Strasse')[0].value = adStrasse;
-      if (adPostfach != 'null') {
-        document.getElementsByName('AD_Postfach')[0].value = adPostfach;
-        console.log("adPostfach: " + adPostfach);
-      }
       document.getElementsByName('AD_PLZ')[0].value = adPLZ;
       document.getElementsByName('AD_Ort')[0].value = adOrt;
 

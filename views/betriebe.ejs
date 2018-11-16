@@ -1,32 +1,32 @@
 <%- include header %>
-  <div class="buchungen-wrapper inhalt">
-    <section id="betrieb-formular" class="container formular links">
-      <form role="form">
-        <% if (message.length > 0) { %>
-          <div class="alert">
-            <%= message %>
+<div class="buchungen-wrapper inhalt">
+  <section id="betrieb-formular" class="container formular links">
+    <form role="form">
+      <% if (message.length > 0) { %>
+      <div class="alert">
+        <%= message %>
+      </div>
+      <% } %>
+      <div id="buchungsfehler" style="display:none" class="alert">
+        <p>Fehler:</p>
+        <span></span>
+      </div>
+      <h2>Buchung eingeben</h2>
+      <div class="form-group">
+        <div>
+          <input type="number" class="form-control nodisplay" hidden name="P_ID">
+              </div>
+        </div>
+        <div class="form-group">
+          <label for="B_Name" class="control-label">Betriebsname</label>
+          <div>
+            <input type="text" id="betriebsname" class="form-control" name="B_Name" placeholder="Betriebsname" required>
+              </div>
           </div>
-          <% } %>
-            <div id="buchungsfehler" style="display:none" class="alert">
-              <p>Fehler:</p>
-              <span></span>
-            </div>
-            <h2>Buchung eingeben</h2>
-            <div class="form-group">
-              <div>
-                <input type="number" class="form-control nodisplay" hidden name="P_ID">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="B_Name" class="control-label">Betriebsname</label>
-              <div>
-                <input type="text" id="betriebsname" class="form-control" name="B_Name" placeholder="Betriebsname" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="B_Nummer" class="control-label">Betriebsnummer</label>
-              <div>
-                <input type="text" id="betriebsnummer" class="form-control" name="B_Nummer" placeholder="Betriebsnummer" required>
+          <div class="form-group">
+            <label for="B_Nummer" class="control-label">Betriebsnummer</label>
+            <div>
+              <input type="text" id="betriebsnummer" class="form-control" name="B_Nummer" placeholder="Betriebsnummer" required>
               </div>
             </div>
             <div class="checkboxen">
@@ -39,93 +39,93 @@
               <div>
                 <input type="number" class="form-control nodisplay" hidden name="AD_ID">
               </div>
-            </div>
-            <div class="form-group">
-              <label for="AD_Strasse" class="control-label">Straße und Hausnummer</label>
-              <div>
-                <input type="text" id="strasse" class="form-control" name="AD_Strasse" placeholder="Straße" required>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="AD_PLZ" class="control-label">PLZ</label>
-              <div>
-                <input type="text" id="plz" class="form-control" name="AD_PLZ" placeholder="PLZ" required>
+              <div class="form-group">
+                <label for="AD_Strasse" class="control-label">Straße und Hausnummer</label>
+                <div>
+                  <input type="text" id="strasse" class="form-control" name="AD_Strasse" placeholder="Straße" required>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="AD_Ort" class="control-label">Ort</label>
-              <div>
-                <input type="text" id="ort" class="form-control" name="AD_Ort" placeholder="Ort" required>
+                </div>
+                <div class="form-group">
+                  <label for="AD_PLZ" class="control-label">PLZ</label>
+                  <div>
+                    <input type="text" id="plz" class="form-control" name="AD_PLZ" placeholder="PLZ" required>
               </div>
-            </div>
-            <div class="form-group">
-              <div>
-                <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/betriebe" formmethod="post">Hinzufügen</button>
+                  </div>
+                  <div class="form-group">
+                    <label for="AD_Ort" class="control-label">Ort</label>
+                    <div>
+                      <input type="text" id="ort" class="form-control" name="AD_Ort" placeholder="Ort" required>
               </div>
-            </div>
-            <div class="form-group">
-              <div>
-                <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/betriebe-put" formmethod="post">Ändern</button>
-              </div>
-            </div>
-            <div class="form-group">
-              <div>
-                <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/lager" formmethod="get">Abbrechen</button>
-              </div>
-            </div>
-      </form>
-    </section>
-    <section id="betriebe-tabelle" class="container tabelle betriebe-tabelle rechts">
-      <div class="hauptblock buchungen">
-        <div class="ueberschrift-tabelle">
-          <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
-        </div>
-        <div class="table-wrap">
-          <div class="table">
-            <table>
-              <thead class="sticky">
-                <tr class="th">
-                  <th class="t-id">
-                    ID
-                    <div>ID</div>
-                  </th>
-                  <th class="t-betrieb">
-                    Betrieb
-                    <div>Betrieb</div>
-                  </th>
-                  <th class="t-betrieb">
-                    Betriebsnummer
-                    <div>Betriebsnummer</div>
-                  </th>
-                  <th class="nodisplay">
-                    GPT_ID
-                  </th>
-                  <th class="nodisplay">
-                    AD_ID
-                  </th>
-                  <th class="nodisplay">
-                    AD_Strasse
-                  </th>
-                  <th class="nodisplay">
-                    AD_Postfach
-                  </th>
-                  <th class="nodisplay">
-                    AD_PLZ
-                  </th>
-                  <th class="nodisplay">
-                    AD_Ort
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <%- buchungenBetriebe %>
-              </tbody>
-            </table>
-          </div>
+                    </div>
+                    <div class="form-group">
+                      <div>
+                        <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/betriebe" formmethod="post">Hinzufügen</button>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div>
+                        <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/betriebe-put" formmethod="post">Ändern</button>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div>
+                        <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/betriebe" formmethod="get">Abbrechen</button>
+                      </div>
+                    </div>
+    </form>
+  </section>
+  <section id="betriebe-tabelle" class="container tabelle betriebe-tabelle rechts">
+    <div class="hauptblock buchungen">
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
+      <div class="table-wrap">
+        <div class="table">
+          <table>
+            <thead class="sticky">
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-betrieb">
+                  Betrieb
+                  <div>Betrieb</div>
+                </th>
+                <th class="t-betrieb">
+                  Betriebsnummer
+                  <div>Betriebsnummer</div>
+                </th>
+                <th class="nodisplay">
+                  GPT_ID
+                </th>
+                <th class="nodisplay">
+                  AD_ID
+                </th>
+                <th class="nodisplay">
+                  AD_Strasse
+                </th>
+                <th class="nodisplay">
+                  AD_Postfach
+                </th>
+                <th class="nodisplay">
+                  AD_PLZ
+                </th>
+                <th class="nodisplay">
+                  AD_Ort
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- buchungenBetriebe %>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
-  </div>
-  <script language="javascript" type="text/javascript" src="/scripts/hilfsfunktionen.js"></script>
-  <script language="javascript" type="text/javascript" src="/scripts/betriebe.js"></script>
-  <%- include footer %>
+    </div>
+  </section>
+</div>
+<script language="javascript" type="text/javascript" src="/scripts/hilfsfunktionen.js"></script>
+<script language="javascript" type="text/javascript" src="/scripts/betriebe.js"></script>
+<%- include footer %>
