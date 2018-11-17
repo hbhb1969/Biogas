@@ -208,6 +208,7 @@ td {
 }
 .alert {
   color: red;
+  margin-top: 20px;
 }
 .gruen {
   background-color: #009245;

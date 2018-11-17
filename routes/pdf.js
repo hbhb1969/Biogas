@@ -13,7 +13,7 @@ exports.lieferschein = (req, res, next) => {
   let abgabeId = req.query.AG_ID;
   let anfangsdatum = formatDatum(req.query.AG_DatumBeginn);
   let enddatum = formatDatum(req.query.AG_DatumEnde);
-  let menge = req.query.AG_Menge;
+  let menge = req.query.AG_Menge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   let abnehmer = req.query.Person_P_ID;
 
   logger.info('lieferschein-abgabeId: ' + abgabeId);
@@ -56,11 +56,11 @@ exports.lieferschein = (req, res, next) => {
         abnehmerPLZ = row.AD_PLZ;
         abnehmerOrt = row.AD_Ort;
         if (row.Naehrstoff_N_ID == 1) {
-          stickstoff = row.N_Menge;
+          stickstoff = row.N_Menge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         } else if (row.Naehrstoff_N_ID == 2) {
-          phosphor = row.N_Menge;
+          phosphor = row.N_Menge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         } else if (row.Naehrstoff_N_ID == 3) {
-          kalium = row.N_Menge;
+          kalium = row.N_Menge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
       }
     })

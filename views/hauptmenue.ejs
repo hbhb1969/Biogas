@@ -49,8 +49,8 @@
   <div class="ueberschrift-balken buchungen grau">
     <div class="ueberschrift-balken-inhalt balken-menue">
       <% if (headerTitel.length > 0) { %>
-        <%= headerTitel %>
-          <% } %>
+      <%= headerTitel %>
+      <% } %>
     </div>
   </div>
   <div class="menueinhalt mobil">
@@ -121,6 +121,16 @@
           <img src="\bilder\analysen.svg">
         </div>
       </a>
+      <a class="gruen btn btn-gross" href="/daten/abnahmevertraege" role="button">Abnahmeverträge
+        <div class="menue-icon">
+          <img src="\bilder\abnahmevertraege-d.svg">
+        </div>
+      </a>
+      <a class="gruen btn btn-gross" href="/daten/betriebe" role="button">Betriebe
+        <div class="menue-icon">
+          <img src="\bilder\betriebe.svg">
+        </div>
+      </a>
       <a class="gruen btn btn-gross" href="/daten/rohstoffe" role="button">Rohstoffe
         <div class="menue-icon">
           <img src="\bilder\rohstoffe.svg">
@@ -131,16 +141,6 @@
           <img src="\bilder\lager.svg">
         </div>
       </a>
-      <a class="gruen btn btn-gross" href="/daten/betriebe" role="button">Betriebe
-        <div class="menue-icon">
-          <img src="\bilder\betriebe.svg">
-        </div>
-      </a>
-      <a class="gruen btn btn-gross" href="/daten/abnahmevertraege" role="button">Abnahmeverträge
-    <div class="menue-icon">
-      <img src="\bilder\abnahmevertraege-d.svg">
-    </div>
-  </a>
     </div>
   </div>
   <%- include footer %>
