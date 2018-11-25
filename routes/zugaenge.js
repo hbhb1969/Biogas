@@ -86,9 +86,10 @@ exports.post = (req, res, next) => {
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/zugaenge');
   })();
 
-  res.redirect('/buchen/zugaenge');
+  //res.redirect('/buchen/zugaenge');
 };
 
 // ---------- Zugänge ändern ----------
@@ -106,9 +107,10 @@ exports.put = (req, res, next) => {
 
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/zugaenge');
   })();
 
-  res.redirect('/buchen/zugaenge');
+  //res.redirect('/buchen/zugaenge');
 };
 
 // ---------- Zugang löschen ----------
@@ -122,7 +124,8 @@ exports.delete = (req, res, next) => {
 
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/zugaenge');
   })();
 
-  res.redirect('/buchen/zugaenge');
+  //res.redirect('/buchen/zugaenge');
 };

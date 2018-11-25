@@ -67,9 +67,10 @@ exports.post = (req, res, next) => {
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/daten/abnahmevertraege');
   })();
 
-  res.redirect('/daten/abnahmevertraege');
+  //res.redirect('/daten/abnahmevertraege');
 };
 
 // ---------- Abgabevertraege ändern ----------
@@ -86,7 +87,8 @@ exports.put = (req, res, next) => {
 
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/daten/abnahmevertraege');
   })();
 
-  res.redirect('/daten/abnahmevertraege');
+  //res.redirect('/daten/abnahmevertraege');
 };

@@ -69,9 +69,10 @@ exports.post = (req, res, next) => {
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/abgaben');
   })();
 
-  res.redirect('/buchen/abgaben');
+  //res.redirect('/buchen/abgaben');
 };
 
 // ---------- Abgabe ändern ----------
@@ -88,9 +89,10 @@ exports.put = (req, res, next) => {
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/abgaben');
   })();
 
-  res.redirect('/buchen/abgaben');
+  //res.redirect('/buchen/abgaben');
 };
 
 // ---------- Abgabe löschen ----------
@@ -104,7 +106,8 @@ exports.delete = (req, res, next) => {
 
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/abgaben');
   })();
 
-  res.redirect('/buchen/abgaben');
+  //res.redirect('/buchen/abgaben');
 };

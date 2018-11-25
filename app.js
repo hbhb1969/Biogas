@@ -46,7 +46,7 @@ const spdyServer = spdy.createServer(credentials, app);
 
 global.db = pool;
 
-app.set('port', process.env.PORT || 8080);
+//app.set('port', process.env.PORT || 8080);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');

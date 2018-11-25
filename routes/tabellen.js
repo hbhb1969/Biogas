@@ -22,13 +22,13 @@ exports.abnahmevertraegedaten = (req, res, next) => {
   q.query(res, sql, logText)
 };
 exports.analysen = (req, res, next) => {
-  const sql = 'SELECT A_ID AS ID, S_Bezeichnung AS Stoff, A_ExterneID AS ExterneID, DATE_FORMAT(A_Datum, "%d.%m.%y") AS Datum, DATE_FORMAT(A_DatumGueltigAb, "%d.%m.%y") AS Gueltigkeitsdatum, AT_Bezeichnung AS Analysetyp, SA_A_Wert AS Wert FROM `Stoff`, `Stoffanalyse`, `Analysetyp`, `Stoffanalyse_Analysetyp` WHERE A_ID = Stoffanalyse_A_ID AND Analysetyp_AT_ID = AT_ID AND S_ID = Stoff_S_ID ORDER BY A_Datum DESC';
+  const sql = 'SELECT A_ID AS ID, S_Bezeichnung AS Stoff, A_ExterneID AS ExterneID, DATE_FORMAT(A_Datum, "%d.%m.%y") AS Datum, DATE_FORMAT(A_DatumGueltigAb, "%d.%m.%y") AS Gueltigkeitsdatum, AT_Bezeichnung AS Analysetyp, SA_A_Wert AS Wert FROM `Stoff`, `Stoffanalyse`, `Analysetyp`, `Stoffanalyse_Analysetyp` WHERE A_ID = Stoffanalyse_A_ID AND Analysetyp_AT_ID = AT_ID AND S_ID = Stoff_S_ID ORDER BY A_Datum DESC, Stoff, Analysetyp ';
   const logText = "Analysen";
 
   q.query(res, sql, logText)
 };
 exports.betriebe = (req, res, next) => {
-  const sql = "SELECT P_ID AS ID, B_Name AS Betrieb, B_Nummer AS Betriebsnummer, GPT_ID, AD_ID, AD_Strasse, AD_Postfach, AD_PLZ, AD_Ort FROM Person, Geschaeftsp_Typ,Person_Adresse, Adresse WHERE Personentyp = 'Betrieb' AND Geschaeftsp_Typ_GPT_ID = GPT_ID AND Person_P_ID = P_ID AND Adresse_AD_ID = AD_ID ORDER BY B_Name";
+  const sql = "SELECT P_ID AS ID, B_Name AS Betrieb, B_Nummer AS Betriebsnummer, GPT_ID, AD_ID, AD_Strasse, AD_PLZ, AD_Ort FROM Person, Geschaeftsp_Typ,Person_Adresse, Adresse WHERE Personentyp = 'Betrieb' AND Geschaeftsp_Typ_GPT_ID = GPT_ID AND Person_P_ID = P_ID AND Adresse_AD_ID = AD_ID ORDER BY B_Name";
   const logText = "Betriebe";
 
   q.query(res, sql, logText)
@@ -44,7 +44,7 @@ exports.bilanz = (req, res, next) => {
   q.query(res, sql, logText)
 };
 exports.fuetterungenlager = (req, res, next) => {
-  const sql = 'SELECT F_ID AS ID, DATE_FORMAT(F_Datum, "%d.%m.%y") AS Datum, S_Bezeichnung AS Stoff, F_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit, L_Name AS Lager FROM Fuetterung, Stoff, Mengeneinheit, Lager WHERE Lager_L_ID = L_ID AND Mengeneinheit_ME_ID = ME_ID AND Lager.Stoff_S_ID = S_ID ORDER BY F_Datum DESC';
+  const sql = 'SELECT F_ID AS ID, DATE_FORMAT(F_Datum, "%d.%m.%y") AS Datum, S_Bezeichnung AS Stoff, F_BruttoMenge AS Menge, ME_Bezeichnung AS Einheit, L_Name AS Lager FROM Fuetterung, Stoff, Mengeneinheit, Lager WHERE Lager_L_ID = L_ID AND Mengeneinheit_ME_ID = ME_ID AND Lager.Stoff_S_ID = S_ID ORDER BY F_Datum DESC, Lager, Menge';
   const logText = "Fütterungen Lager";
 
   q.query(res, sql, logText)

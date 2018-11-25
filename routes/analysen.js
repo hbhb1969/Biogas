@@ -89,9 +89,10 @@ exports.post = (req, res, next) => {
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/daten/analysen');
   })();
 
-  res.redirect('/daten/analysen');
+  //res.redirect('/daten/analysen');
 };
 
 // ---------- Analyse ändern ----------
@@ -110,7 +111,8 @@ exports.put = (req, res, next) => {
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/daten/analysen');
   })();
 
-  res.redirect('/daten/analysen');
+  //res.redirect('/daten/analysen');
 };

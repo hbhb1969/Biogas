@@ -32,6 +32,8 @@ function auswahlTabelle(e) {
     }
   }
 
+  document.getElementsByName('Person_P_ID')[0].value = abnehmerId;
+
   document.getElementById('btn-lieferschein').setAttribute("formaction", "/pdf/lieferschein?abgabeId=" + id);
   document.getElementById('btn-lieferschein').disabled = false;
   btnBuchenAusB();

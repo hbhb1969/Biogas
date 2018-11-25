@@ -110,9 +110,10 @@ exports.post = (req, res, next) => {
   };
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/fuetterungen');
   })();
 
-  res.redirect('/buchen/fuetterungen');
+  //res.redirect('/buchen/fuetterungen');
 };
 
 // ---------- Fütterung ändern ----------
@@ -136,9 +137,10 @@ exports.put = (req, res, next) => {
   }
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/fuetterungen');
   })();
 
-  res.redirect('/buchen/fuetterungen');
+  //res.redirect('/buchen/fuetterungen');
 };
 
 // ---------- Fuetterung löschen ----------
@@ -152,7 +154,8 @@ exports.delete = (req, res, next) => {
 
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/buchen/fuetterungen');
   })();
 
-  res.redirect('/buchen/fuetterungen');
+  //res.redirect('/buchen/fuetterungen');
 };

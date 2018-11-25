@@ -65,9 +65,10 @@ exports.post = (req, res, next) => {
   logger.info(sql);
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/daten/betriebe');
   })();
 
-  res.redirect('/daten/betriebe');
+  //res.redirect('/daten/betriebe');
 };
 
 // ---------- Zugänge ändern ----------
@@ -100,7 +101,8 @@ exports.put = (req, res, next) => {
 
   (async () => {
     await qa.queryAsync(sql);
+    res.redirect('/daten/betriebe');
   })();
 
-  res.redirect('/daten/betriebe');
+  //res.redirect('/daten/betriebe');
 };
