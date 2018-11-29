@@ -35,6 +35,7 @@ const session = require('cookie-session');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 pool = require('./db/pool');
+global.db = pool;
 logger = require('winston');
 logger.add(logger.transports.File, {
   'filename': 'error.log',
@@ -42,13 +43,8 @@ logger.add(logger.transports.File, {
 });
 
 const app = express();
-const spdyServer = spdy.createServer(credentials, app);
 
-global.db = pool;
-
-//app.set('port', process.env.PORT || 8080);
-
-app.set('views', __dirname + '/views');
+//app.set('views', __dirname + '/views'); // nur nötig, wenn sich die Views nicht direkt im Hauptverzeichnis views befinden
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({
@@ -153,5 +149,6 @@ app.use((error, req, res, next) => {
 })
 
 // Server starten
+const spdyServer = spdy.createServer(credentials, app);
 spdyServer.listen(8081);
 logger.info('Server läuft auf Port 8081');
