@@ -1,3 +1,5 @@
+const db = require('../db/pool');
+
 exports.get = (req, res, next) => {
   let message = '';
   const user = req.session.user,

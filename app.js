@@ -21,7 +21,7 @@ const tabellen = require('./routes/tabellen');
 const pdf = require('./routes/pdf');
 
 //Globale Variablen
-global.db = require('./db/pool');
+
 global.logger = require('winston');
 logger.add(logger.transports.File, {
   'filename': 'error.log',
@@ -45,8 +45,10 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+// Template-Engine zuweisen
 app.set('view engine', 'ejs');
 
+// Middleware auf Anwendungsebene einbinden
 app.use(bodyParser.urlencoded({
   extended: true
 }));

@@ -1,3 +1,5 @@
+const db = require('../db/pool');
+
 exports.get = (req, res) => {
   delete req.session.user;
   let message = '';
