@@ -20,6 +20,14 @@ const stammdaten = require('./routes/stammdaten');
 const tabellen = require('./routes/tabellen');
 const pdf = require('./routes/pdf');
 
+//Globale Variablen
+global.db = require('./db/pool');
+global.logger = require('winston');
+logger.add(logger.transports.File, {
+  'filename': 'error.log',
+  'level': 'error'
+});
+
 // externe Module
 const express = require('express');
 const fs = require('fs');
@@ -34,17 +42,9 @@ const path = require('path');
 const session = require('cookie-session');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-pool = require('./db/pool');
-global.db = pool;
-logger = require('winston');
-logger.add(logger.transports.File, {
-  'filename': 'error.log',
-  'level': 'error'
-});
 
 const app = express();
 
-//app.set('views', __dirname + '/views'); // nur nötig, wenn sich die Views nicht direkt im Hauptverzeichnis views befinden
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({
