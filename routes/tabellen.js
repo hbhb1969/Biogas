@@ -1,4 +1,4 @@
-const q = require('../eigene_module/query');
+const q = require('../db/query');
 // Gebuchte Zugänge
 exports.abgaben = (req, res, next) => {
   const sql = 'SELECT AG_ID AS ID, DATE_FORMAT(AG_DatumBeginn, "%d.%m.%y") AS Anfangsdatum, DATE_FORMAT(AG_DatumEnde, "%d.%m.%y") AS Enddatum, AG_Menge AS Menge, B_Name As Abnehmer FROM Abgabe, Person  WHERE Person_P_ID = P_ID AND AG_Menge > 0 ORDER BY AG_DatumBeginn DESC ';

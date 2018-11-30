@@ -24,7 +24,7 @@ exports.post = (req, res) => {
         logger.error(err);
       }
       if (results) {
-        logger.info('Benutzer: err: ' + err + ', results: ' + results.length);
+        //logger.info('Benutzer: err: ' + err + ', results: ' + results.length);
         if (results.length) {
           req.session.userId = results[0].BEN_ID;
           req.session.user = results[0];

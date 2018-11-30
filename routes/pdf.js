@@ -1,4 +1,4 @@
-const q = require('../eigene_module/query');
+const q = require('../db/query');
 const fetch = require('node-fetch');
 // Abgabedaten für Lieferschein
 exports.abgabedaten = (req, res, next) => {

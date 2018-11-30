@@ -20,8 +20,7 @@ const stammdaten = require('./routes/stammdaten');
 const tabellen = require('./routes/tabellen');
 const pdf = require('./routes/pdf');
 
-//Globale Variablen
-
+//Globale Variable
 global.logger = require('winston');
 logger.add(logger.transports.File, {
   'filename': 'error.log',

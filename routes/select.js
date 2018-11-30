@@ -1,4 +1,4 @@
-const q = require('../eigene_module/query');
+const q = require('../db/query');
 // Optionen für Abnahmevertraege
 exports.abnahmevertraege = (req, res, next) => {
   const sql = "SELECT DISTINCT AV_Jahr FROM  `Abnahmevertrag` ORDER BY AV_Jahr DESC";

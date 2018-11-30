@@ -1,4 +1,4 @@
-const qa = require('../eigene_module/query');
+const qa = require('../db/query');
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';

@@ -1,4 +1,4 @@
-const qa = require('../eigene_module/query');
+const qa = require('../db/query');
 const fetch = require('node-fetch');
 
 // ---------- Vorbereitung Formular ----------
