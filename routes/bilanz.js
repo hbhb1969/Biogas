@@ -31,7 +31,6 @@ exports.post = (req, res, next) => {
   let pdf = req.query.pdf;
   let anfangsdatumSql = '';
   let enddatumSql = '';
-  logger.info('pdf: ' + pdf);
   if (pdf == 1) {
     anfangsdatumSql = req.query.ad;
     enddatumSql = req.query.ed;
@@ -44,7 +43,6 @@ exports.post = (req, res, next) => {
   let anfangsdatum = anfangsdatumSql.split('-')[2] + '.' + anfangsdatumSql.split('-')[1] + '.' + anfangsdatumSql.split('-')[0];
   let enddatum = enddatumSql.split('-')[2] + '.' + enddatumSql.split('-')[1] + '.' + enddatumSql.split('-')[0];
   let url = "https://localhost:8081/tabellen/bilanz?anfangsdatum=" + anfangsdatumSql + "&enddatum=" + enddatumSql;
-  logger.info('url: ' + url);
   fetch(url, {
       credentials: 'include'
     })

@@ -246,7 +246,6 @@ exports.nszugaenge = (req, res, next) => {
 };
 
 exports.bilanz = (req, res, next) => {
-  logger.info('in bilanz');
   let anfangsdatum = req.query.Anfangsdatum;
   let enddatum = req.query.Enddatum;
 
