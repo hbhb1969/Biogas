@@ -88,8 +88,6 @@ exports.post = (req, res, next) => {
     await qa.queryAsync(sql);
     res.redirect('/buchen/zugaenge');
   })();
-
-  //res.redirect('/buchen/zugaenge');
 };
 
 // ---------- Zugänge ändern ----------
@@ -109,8 +107,6 @@ exports.put = (req, res, next) => {
     await qa.queryAsync(sql);
     res.redirect('/buchen/zugaenge');
   })();
-
-  //res.redirect('/buchen/zugaenge');
 };
 
 // ---------- Zugang löschen ----------
@@ -126,6 +122,4 @@ exports.delete = (req, res, next) => {
     await qa.queryAsync(sql);
     res.redirect('/buchen/zugaenge');
   })();
-
-  //res.redirect('/buchen/zugaenge');
 };

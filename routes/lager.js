@@ -70,8 +70,6 @@ exports.post = (req, res, next) => {
     await qa.queryAsync(sql);
     res.redirect('/daten/lager');
   })();
-
-  //res.redirect('/daten/lager');
 };
 
 // ---------- Zugänge ändern ----------
@@ -90,6 +88,4 @@ exports.put = (req, res, next) => {
     await qa.queryAsync(sql);
     res.redirect('/daten/lager');
   })();
-
-  //res.redirect('/daten/lager');
 };

@@ -111,8 +111,6 @@ exports.post = (req, res, next) => {
     await qa.queryAsync(sql);
     res.redirect('/daten/rohstoffe');
   })();
-
-  //res.redirect('/daten/rohstoffe');
 };
 
 // ---------- Rohstoff ändern ----------
@@ -137,6 +135,4 @@ exports.put = (req, res, next) => {
     await qa.queryAsync(sql);
     res.redirect('/daten/rohstoffe');
   })();
-
-  //res.redirect('/daten/rohstoffe');
 };
