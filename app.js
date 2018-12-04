@@ -39,7 +39,6 @@ const credentials = {
 };
 const path = require('path');
 const session = require('cookie-session');
-const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -56,12 +55,10 @@ app.use('/pdf', express.static(__dirname + '/public/pdf'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'geheimnis',
-  resave: false,
-  saveUninitialized: true,
   cookie: {
     maxAge: 60000
   }
-}))
+}));
 
 // Routen
 app.get('/', index.get);
