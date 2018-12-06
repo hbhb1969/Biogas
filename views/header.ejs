@@ -85,6 +85,6 @@
     <div class="ueberschrift-balken-inhalt">
       <% if (headerTitel.length > 0) { %>
       <%= headerTitel %>
-      <% } %><img src="\bilder\<% if (headerBild.length > 0) { %><%= headerBild %><% } %>">
+      <% } %><% if (headerBild.length > 0) { %><img src="\bilder\<%= headerBild %>"><% } %>
     </div>
   </div>

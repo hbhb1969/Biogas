@@ -47,6 +47,9 @@ h2 {
   line-height: 22px;
   margin: 0;
 }
+h3 {
+  font-weight: 700;
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -641,6 +644,17 @@ svg.kreisdiagramm text {
 svg.kreisdiagramm path {
   stroke: #ccc;
 }
+/* Impressum */
+.impressum-block {
+  background-color: #fff;
+  line-height: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+}
+.impressum-block h2 {
+  margin-bottom: 20px;
+}
 /* Media Queries *******************************************************************************************************/
 @media screen and (min-width:360px) {
   .menue {
@@ -936,9 +950,14 @@ svg.kreisdiagramm path {
   .header-container,
   .ueberschrift-balken,
   .header-container,
-  .ueberschrift-balken {
+  .ueberschrift-balken,
+  .impressum-block {
     max-width: 760px;
     width: calc(100% - 40px);
+  }
+  .impressum-block {
+    margin-left: auto;
+    margin-right: auto;
   }
   .bd-bilanz {
     padding-top: 80px;
