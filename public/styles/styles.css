@@ -347,7 +347,7 @@ td {
 .menueinhalt .btn-left {
   margin-left: calc((100% - 280px) / 2);
 }
-.menueinhalt .abgaben, .menueinhalt .auswertungen {
+.menueinhalt .zugaenge, .menueinhalt .auswertungen {
   margin-right: 14px;
 }
 .menueinhalt .menue-icon {
@@ -951,6 +951,7 @@ svg.kreisdiagramm path {
   .ueberschrift-balken,
   .header-container,
   .ueberschrift-balken,
+  .untermenueinhalt,
   .impressum-block {
     max-width: 760px;
     width: calc(100% - 40px);
