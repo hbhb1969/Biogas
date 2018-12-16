@@ -19,6 +19,10 @@ let animationsdauer = 1000;
 
 let barWidth = ((svgWidth - axisWidth) / daten.length);
 
+let svg = d3.select('svg')
+  .attr("width", svgWidth)
+  .attr("height", svgHeight);
+
 let tooltip = d3.select('body').append('div') // Tooltip, der beim Hovern über den Balken angezeigt wird
   .style('position', 'absolute')
   .style('background', '#f4f4f4')
@@ -28,11 +32,7 @@ let tooltip = d3.select('body').append('div') // Tooltip, der beim Hovern über 
   .style('opacity', '0')
   .style('font-size', '12px');
 
-let svg = d3.select('svg')
-  .attr("width", svgWidth)
-  .attr("height", svgHeight);
-
-let yScale = d3.scaleLinear() // Mit scalLinear kann die Größe der Blöcke an die Größe des svg angebpasst werden
+let yScale = d3.scaleLinear() // Mit scalLinear kann die Größe der Blöcke an die Größe des svg angepasst werden
   .domain([0, d3.max(daten)]) // Obergrenze ist das größte Element in daten
   .range([0, svgHeight]); // das maximal in der Höhe des svg angezeigt wird
 
@@ -51,7 +51,7 @@ let barChart = svg.selectAll("rect") // gibt zunächst eine leere Selection zur�
   .data(daten) // bindet die Variable daten
   .enter() // führt den nachflogenden Code für alle Elemente von daten aus
   .append("rect") // hängt ein Rechteck an svg an
-  .attr('y', svgHeight) // wird für die Aimation auf svgHeigth gesetzt, normalerweise wie hier drunter
+  .attr('y', svgHeight) // wird für die Animation auf svgHeigth gesetzt, normalerweise wie hier drunter
   .attr('height', 0) // wird für die Animation auf 0 gesetzt, normalerweise wie hier drunter
   .attr("width", barWidth - barPadding)
   .attr("transform", function(d, i) {
@@ -61,7 +61,6 @@ let barChart = svg.selectAll("rect") // gibt zunächst eine leere Selection zur�
     } else {
       translate = [barWidth * i - 5 + axisWidth, 0];
     }
-    //let translate = [barWidth * i + axisWidth, 0];
     return "translate(" + translate + ")"; // verschiebt das Rechteck um barWidth * i nach rechts und um 0 nach unten
   })
   .on('mouseover', function(d) { // mouseover für jeden Balken

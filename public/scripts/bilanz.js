@@ -1,4 +1,4 @@
-function checkLieferschein() {
+function checkPDF() {
   let urlParams = new URLSearchParams(window.location.search);
   let pdf = urlParams.get('pdf');
   if (pdf == 1) {
@@ -6,11 +6,4 @@ function checkLieferschein() {
       window.open('../pdf/Bilanz.pdf');
     }
   }
-}
-
-function gotoPDF() {
-  let ad = document.getElementById('datum-beginn').value;
-  let ed = document.getElementById('datum-ende').value;
-
-  document.getElementById('btn-pdf').setAttribute("formaction", "/pdf/bilanz");
 }

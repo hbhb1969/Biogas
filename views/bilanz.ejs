@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
             <div>
-              <button id="btn-pdf" type="submit" class="btn gruen btn-pdf" formmethod="get" onclick="gotoPDF()" formmethod="post">Bilanz als PDF</button>
+              <button id="btn-pdf" type="submit" class="btn gruen btn-pdf"  formaction="/pdf/bilanz" formmethod="post">Bilanz als PDF</button>
             </div>
           </div>
       </form>
@@ -91,6 +91,6 @@
 </div>
 <script language="javascript" type="text/javascript" src="/scripts/bilanz.js"></script>
 <script language="javascript" type="text/javascript">
-  window.onload = checkLieferschein();
+  window.onload = checkPDF();
 </script>
 <%- include footer %>

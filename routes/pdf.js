@@ -214,12 +214,7 @@ exports.lieferschein = (req, res, next) => {
         .text('Hinweis: Diese Aufzeichnungen entbinden nicht von den düngemittelrechtlichen Kennzeichnungspflichten. Insbesondere bei Gärresten aus Biogas - Anlagen, Pilzkultursubstraten oder sonstigen Mischungen aus Wirtschaftsdüngern ist dies zu beachten.Dem Aufnehmer bzw.Empfänger ist mit jeder Partie unverzüglich eine nach Düngemittelverordnung vorgeschriebene Kennzeichnung auszuhändigen.', {
           width: '539'
         });
-
-
-
       doc.end();
-
-
     })
     .catch(error => {
       logger.error(error);
