@@ -1,48 +1,48 @@
 <%- include header %>
-  <div class="buchungen-wrapper inhalt">
-    <section id="zugaenge-formular" class="container formular links">
-      <form role="form">
-        <% if (message.length > 0) { %>
-          <div class="alert">
-            <%= message %>
+<div class="buchungen-wrapper inhalt">
+  <section id="zugaenge-formular" class="container formular links">
+    <form role="form">
+      <% if (message.length > 0) { %>
+      <div class="alert">
+        <%= message %>
+      </div>
+      <% } %>
+      <div id="buchungsfehler" style="display:none" class="alert">
+        <p>Fehler:</p>
+        <span></span>
+      </div>
+      <h2>Buchung eingeben</h2>
+      <div class="form-group">
+        <div>
+          <input type="number" class="form-control nodisplay" hidden name="Z_ID">
+              </div>
+        </div>
+        <div class="form-group">
+          <label for="Z_Datum" class="control-label">Datum</label>
+          <div>
+            <input type="date" id="datum" class="form-control" name="Z_Datum" placeholder="Datum" required>
+              </div>
           </div>
-          <% } %>
-            <div id="buchungsfehler" style="display:none" class="alert">
-              <p>Fehler:</p>
-              <span></span>
-            </div>
-            <h2>Buchung eingeben</h2>
-            <div class="form-group">
-              <div>
-                <input type="number" class="form-control nodisplay" hidden name="Z_ID">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="Z_Datum" class="control-label">Datum</label>
-              <div>
-                <input type="date" id="datum" class="form-control" name="Z_Datum" placeholder="Datum" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="Person_P_ID" class="control-label">Lieferant</label>
-              <div class="select-wrapper">
-                <select id="lieferanten" class="form-control" name="Person_P_ID" placeholder="Lieferant" required>
+          <div class="form-group">
+            <label for="Person_P_ID" class="control-label">Lieferant</label>
+            <div class="select-wrapper">
+              <select id="lieferanten" class="form-control" name="Person_P_ID" placeholder="Lieferant" required>
                      <%- lieferantenOptions %>
                 </select>
-              </div>
             </div>
-            <div class="form-group">
-              <label for="Lager_L_ID" class="control-label">Lager</label>
-              <div class="select-wrapper">
-                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren()" required>
+          </div>
+          <div class="form-group">
+            <label for="Lager_L_ID" class="control-label">Lager</label>
+            <div class="select-wrapper">
+              <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren()" required>
                      <%- lagerOptions %>
                                        </select>
-              </div>
             </div>
-            <div class="form-group">
-              <label for="Z_BruttoMenge" class="control-label">Menge <span id="zugang-me"></span></label>
-              <div>
-                <input type="number" value="" class="form-control" name="Z_BruttoMenge" placeholder="Menge" required>
+          </div>
+          <div class="form-group">
+            <label for="Z_BruttoMenge" class="control-label">Menge <span id="zugang-me"></span></label>
+            <div>
+              <input type="number" value="" max="9999999" class="form-control" name="Z_BruttoMenge" placeholder="Menge" required>
               </div>
             </div>
             <div class="form-group">
@@ -65,49 +65,49 @@
                 <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/buchen/zugaenge" formmethod="get">Abbrechen</button>
               </div>
             </div>
-      </form>
-    </section>
-    <section id="zugaenge-tabelle" class="container tabelle rechts">
-      <div class="hauptblock buchungen">
-        <div class="ueberschrift-tabelle">
-          <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
-        </div>
-        <div class="table-wrap">
-          <div class="table">
-            <table>
-              <thead class="sticky">
-                <tr class="th">
-                  <th class="t-id">
-                    ID
-                    <div>ID</div>
-                  </th>
-                  <th class="t-datum">
-                    Datum
-                    <div>Datum</div>
-                  </th>
-                  <th class="t-menge t-rechts" colspan="2">
-                    Menge
-                    <div>Menge</div>
-                  </th>
-                  <th class="t-lager">
-                    Lager
-                    <div>Lager</div>
-                  </th>
-                  <th class="t-lieferant">
-                    Lieferant
-                    <div>Lieferant</div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <%- buchungenZugaenge %>
-              </tbody>
-            </table>
-          </div>
+    </form>
+  </section>
+  <section id="zugaenge-tabelle" class="container tabelle rechts">
+    <div class="hauptblock buchungen">
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
+      <div class="table-wrap">
+        <div class="table">
+          <table>
+            <thead class="sticky">
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-datum">
+                  Datum
+                  <div>Datum</div>
+                </th>
+                <th class="t-menge t-rechts" colspan="2">
+                  Menge
+                  <div>Menge</div>
+                </th>
+                <th class="t-lager">
+                  Lager
+                  <div>Lager</div>
+                </th>
+                <th class="t-lieferant">
+                  Lieferant
+                  <div>Lieferant</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- buchungenZugaenge %>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
-  </div>
-  <script language="javascript" type="text/javascript" src="/scripts/hilfsfunktionen.js"></script>
-  <script language="javascript" type="text/javascript" src="/scripts/zugaenge.js"></script>
-  <%- include footer %>
+    </div>
+  </section>
+</div>
+<script language="javascript" type="text/javascript" src="/scripts/hilfsfunktionen.js"></script>
+<script language="javascript" type="text/javascript" src="/scripts/zugaenge.js"></script>
+<%- include footer %>

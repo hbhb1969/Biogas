@@ -1,56 +1,56 @@
 <%- include header %>
-  <div class="buchungen-wrapper inhalt">
-    <section id="fuetterungen-formular" class="container formular links">
-      <form role="form" class="form-fuetterungen">
-        <% if (message.length > 0) { %>
-          <div class="alert">
-            <%= message %>
+<div class="buchungen-wrapper inhalt">
+  <section id="fuetterungen-formular" class="container formular links">
+    <form role="form" class="form-fuetterungen">
+      <% if (message.length > 0) { %>
+      <div class="alert">
+        <%= message %>
+      </div>
+      <% } %>
+      <div id="buchungsfehler" style="display:none" class="alert">
+        <p>Fehler:</p>
+        <span></span>
+      </div>
+      <h2>Buchung eingeben</h2>
+      <div class="form-group">
+        <div>
+          <fieldset class="stoffart">
+            <label><input type="radio" class="" name="Stoffart" id="lager-radio" value="lager" onchange="ansichtWechseln()" checked="checked"><span>Lagerrohstoff</span></label>
+            <label><input type="radio" class="" name="Stoffart" id="direkt-radio" value="direkt" onchange="ansichtWechseln()"><span>Direktrohstoff</span></label>
+          </fieldset>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <input type="number" class="form-control nodisplay" hidden name="F_ID">
+              </div>
+        </div>
+        <div class="form-group">
+          <label for="F_Datum" class="control-label">Datum</label>
+          <div>
+            <input type="date" id="datum" class="form-control" name="F_Datum" placeholder="Datum" required>
+              </div>
           </div>
-          <% } %>
-            <div id="buchungsfehler" style="display:none" class="alert">
-              <p>Fehler:</p>
-              <span></span>
-            </div>
-            <h2>Buchung eingeben</h2>
-            <div class="form-group">
-              <div>
-                <fieldset class="stoffart">
-                  <label><input type="radio" class="" name="Stoffart" id="lager-radio" value="lager" onchange="ansichtWechseln()" checked="checked"><span>Lagerrohstoff</span></label>
-                  <label><input type="radio" class="" name="Stoffart" id="direkt-radio" value="direkt" onchange="ansichtWechseln()"><span>Direktrohstoff</span></label>
-                </fieldset>
-              </div>
-            </div>
-            <div class="form-group">
-              <div>
-                <input type="number" class="form-control nodisplay" hidden name="F_ID">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="F_Datum" class="control-label">Datum</label>
-              <div>
-                <input type="date" id="datum" class="form-control" name="F_Datum" placeholder="Datum" required>
-              </div>
-            </div>
-            <div class="form-group" id="lager-wrapper">
-              <label for="Lager_L_ID" class="control-label">Lager</label>
-              <div class="select-wrapper">
-                <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren('lager')">
+          <div class="form-group" id="lager-wrapper">
+            <label for="Lager_L_ID" class="control-label">Lager</label>
+            <div class="select-wrapper">
+              <select id="lager" class="form-control" name="Lager_L_ID" placeholder="Lager" onchange="meAktualisieren('lager')">
                      <%- lagerOptions %>
                                        </select>
-              </div>
             </div>
-            <div class="form-group nodisplay" id="rohstoff-wrapper">
-              <label for="Stoff_S_ID" class="control-label">Rohstoff</label>
-              <div class="select-wrapper">
-                <select id="rohstoff" class="form-control" name="Stoff_S_ID" placeholder="Rohstoff" onchange="meAktualisieren('rohstoff')">
+          </div>
+          <div class="form-group nodisplay" id="rohstoff-wrapper">
+            <label for="Stoff_S_ID" class="control-label">Rohstoff</label>
+            <div class="select-wrapper">
+              <select id="rohstoff" class="form-control" name="Stoff_S_ID" placeholder="Rohstoff" onchange="meAktualisieren('rohstoff')">
                      <%- direktOptions %>
                                        </select>
-              </div>
             </div>
-            <div class="form-group">
-              <label for="F_BruttoMenge" class="control-label">Menge <span id="fuetterung-me"></span></label>
-              <div>
-                <input type="number" value="" class="form-control" name="F_BruttoMenge" placeholder="Menge" required>
+          </div>
+          <div class="form-group">
+            <label for="F_BruttoMenge" class="control-label">Menge <span id="fuetterung-me"></span></label>
+            <div>
+              <input type="number" value="" max="9999999" class="form-control" name="F_BruttoMenge" placeholder="Menge" required>
               </div>
             </div>
             <div class="form-group">
@@ -73,75 +73,75 @@
                 <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/buchen/fuetterungen" formmethod="get">Abbrechen</button>
               </div>
             </div>
-      </form>
-    </section>
-    <section id="fuetterungen-tabelle" class="container tabelle rechts">
-      <div class="buchungen">
-        <div class="ueberschrift-tabelle">
-          <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
-        </div>
-        <div id="fuetterungen-lager" class="table-wrap">
-          <div class="table">
-            <table>
-              <thead class="sticky">
-                <tr class="th">
-                  <th class="t-id">
-                    ID
-                    <div>ID</div>
-                  </th>
-                  <th class="t-datum">
-                    Datum
-                    <div>Datum</div>
-                  </th>
-                  <th class="t-menge t-rechts" colspan="2">
-                    Menge
-                    <div>Menge</div>
-                  </th>
-                  <th class="t-lager">
-                    Lager
-                    <div>Lager</div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody onclick="auswahlTabelle(event)">
-                <%- buchungenFuetterungenLager %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div id="fuetterungen-direkt" class="table-wrap nodisplay">
-          <div class="table">
-            <table class="">
-              <thead class="sticky">
-                <tr class="th">
-                  <th class="t-id">
-                    ID
-                    <div>ID</div>
-                  </th>
-                  <th class="t-datum">
-                    Datum
-                    <div>Datum</div>
-                  </th>
-                  <th class="t-menge t-rechts" colspan="2">
-                    Menge
-                    <div>Menge</div>
-                  </th>
-                  <th class="t-lager">
-                    Stoff
-                    <div>Stoff</div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody onclick="auswahlTabelle(event)">
-                <%- buchungenFuetterungenDirekt %>
-              </tbody>
-            </table>
-          </div>
+    </form>
+  </section>
+  <section id="fuetterungen-tabelle" class="container tabelle rechts">
+    <div class="buchungen">
+      <div class="ueberschrift-tabelle">
+        <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
+      </div>
+      <div id="fuetterungen-lager" class="table-wrap">
+        <div class="table">
+          <table>
+            <thead class="sticky">
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-datum">
+                  Datum
+                  <div>Datum</div>
+                </th>
+                <th class="t-menge t-rechts" colspan="2">
+                  Menge
+                  <div>Menge</div>
+                </th>
+                <th class="t-lager">
+                  Lager
+                  <div>Lager</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody onclick="auswahlTabelle(event)">
+              <%- buchungenFuetterungenLager %>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
-  </div>
+      <div id="fuetterungen-direkt" class="table-wrap nodisplay">
+        <div class="table">
+          <table class="">
+            <thead class="sticky">
+              <tr class="th">
+                <th class="t-id">
+                  ID
+                  <div>ID</div>
+                </th>
+                <th class="t-datum">
+                  Datum
+                  <div>Datum</div>
+                </th>
+                <th class="t-menge t-rechts" colspan="2">
+                  Menge
+                  <div>Menge</div>
+                </th>
+                <th class="t-lager">
+                  Stoff
+                  <div>Stoff</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody onclick="auswahlTabelle(event)">
+              <%- buchungenFuetterungenDirekt %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-  <script language="javascript" type="text/javascript" src="/scripts/hilfsfunktionen.js"></script>
-  <script language="javascript" type="text/javascript" src="/scripts/fuetterungen.js"></script>
-  <%- include footer %>
+<script language="javascript" type="text/javascript" src="/scripts/hilfsfunktionen.js"></script>
+<script language="javascript" type="text/javascript" src="/scripts/fuetterungen.js"></script>
+<%- include footer %>
