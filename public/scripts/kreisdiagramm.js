@@ -68,11 +68,12 @@ let svg = d3.select("#pie")
   .attr("height", height)
   .attr("class", "kreisdiagramm")
   .append("g")
-  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"); // Moving the center point. 1/2 the width and 1/2 the height
+  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"); // Zentrum auf 1/2 der Breite und 1/2 der Höhe verschieben
 
 let g = svg.selectAll("arc")
   .data(pie)
-  .enter().append("g")
+  .enter()
+  .append("g")
   .attr("class", "arc");
 
 g.append("path")
@@ -128,11 +129,12 @@ let svgD = d3.select("#pie")
   .attr("height", height)
   .attr("class", "kreisdiagramm")
   .append("g")
-  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"); // Moving the center point. 1/2 the width and 1/2 the height
+  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"); // Zentrum auf 1/2 der Breite und 1/2 der Höhe verschieben
 
 let gD = svgD.selectAll("arcD")
   .data(pieD)
-  .enter().append("g")
+  .enter()
+  .append("g")
   .attr("class", "arcD");
 
 gD.append("path")
