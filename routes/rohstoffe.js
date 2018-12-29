@@ -1,6 +1,12 @@
 const qa = require('../db/query');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
+  const user = req.session.user,
+    userId = req.session.userId;
+  if (userId == null) {
+    res.redirect("/anmelden");
+    return;
+  }
   let message = '';
   const fetch = require('node-fetch');
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können

@@ -1,6 +1,12 @@
 const qa = require('../db/query');
 // ---------- Zugänge: Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
+  const user = req.session.user,
+    userId = req.session.userId;
+  if (userId == null) {
+    res.redirect("/anmelden");
+    return;
+  }
   let message = '';
   let headerClass = "lager";
   let headerTitel = "Lager";

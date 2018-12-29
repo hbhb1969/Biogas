@@ -4,7 +4,12 @@ const fetch = require('node-fetch');
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
   let message = '';
-
+  const user = req.session.user,
+    userId = req.session.userId;
+  if (userId == null) {
+    res.redirect("/anmelden");
+    return;
+  }
   // Variablen werden mit HTML-Code für Selects und Tables gefüllt, damit sie später dem Template übergeben werden können
   let headerClass = "abgaben";
   let headerTitel = "Abgaben";

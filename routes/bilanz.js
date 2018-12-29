@@ -3,6 +3,12 @@ const fetch = require('node-fetch');
 
 // ---------- Vorbereitung Formular ----------
 exports.get = (req, res, next) => {
+  const user = req.session.user,
+    userId = req.session.userId;
+  if (userId == null) {
+    res.redirect("/anmelden");
+    return;
+  }
   let message = '';
   let headerClass = "bilanz";
   let headerTitel = "Nährstoffbilanz";
