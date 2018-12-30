@@ -16,65 +16,65 @@
         <div>
           <input type="number" class="form-control nodisplay" hidden name="A_ID">
               </div>
+      </div>
+      <div class="form-group" id="stoff-wrapper">
+        <label for="S_ID" class="control-label">Stoff</label>
+        <div class="select-wrapper">
+          <select id="stoff" class="form-control" name="S_ID" placeholder="Stoff" required>
+            <%- stoffOptions %>
+          </select>
         </div>
-        <div class="form-group" id="stoff-wrapper">
-          <label for="S_ID" class="control-label">Stoff</label>
-          <div class="select-wrapper">
-            <select id="stoff" class="form-control" name="S_ID" placeholder="Stoff" required>
-                     <%- stoffOptions %>
-                                       </select>
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="A_ExterneID" class="control-label">Externe ID</label>
+        <div>
+          <input type="text" value="" class="form-control" id="externeid" name="A_ExterneID" placeholder="Externe ID" required>
+          <p id="error-externeid" class="nodisplay alert"></p>
         </div>
-        <div class="form-group">
-          <label for="A_ExterneID" class="control-label">Externe ID</label>
-          <div>
-            <input type="text" value="" class="form-control" id="externeid" name="A_ExterneID" placeholder="Externe ID" required>
-            <p id="error-externeid" class="nodisplay alert"></p>
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="A_Datum" class="control-label">Analysedatum</label>
+        <div>
+          <input type="date" id="datum-beginn" class="form-control" name="A_Datum" placeholder="Analysedatum" required>
         </div>
-        <div class="form-group">
-          <label for="A_Datum" class="control-label">Analysedatum</label>
-          <div>
-            <input type="date" id="datum-beginn" class="form-control" name="A_Datum" placeholder="Analysedatum" required>
-              </div>
-          </div>
-          <div class="form-group">
-            <label for="A_DatumGueltigAb" class="control-label">Gültigkeitsdatum</label>
-            <div>
-              <input type="date" id="datum-ende" class="form-control" name="A_DatumGueltigAb" placeholder="Gültigkeitsdatum" required>
-              <p id="error-datum-gueltig" class="nodisplay alert"></p>
-            </div>
-          </div>
-          <div class="form-group" id="analysetyp-wrapper">
-            <label for="AT_ID" class="control-label">Analysetyp</label>
-            <div class="select-wrapper">
-              <select id="analysetyp" class="form-control" name="AT_ID" placeholder="Analysetyp" required>
-                     <%- analysetypOptions %>
-                                       </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="SA_A_Wert" class="control-label">Wert</label>
-            <div>
-              <input type="number" step="0.01" max="99999" value="" class="form-control" id="wert" name="SA_A_Wert" placeholder="Wert" required>
-              <p id="error-wert" class="nodisplay alert"></p>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/analysen" formmethod="post">Buchen</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/analysen-put" formmethod="post">Ändern</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/analysen" formmethod="get">Abbrechen</button>
-            </div>
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="A_DatumGueltigAb" class="control-label">Gültigkeitsdatum</label>
+        <div>
+          <input type="date" id="datum-ende" class="form-control" name="A_DatumGueltigAb" placeholder="Gültigkeitsdatum" required>
+          <p id="error-datum-gueltig" class="nodisplay alert"></p>
+        </div>
+      </div>
+      <div class="form-group" id="analysetyp-wrapper">
+        <label for="AT_ID" class="control-label">Analysetyp</label>
+        <div class="select-wrapper">
+          <select id="analysetyp" class="form-control" name="AT_ID" placeholder="Analysetyp" required>
+            <%- analysetypOptions %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="SA_A_Wert" class="control-label">Wert</label>
+        <div>
+          <input type="number" step="0.01" max="99999" value="" class="form-control" id="wert" name="SA_A_Wert" placeholder="Wert" required>
+          <p id="error-wert" class="nodisplay alert"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/analysen" formmethod="post">Buchen</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/analysen-put" formmethod="post">Ändern</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/analysen" formmethod="get">Abbrechen</button>
+        </div>
+      </div>
     </form>
   </section>
   <section id="analysen-tabelle" class="container tabelle analysen-tabelle rechts">

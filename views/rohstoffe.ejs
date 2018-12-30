@@ -23,45 +23,45 @@
       <div class="form-group">
         <div>
           <input type="number" class="form-control nodisplay" hidden name="S_ID">
-              </div>
         </div>
-        <div class="form-group">
-          <label for="S_Bezeichnung" class="control-label">Rohstoffbezeichnung</label>
-          <div>
-            <input type="text" id="rohstoffbezeichnung" class="form-control" name="S_Bezeichnung" placeholder="Rohstoffbezeichnung" maxlength="20" required>
-              </div>
-          </div>
-          <div class="form-group" id="stoff-wrapper">
-            <label for="Mengeneinheit_ME_ID" class="control-label">Mengeneinheit</label>
-            <div class="select-wrapper">
-              <select id="mengeneinheit" class="form-control" name="Mengeneinheit_ME_ID" placeholder="Mengeneinheit">
-                     <%- meOptions %>
-                </select>
-            </div>
-          </div>
-          <div class="form-group nodisplay" id="rohstoff-wrapper">
-            <label for="Person_P_ID" class="control-label">Lieferant</label>
-            <div class="select-wrapper">
-              <select id="lieferant" class="form-control" name="Person_P_ID" placeholder="Lieferant">
-                     <%- lieferantOptions %>
-                </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/rohstoffe" formmethod="post">Hinzufügen</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/rohstoffe-put" formmethod="post">Ändern</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/rohstoffe" formmethod="get">Abbrechen</button>
-            </div>
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="S_Bezeichnung" class="control-label">Rohstoffbezeichnung</label>
+        <div>
+          <input type="text" id="rohstoffbezeichnung" class="form-control" name="S_Bezeichnung" placeholder="Rohstoffbezeichnung" maxlength="20" required>
+        </div>
+      </div>
+      <div class="form-group" id="stoff-wrapper">
+        <label for="Mengeneinheit_ME_ID" class="control-label">Mengeneinheit</label>
+        <div class="select-wrapper">
+          <select id="mengeneinheit" class="form-control" name="Mengeneinheit_ME_ID" placeholder="Mengeneinheit">
+             <%- meOptions %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group nodisplay" id="rohstoff-wrapper">
+        <label for="Person_P_ID" class="control-label">Lieferant</label>
+        <div class="select-wrapper">
+          <select id="lieferant" class="form-control" name="Person_P_ID" placeholder="Lieferant">
+             <%- lieferantOptions %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/daten/rohstoffe" formmethod="post">Hinzufügen</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/daten/rohstoffe-put" formmethod="post">Ändern</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/daten/rohstoffe" formmethod="get">Abbrechen</button>
+        </div>
+      </div>
     </form>
   </section>
   <section id="stoffe-tabelle" class="container tabelle stoffe-tabelle rechts">

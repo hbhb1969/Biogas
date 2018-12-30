@@ -15,61 +15,61 @@
       <div class="form-group">
         <div>
           <input type="number" class="form-control nodisplay" hidden name="AG_ID">
-              </div>
         </div>
-        <div class="form-group">
-          <label for="AG_DatumBeginn" class="control-label">Anfangsdatum</label>
-          <div>
-            <input type="date" id="datum-beginn" class="form-control" name="AG_DatumBeginn" placeholder="Anfangsdatum" onclick="deaktiviereLs()" required>
-              </div>
-          </div>
-          <div class="form-group">
-            <label for="Ag_DatumEnde" class="control-label">Enddatum</label>
-            <div>
-              <input type="date" id="datum-ende" class="form-control" name="AG_DatumEnde" placeholder="Enddatum" onclick="deaktiviereLs()" required>
-              <p id="error-datum" class="nodisplay alert"></p>
-            </div>
-          </div>
-          <div class="form-group" id="lager-wrapper">
-            <label for="Lager_L_ID" class="control-label">Abnehmer</label>
-            <div class="select-wrapper">
-              <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer" onclick="deaktiviereLs()" required>
-                     <%- abnehmerOptions %>
-                                       </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="AG_Menge" class="control-label">Menge (cbm)</label>
-            <div>
-              <input type="number" value="" max="9999999" class="form-control" id="menge" name="AG_Menge" placeholder="Menge" onclick="deaktiviereLs()" required>
-              <p id="error-menge" class="nodisplay alert"></p>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/buchen/abgaben" formmethod="post">Buchen</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-lieferschein" type="submit" class="btn nodisplay gruen btn-lieferschein"  formmethod="get">Lieferschein</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/buchen/abgaben-put" formmethod="post">Ändern</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-loeschen" type="submit" class="btn nodisplay gruen btn-loeschen" formaction="/buchen/abgaben-delete" formmethod="post">Löschen</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div>
-              <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/buchen/abgaben" formmethod="get">Abbrechen</button>
-            </div>
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="AG_DatumBeginn" class="control-label">Anfangsdatum</label>
+        <div>
+          <input type="date" id="datum-beginn" class="form-control" name="AG_DatumBeginn" placeholder="Anfangsdatum" onclick="deaktiviereLs()" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Ag_DatumEnde" class="control-label">Enddatum</label>
+        <div>
+          <input type="date" id="datum-ende" class="form-control" name="AG_DatumEnde" placeholder="Enddatum" onclick="deaktiviereLs()" required>
+          <p id="error-datum" class="nodisplay alert"></p>
+        </div>
+      </div>
+      <div class="form-group" id="lager-wrapper">
+        <label for="Lager_L_ID" class="control-label">Abnehmer</label>
+        <div class="select-wrapper">
+          <select id="abnehmer" class="form-control" name="Person_P_ID" placeholder="Abnehmer" onclick="deaktiviereLs()" required>
+            <%- abnehmerOptions %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="AG_Menge" class="control-label">Menge (cbm)</label>
+        <div>
+          <input type="number" value="" max="9999999" class="form-control" id="menge" name="AG_Menge" placeholder="Menge" onclick="deaktiviereLs()" required>
+          <p id="error-menge" class="nodisplay alert"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-buchen" type="submit" class="btn gruen btn-buchen" formaction="/buchen/abgaben" formmethod="post">Buchen</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-lieferschein" type="submit" class="btn nodisplay gruen btn-lieferschein"  formmethod="get">Lieferschein</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-aendern" type="submit" class="btn nodisplay gruen btn-aendern" formaction="/buchen/abgaben-put" formmethod="post">Ändern</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-loeschen" type="submit" class="btn nodisplay gruen btn-loeschen" formaction="/buchen/abgaben-delete" formmethod="post">Löschen</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <button id="btn-abbrechen" type="submit" class="btn nodisplay gruen btn-abbrechen" formaction="/buchen/abgaben" formmethod="get">Abbrechen</button>
+        </div>
+      </div>
     </form>
   </section>
   <section id="abgaben-tabelle" class="container tabelle rechts">
@@ -77,7 +77,6 @@
       <div class="ueberschrift-tabelle">
         <h2>Buchungen bearbeiten</h2> Zum Ändern oder Löschen anklicken.
       </div>
-
       <div class="table-wrap">
         <div class="table">
           <table id="abgaben">

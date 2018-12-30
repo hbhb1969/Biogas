@@ -1,27 +1,22 @@
 function validiereForm(form) {
   let fehler = false;
-  if (form == 'abgaben') {
-    if (checkReihenfolgeDatum()) {
-      fehler = true;
-    }
-    if (checkPositiveMenge()) {
-      fehler = true;
-    }
-  }
-  if (form == 'bilanz') {
-    if (checkReihenfolgeDatum()) {
-      fehler = true;
-    }
-  }
-  if (form == 'fuetterungen') {
-    if (checkPositiveMenge()) {
-      fehler = true;
-    }
-  }
-  if (form == 'zugaenge') {
-    if (checkPositiveMenge()) {
-      fehler = true;
-    }
+  switch (form) {
+    case 'abgaben':
+      if (checkReihenfolgeDatum()) {
+        fehler = true;
+      }
+      if (checkPositiveMenge()) {
+        fehler = true;
+      }
+    case 'bilanz':
+      if (checkReihenfolgeDatum()) {
+        fehler = true;
+      }
+    case 'fuetterungen':
+    case 'zugaenge':
+      if (checkPositiveMenge()) {
+        fehler = true;
+      }
   }
   if (fehler) {
     return false;
